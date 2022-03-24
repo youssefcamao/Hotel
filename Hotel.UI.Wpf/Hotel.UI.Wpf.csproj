@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="MVVM\Models\" />
+    <Folder Include="MVVM\Commands\" />
+    <Folder Include="MVVM\Stores\" />
+    <Folder Include="MVVM\Services\" />
+    <Folder Include="MVVM\Views\" />
+    <Folder Include="MVVM\ViewModels\" />
+  </ItemGroup>
+
+</Project>
