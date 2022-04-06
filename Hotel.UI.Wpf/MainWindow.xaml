@@ -3,18 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vms="clr-namespace:Hotel.UI.Wpf.MVVM.ViewModels"
+        xmlns:views="clr-namespace:Hotel.UI.Wpf.MVVM.Views"
         xmlns:local="clr-namespace:Hotel.UI.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="800" Background="#222222"
         ResizeMode="NoResize"
         Foreground="White">
     <Grid>
-        <DockPanel Margin="20">
-            <DockPanel HorizontalAlignment="Center">
-                <TextBlock Text="Reservations" FontSize="30"/>
-                <Button Content="Add Rerservation" Width="130" Height="50"/>
-            </DockPanel>
-            
-        </DockPanel>
-    </Grid>
+                <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:LoginViewModel}">
+                <views:LoginView Password="{Binding UserPassword, Mode=OneWayToSource}"/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:AdminViewModel}">
+                <views:AdminView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:UserViewModel}">
+                <views:UserView/>
+            </DataTemplate>
+        </Grid.Resources>
+                <ContentControl Content="{Binding CurrentViewModel}"/>
+</Grid>
 </Window>
