@@ -17,6 +17,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         {
             _navigationStore = navigationStore;
             LoginCommand = new LoginCommand(this, _navigationStore);
+            SignupCommand = new SignupCommand(_navigationStore);
         }
         private string _email;
         public string Email
@@ -46,5 +47,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             }
         }
         public ICommand LoginCommand { get; }
+        public ICommand SignupCommand { get; }
     }
 }

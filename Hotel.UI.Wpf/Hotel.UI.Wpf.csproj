@@ -10,6 +10,11 @@
   <ItemGroup>
     <Folder Include="MVVM\Models\" />
     <Folder Include="MVVM\Services\" />
+    <Folder Include="Theme\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.4.0" />
   </ItemGroup>
 
   <ItemGroup>
