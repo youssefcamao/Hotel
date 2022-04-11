@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels
 {
-    public class LoginViewModel : ViewModelBase, INotifyDataErrorInfo
+    public class LoginViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
 
@@ -50,18 +50,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         public ICommand LoginCommand { get; }
         public ICommand SignupCommand { get; }
 
-        public bool HasErrors { get; set; } = false;
 
-        public IEnumerable GetErrors(string? propertyName)
-        {
-
-            return new List<string> { "Email or Password is wrong" };
-
-        }
-        public void OnErrorsChanged(string name1,string name2)
-        {
-            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(name1));
-            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(name2));
-        }
+       
     }
 }

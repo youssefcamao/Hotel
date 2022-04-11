@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="CustomControls\" />
     <Folder Include="MVVM\Models\" />
     <Folder Include="Theme\" />
   </ItemGroup>

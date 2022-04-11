@@ -27,7 +27,7 @@
     <Grid>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vms:LoginViewModel}">
-                <views:LoginView Password="{Binding UserPassword, Mode=OneWayToSource}"/>
+                <views:LoginView Password="{Binding UserPassword, Mode=OneWayToSource}" LoginCommand="{Binding LoginCommand}"/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:AdminViewModel}">
                 <views:AdminView/>

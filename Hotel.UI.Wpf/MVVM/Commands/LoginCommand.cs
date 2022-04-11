@@ -23,8 +23,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
             var user = _loginManager.CheckAndGetUser(email, password);
             if (user == null)
             {
-                _parentViewModel.HasErrors = true;
-                _parentViewModel.OnErrorsChanged(nameof(_parentViewModel.UserPassword), nameof(_parentViewModel.Email));
+                throw new ArgumentNullException(nameof(user));
             }
             else
             {
@@ -40,8 +39,14 @@ namespace Hotel.UI.Wpf.MVVM.Commands
                         break;
                 }
             }
-            
 
+        }
+        public override bool CanExecute(object? parameter)
+        {
+            var email = _parentViewModel.Email;
+            var password = _parentViewModel.UserPassword;
+            var user = _loginManager.CheckAndGetUser(email, password);
+            return user != null;
         }
     }
 }

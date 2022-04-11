@@ -1,19 +1,11 @@
-﻿using System;
+﻿using Hotel.UI.Wpf.ValidationRules;
 using MaterialDesignThemes.Wpf;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
+using System;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Hotel.UI.Wpf.MVVM.Views
 {
@@ -21,14 +13,16 @@ namespace Hotel.UI.Wpf.MVVM.Views
     /// Interaction logic for LoginView.xaml
     /// </summary>
     public partial class LoginView : UserControl
-    {
+    {        
+        private ValidationError _validationProp;
+        private Brush _defaultForgroundBrush;
+        private Brush _hintAssitsDefaultColor;
         public LoginView()
         {
             InitializeComponent();
+            _defaultForgroundBrush = PasswordContainer.Foreground;
+            _hintAssitsDefaultColor = HintAssist.GetForeground(PasswordContainer);
         }
-
-
-
         public ICommand LoginCommand
         {
             get { return (ICommand)GetValue(LoginCommandProperty); }
@@ -55,7 +49,61 @@ namespace Hotel.UI.Wpf.MVVM.Views
         private void PasswordContainer_PasswordChanged(object sender, RoutedEventArgs e)
         {
             Password = PasswordContainer.Password;
+            if (_validationProp != null)
+            {
+                ResetLoginContainersStyle();
+            }
         }
 
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (LoginCommand.CanExecute(null))
+            {
+                LoginCommand.Execute(null);
+            }
+            else
+            {
+                PasswordContainer.BorderBrush = (Brush)FindResource("MaterialDesignValidationErrorBrush");
+                EmailContainer.BorderBrush = (Brush)FindResource("MaterialDesignValidationErrorBrush");
+                CreateValidationError();
+                PasswordContainer.Foreground = Brushes.DarkRed;
+                EmailContainer.Foreground = Brushes.DarkRed;
+                HintAssist.SetForeground(PasswordContainer, Brushes.DarkRed);
+                HintAssist.SetForeground(EmailContainer, Brushes.DarkRed);
+            }
+        }
+
+        private void CreateValidationError()
+        {
+            String errorMessage = "Wrong Email or Password";
+            _validationProp = new ValidationError(new EmptyValidationRule(),
+            PasswordContainer.GetBindingExpression(PasswordBox.TagProperty));
+            Validation.MarkInvalid(PasswordContainer.GetBindingExpression(PasswordBox.TagProperty), _validationProp);
+            _validationProp.ErrorContent = errorMessage;
+        }
+
+        private void EmailContainer_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (_validationProp != null)
+            {
+                ResetLoginContainersStyle();
+            }
+        }
+
+        private void ResetLoginContainersStyle()
+        {
+            var propertyTag = PasswordBox.TagProperty;
+            Validation.ClearInvalid(PasswordContainer.GetBindingExpression(propertyTag));
+            PasswordContainer.BorderBrush = (Brush)FindResource("MaterialDesignDivider");
+            EmailContainer.BorderBrush = (Brush)FindResource("MaterialDesignDivider");
+            if (_defaultForgroundBrush != null)
+            {
+                EmailContainer.Foreground = _defaultForgroundBrush;
+                PasswordContainer.Foreground = _defaultForgroundBrush;
+                HintAssist.SetForeground(PasswordContainer, _hintAssitsDefaultColor);
+                HintAssist.SetForeground(EmailContainer, _hintAssitsDefaultColor);
+            }
+        }
     }
 }
