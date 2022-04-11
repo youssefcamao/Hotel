@@ -9,17 +9,23 @@
              d:DesignHeight="800" d:DesignWidth="800">
 
 
-    <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost">
         <StackPanel Margin="0,100,0,0">
             <Image Source="C:\Users\ysb\source\repos\Hotel\Hotel.UI.Wpf\hotel-logo.png" Height="155" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" Width="196"/>
             <TextBlock Margin="0,25,0,5" HorizontalAlignment="Center" FontSize="28" FontWeight="Bold" Text="Welcome Back!" />
             <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Log in to your existing account"/>
-            <TextBox Margin="0,50,0,0" Text="{Binding Email}" x:Name="EmailContainer" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Enter Email" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{StaticResource MaterialDesignOutlinedTextBox}" />
-            <PasswordBox PasswordChanged="PasswordContainer_PasswordChanged" Margin="0,20,0,0" x:Name="PasswordContainer" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Enter Password" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
-            <Button  Margin="0,20,0,0" x:Name="LoginButton" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="LOG IN" Command="{Binding LoginCommand}"/>
+            <TextBox Margin="0,50,0,0" Text="{Binding Email}" 
+                     x:Name="EmailContainer" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Enter Email" 
+                     BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+            <PasswordBox PasswordChanged="PasswordContainer_PasswordChanged" Margin="0,20,0,0" x:Name="PasswordContainer" Width="300" 
+                         FontSize="18" materialDesign:HintAssist.Hint="Enter Password" BorderThickness="2" 
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                         Tag="{Binding UserPassword, ValidatesOnDataErrors=True}"/>
+            <Button  Margin="0,20,0,0" x:Name="LoginButton" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" 
+                     materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="LOG IN"
+                     Command="{Binding LoginCommand}"/>
             <Button Margin="0,20,0,0" x:Name="signupBtn" Style="{StaticResource MaterialDesignFlatButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" 
                     materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" 
                     Content="Create Account" Command="{Binding SignupCommand}"/>
         </StackPanel>
-    </materialDesign:DialogHost>
 </UserControl>

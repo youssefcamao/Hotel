@@ -1,15 +1,14 @@
 ﻿using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Stores;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase, INotifyDataErrorInfo
     {
         private readonly NavigationStore _navigationStore;
 
@@ -34,6 +33,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         }
         private string _userPassword;
 
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+
         public string UserPassword
         {
             get
@@ -48,5 +49,19 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         }
         public ICommand LoginCommand { get; }
         public ICommand SignupCommand { get; }
+
+        public bool HasErrors { get; set; } = false;
+
+        public IEnumerable GetErrors(string? propertyName)
+        {
+
+            return new List<string> { "Email or Password is wrong" };
+
+        }
+        public void OnErrorsChanged(string name1,string name2)
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(name1));
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(name2));
+        }
     }
 }

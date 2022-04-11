@@ -1,4 +1,5 @@
 ﻿using System;
+using MaterialDesignThemes.Wpf;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
@@ -55,5 +56,6 @@ namespace Hotel.UI.Wpf.MVVM.Views
         {
             Password = PasswordContainer.Password;
         }
+
     }
 }
