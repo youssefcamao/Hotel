@@ -27,7 +27,7 @@ namespace Hotel.UI.Wpf
         }
         //Theme Code ========================>
         public bool IsDarkTheme { get; set; }
-        private readonly PaletteHelper paletteHelper = new PaletteHelper();
+        private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         private void Btn_ExitApp(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -38,7 +38,7 @@ namespace Hotel.UI.Wpf
             //Theme Code ========================>
 
             //get the current theme used in the application
-            ITheme theme = paletteHelper.GetTheme();
+            ITheme theme = _paletteHelper.GetTheme();
 
             //if condition true, then set IsDarkTheme to false and, SetBaseTheme to light
             if (IsDarkTheme = theme.GetBaseTheme() == BaseTheme.Dark)
@@ -55,7 +55,7 @@ namespace Hotel.UI.Wpf
             }
 
             //to apply the changes use the SetTheme function
-            paletteHelper.SetTheme(theme);
+            _paletteHelper.SetTheme(theme);
             //===================================>
         }
 
@@ -63,6 +63,23 @@ namespace Hotel.UI.Wpf
         {
             base.OnMouseLeftButtonDown(e);
             DragMove();
+        }
+
+        private void Btn_MinimizeApp(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void Btn_Maximize(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == System.Windows.WindowState.Normal)
+            {
+                this.WindowState = System.Windows.WindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = System.Windows.WindowState.Normal;
+            }
         }
     }
 }

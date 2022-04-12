@@ -36,19 +36,54 @@
                 <views:UserView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:SignupViewModel}">
-                <views:SignupView/>
+                <views:SignupView Password="{Binding Password, Mode=OneWayToSource}"/>
             </DataTemplate>
         </Grid.Resources>
-        <materialDesign:Card UniformCornerRadius="15" MouseLeftButtonDown="Card_MouseLeftButtonDown" Background="{DynamicResource MaterialDesignPaper}"  materialDesign:ShadowAssist.ShadowDepth="Depth4">
-            <materialDesign:PopupBox VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 20 20 0" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25" RenderTransformOrigin="1.088,-15.18">
-                <StackPanel>
-                    <StackPanel Margin="16 10 0 6" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock  VerticalAlignment="Center" Text="Dark Mode" />
-                        <ToggleButton Cursor="Hand" ToolTip="Enable Dark Mode" Margin="12 0 8 0" x:Name="themeToggle" IsChecked="{Binding IsDarkTheme}" Click="themeToggle_Click"/>
+        <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}"  materialDesign:ShadowAssist.ShadowDepth="Depth4">
+            <materialDesign:ColorZone
+                    Padding="10"
+                    Mode="PrimaryMid"
+                    DockPanel.Dock="Top"
+                MouseLeftButtonDown="Card_MouseLeftButtonDown"
+                MouseDoubleClick="Btn_Maximize" CornerRadius="15,15,0,0">
+                <DockPanel FlowDirection="RightToLeft" >
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                                Margin="10,0,0,0"
+                                ToolTip="WindowClose"
+                                Content="{materialDesign:PackIcon Kind=CloseThick, Size=24}"
+                            Click="Btn_ExitApp"
+                                Style="{StaticResource MaterialDesignToolButton}"
+                                Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
+                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
+                        <Button
+                                Margin="10,0,0,0"
+                                ToolTip="WindowEnlarge"
+                                Content="{materialDesign:PackIcon Kind=CropSquare, Size=24}"
+                                Click="Btn_Maximize"
+                                Style="{StaticResource MaterialDesignToolButton}"
+                                Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
+                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
+                        <Button
+                                Margin="10,0,0,0"
+                                ToolTip="WindowMinimize"
+                                Content="{materialDesign:PackIcon Kind=WindowMinimize, Size=24}"
+                            Click="Btn_MinimizeApp"
+                                Style="{StaticResource MaterialDesignToolButton}"
+                                Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
+                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
                     </StackPanel>
-                    <Button x:Name="Btn_Exit" ToolTip="Close Application" Content="Exit Application" Click="Btn_ExitApp"/>
-                </StackPanel>
-            </materialDesign:PopupBox>
+                        <Button
+                            HorizontalAlignment="Right"
+                                Margin="0,0,10,0"
+                                ToolTip="ChangeThemeMode"
+                                Content="{materialDesign:PackIcon Kind=Brightness6, Size=24}"
+                            Click="themeToggle_Click"
+                                Style="{StaticResource MaterialDesignToolButton}"
+                                Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
+                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
+                </DockPanel>
+            </materialDesign:ColorZone>
         </materialDesign:Card>
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
