@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="800">
     <Grid>
-        <StackPanel Margin="0,100,0,0">
+        <StackPanel Margin="0,80,0,0">
             <Image Source="C:\Users\ysb\source\repos\Hotel\Hotel.UI.Wpf\hotel-logo.png" Height="155" Stretch="Uniform" 
                    RenderTransformOrigin="0.5,0.5" Width="196"/>
             <TextBlock Margin="0,25,0,5" HorizontalAlignment="Center" FontSize="28" FontWeight="Bold" Text="Welcome Back!" />
@@ -38,7 +38,7 @@
         </StackPanel>
         <materialDesign:Snackbar MessageQueue="{Binding BoundMessageQueue}" 
                      x:Name="Snackbar"
-                     HorizontalAlignment="Stretch" Height="60"/>
+                     HorizontalAlignment="Stretch" Height="50"/>
     </Grid>
     
     

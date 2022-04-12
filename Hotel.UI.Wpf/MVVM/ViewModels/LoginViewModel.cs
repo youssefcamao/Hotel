@@ -35,8 +35,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         }
         private string _userPassword;
 
-        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
-
         public string UserPassword
         {
             get
