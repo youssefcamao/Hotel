@@ -19,6 +19,10 @@ namespace Hotel.Core
             var user = _usersList.FirstOrDefault(x => x.Email == email && x.Password == password);
             return user;
         }
+        public void CreateNewUser(string firstName, string lastName, string email, string password)
+        {
+            _usersList.Add(new User(firstName, lastName, email, password, UserRole.NormalUser));
+        }
 
     }
 }

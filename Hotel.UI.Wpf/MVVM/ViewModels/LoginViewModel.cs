@@ -1,9 +1,11 @@
 ﻿using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Stores;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels
@@ -49,8 +51,16 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         }
         public ICommand LoginCommand { get; }
         public ICommand SignupCommand { get; }
+        public ISnackbarMessageQueue BoundMessageQueue { get; } = new SnackbarMessageQueue();
+
+        public void SendSuccessfulRegistrationMessage()
+        {
+            BoundMessageQueue.Enqueue("Thank you for registring with us", "Close", () =>
+            {
+                Debug.WriteLine("Close clicked");
+            });
+        }
 
 
-       
     }
 }
