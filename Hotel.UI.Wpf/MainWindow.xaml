@@ -15,7 +15,7 @@
         xmlns:local="clr-namespace:Hotel.UI.Wpf"
         mc:Ignorable="d"
         Title="Hotel" Height="800" Width="800"
-        ResizeMode="NoResize" WindowStyle="None"
+        ResizeMode="CanResize" WindowStyle="None"
     Background="{x:Null}"
     WindowStartupLocation="CenterScreen"
         AllowsTransparency="True">
@@ -39,16 +39,20 @@
                 <views:SignupView Password="{Binding Password, Mode=OneWayToSource}"/>
             </DataTemplate>
         </Grid.Resources>
-        <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}"  materialDesign:ShadowAssist.ShadowDepth="Depth4">
-            <materialDesign:ColorZone
-                    Padding="10"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone
+            Grid.Row="0"        
+            Padding="10"
                     Mode="PrimaryMid"
                     DockPanel.Dock="Top"
                 MouseLeftButtonDown="Card_MouseLeftButtonDown"
                 MouseDoubleClick="Btn_Maximize" CornerRadius="15,15,0,0">
-                <DockPanel FlowDirection="RightToLeft" >
-                    <StackPanel Orientation="Horizontal">
-                        <Button
+            <DockPanel FlowDirection="RightToLeft" >
+                <StackPanel Orientation="Horizontal">
+                    <Button
                                 Margin="10,0,0,0"
                                 ToolTip="WindowClose"
                                 Content="{materialDesign:PackIcon Kind=CloseThick, Size=24}"
@@ -56,7 +60,7 @@
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
-                        <Button
+                    <Button
                                 Margin="10,0,0,0"
                                 ToolTip="WindowEnlarge"
                                 Content="{materialDesign:PackIcon Kind=CropSquare, Size=24}"
@@ -64,7 +68,7 @@
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
-                        <Button
+                    <Button
                                 Margin="10,0,0,0"
                                 ToolTip="WindowMinimize"
                                 Content="{materialDesign:PackIcon Kind=WindowMinimize, Size=24}"
@@ -72,8 +76,8 @@
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
-                    </StackPanel>
-                        <Button
+                </StackPanel>
+                <Button
                             HorizontalAlignment="Right"
                                 Margin="0,0,10,0"
                                 ToolTip="ChangeThemeMode"
@@ -82,9 +86,10 @@
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
-                </DockPanel>
-            </materialDesign:ColorZone>
-        </materialDesign:Card>
-        <ContentControl Content="{Binding CurrentViewModel}"/>
+            </DockPanel>
+        </materialDesign:ColorZone>
+            <materialDesign:Card Background="{DynamicResource MaterialDesignPaper}" Grid.Row="1" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+                <ContentControl Content="{Binding CurrentViewModel}"/>
+            </materialDesign:Card>
     </Grid>
 </Window>
