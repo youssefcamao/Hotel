@@ -62,15 +62,15 @@
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
                     <Button
                                 Margin="10,0,0,0"
-                                ToolTip="WindowEnlarge"
-                                Content="{materialDesign:PackIcon Kind=CropSquare, Size=24}"
+                                ToolTip="Window Restore"
+                                Content="{materialDesign:PackIcon Kind=WindowRestore, Size=24}"
                                 Click="Btn_Maximize"
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
                     <Button
                                 Margin="10,0,0,0"
-                                ToolTip="WindowMinimize"
+                                ToolTip="Window Minimize"
                                 Content="{materialDesign:PackIcon Kind=WindowMinimize, Size=24}"
                             Click="Btn_MinimizeApp"
                                 Style="{StaticResource MaterialDesignToolButton}"
@@ -80,7 +80,7 @@
                 <Button
                             HorizontalAlignment="Right"
                                 Margin="0,0,10,0"
-                                ToolTip="ChangeThemeMode"
+                                ToolTip="Change Theme Mode"
                                 Content="{materialDesign:PackIcon Kind=Brightness6, Size=24}"
                             Click="themeToggle_Click"
                                 Style="{StaticResource MaterialDesignToolButton}"
