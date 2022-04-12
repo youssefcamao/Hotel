@@ -14,7 +14,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:local="clr-namespace:Hotel.UI.Wpf"
         mc:Ignorable="d"
-        Title="Hotel" Height="800" Width="800"
+        Title="Hotel" Height="800" Width="800" MinHeight="800" MinWidth="800"
         ResizeMode="CanResize" WindowStyle="None"
     Background="{x:Null}"
     WindowStartupLocation="CenterScreen"
