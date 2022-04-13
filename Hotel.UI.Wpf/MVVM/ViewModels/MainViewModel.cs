@@ -16,11 +16,32 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
-
+        private bool _isUserAdmin;
+        public bool IsUserAdmin
+        {
+            get
+            {
+                return _isUserAdmin;
+            }
+            set
+            {
+                _isUserAdmin = value;
+                OnPropertyChanged(nameof(IsUserAdmin));
+            }
+        }
         public ViewModelBase? CurrentViewModel { get => _navigationStore.CurrentViewModel; }
         private void OnCurrentViewModelChanged()
         {
             OnPropertyChanged(nameof(CurrentViewModel));
+            if (CurrentViewModel is AdminViewModel)
+            {
+                IsUserAdmin = true;
+                OnPropertyChanged(nameof(IsUserAdmin));
+            }
+            else
+            {
+                IsUserAdmin = false;
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
                 switch (user.UserRole)
                 {
                     case Configuration.Enums.UserRole.Admin:
-                        _navigationStore.CurrentViewModel = new AdminViewModel();
+                        _navigationStore.CurrentViewModel = new AdminViewModel(_navigationStore);
                         break;
                     case Configuration.Enums.UserRole.NormalUser:
                         _navigationStore.CurrentViewModel = new UserViewModel();

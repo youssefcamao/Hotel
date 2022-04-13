@@ -2,11 +2,74 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:aviews="clr-namespace:Hotel.UI.Wpf.MVVM.Views.Admin"
+             xmlns:avms="clr-namespace:Hotel.UI.Wpf.MVVM.ViewModels.Admin"
              xmlns:local="clr-namespace:Hotel.UI.Wpf.MVVM.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+              MinHeight="850" MinWidth="1200">
     <Grid>
-        <TextBlock Text="Welcome Admin" FontSize="50" HorizontalAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="materialDesign:PackIcon">
+                <Setter Property="Width" Value="30"></Setter>
+                <Setter Property="Height" Value="30"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid Grid.Column="0" Background="#2196f3">
+            <ListView Margin="0 15">
+                <ListViewItem HorizontalAlignment="Center" Margin="0 10">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Command="{Binding OpenReservationCommand}">
+                        <StackPanel Margin="-5">
+                            <materialDesign:PackIcon Kind="CalendarClock"/>
+                        </StackPanel>
+                    </Button>
+                </ListViewItem>
+                <ListViewItem HorizontalAlignment="Center" Margin="0">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Command="{Binding OpenUserManagerCommand}">
+                        <StackPanel Margin="-5">
+                            <materialDesign:PackIcon Kind="AccountSupervisor"/>
+                        </StackPanel>
+                    </Button>
+                </ListViewItem>
+                <ListViewItem HorizontalAlignment="Center" Margin="0 10">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Command="{Binding OpenHotelRoomsManager}">
+                        <StackPanel Margin="-5">
+                            <materialDesign:PackIcon Kind="Bed"/>
+                        </StackPanel>
+                    </Button>
+                </ListViewItem>
+                <ListViewItem HorizontalAlignment="Center" Margin="0 120 0 0" VerticalAlignment="Bottom">
+                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Command="{Binding LogoutCommand}">
+                        <StackPanel Margin="-5">
+                            <materialDesign:PackIcon Kind="ExitToApp"/>
+                        </StackPanel>
+                    </Button>
+                </ListViewItem>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="1" Name="RenderPages">
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type avms:AdminReservationManagerViewModel}">
+                    <aviews:AdminReservationManagerView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type avms:AdminUserManagerViewModel}">
+                    <aviews:AdminUserManagerViewModel/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type avms:AdminHotelRoomsManagerViewModel}">
+                    <aviews:AdminHotelRoomManagerView/>
+                </DataTemplate>
+            </Grid.Resources>
+            <ContentControl x:Name="AdminViewController" Content="{Binding CurrentChildAdminViewModel}"/>
+        </Grid>
     </Grid>
+
 </UserControl>

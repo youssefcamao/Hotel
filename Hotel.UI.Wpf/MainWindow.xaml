@@ -14,7 +14,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:local="clr-namespace:Hotel.UI.Wpf"
         mc:Ignorable="d"
-        Title="Hotel" Height="800" Width="800" MinHeight="800" MinWidth="800"
+        Title="Hotel" Height="850" Width="1200" MinHeight="850" MinWidth="1200" 
         ResizeMode="CanResize" WindowStyle="None"
     Background="{x:Null}"
     WindowStartupLocation="CenterScreen"
@@ -29,7 +29,7 @@
             <DataTemplate DataType="{x:Type vms:LoginViewModel}">
                 <views:LoginView Password="{Binding UserPassword, Mode=OneWayToSource}" LoginCommand="{Binding LoginCommand}"/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:AdminViewModel}">
+            <DataTemplate DataType="{x:Type vms:AdminViewModel}" x:Name="adminViewModel">
                 <views:AdminView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:UserViewModel}">
@@ -51,8 +51,13 @@
                 MouseLeftButtonDown="Card_MouseLeftButtonDown"
                 MouseDoubleClick="Btn_Maximize" CornerRadius="15,15,0,0">
             <DockPanel FlowDirection="RightToLeft" >
-                <StackPanel Orientation="Horizontal">
-                    <Button
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0">
+                        <Button
                                 Margin="10,0,0,0"
                                 ToolTip="WindowClose"
                                 Content="{materialDesign:PackIcon Kind=CloseThick, Size=24}"
@@ -60,7 +65,7 @@
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
-                    <Button
+                        <Button
                                 Margin="10,0,0,0"
                                 ToolTip="Window Restore"
                                 Content="{materialDesign:PackIcon Kind=WindowRestore, Size=24}"
@@ -68,28 +73,50 @@
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
-                    <Button
+                        <Button
                                 Margin="10,0,0,0"
                                 ToolTip="Window Minimize"
                                 Content="{materialDesign:PackIcon Kind=WindowMinimize, Size=24}"
-                            Click="Btn_MinimizeApp"
+                                Click="Btn_MinimizeApp"
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
-                </StackPanel>
-                <Button
-                            HorizontalAlignment="Right"
-                                Margin="0,0,10,0"
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                        <Button
+                            x:Name="ChangeThemeButton"    
+                            Margin="0,0,10,0"
                                 ToolTip="Change Theme Mode"
                                 Content="{materialDesign:PackIcon Kind=Brightness6, Size=24}"
-                            Click="themeToggle_Click"
+                                Click="themeToggle_Click"
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
+                        <ToggleButton
+                                Margin="0,0,10,0"
+                                x:Name="MenuToggleButton"
+                                IsChecked="False"
+                                Visibility="Visible"
+                            Width="30"
+                                VerticalAlignment="Center"
+                                AutomationProperties.Name="HamburgerToggleButton">
+                            <ToggleButton.Style>
+                                <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MaterialDesignHamburgerToggleButton}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Visibility, RelativeSource={RelativeSource Self}}" Value="Collapsed">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ToggleButton.Style>
+                        </ToggleButton>
+                    </StackPanel>
+                </Grid>
+                
             </DockPanel>
         </materialDesign:ColorZone>
             <materialDesign:Card Background="{DynamicResource MaterialDesignPaper}" Grid.Row="1" materialDesign:ShadowAssist.ShadowDepth="Depth4">
-                <ContentControl Content="{Binding CurrentViewModel}"/>
+            <ContentControl x:Name="ViewController" Content="{Binding CurrentViewModel}"/>
             </materialDesign:Card>
     </Grid>
 </Window>
