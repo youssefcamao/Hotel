@@ -8,6 +8,7 @@ namespace Hotel.Configuration.Interfaces
 {
     public interface IRoomCategory
     {
+        Guid CategoryId { get; }
         string CategoryName { get; }
         string Description { get; }
         int MaximunAllowedPeople { get; }

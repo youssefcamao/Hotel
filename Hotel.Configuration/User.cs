@@ -12,12 +12,15 @@ namespace Hotel.Configuration
     {
         public User(string firstName, string lastName, string email, string password, UserRole userRole)
         {
+            Id = Guid.NewGuid();
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             Password = password;
             UserRole = userRole;
         }
+        public Guid Id { get; }
+
         public string FirstName { get; }
 
         public string LastName { get; }
@@ -27,5 +30,6 @@ namespace Hotel.Configuration
         public string Password { get; }
 
         public UserRole UserRole { get; }
+
     }
 }

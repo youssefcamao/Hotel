@@ -8,7 +8,8 @@ namespace Hotel.Configuration.Interfaces
 {
     public interface IRoom
     {
-        IRoomCategory Category { get; }
+        Guid Id { get; }
+        Guid CategoryId { get; }
         int RoomNumber { get; }
     }
 }

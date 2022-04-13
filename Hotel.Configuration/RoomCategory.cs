@@ -15,6 +15,7 @@ namespace Hotel.Configuration
             Description = description;
             MaximunAllowedPeople = maximunAllowedPeople;
             RoomPrice = roomPrice;
+            CategoryId = Guid.NewGuid();
         }
 
         public string CategoryName { get; }
@@ -25,5 +26,7 @@ namespace Hotel.Configuration
         public int MaximunAllowedPeople { get; }
 
         public double RoomPrice { get; }
+
+        public Guid CategoryId { get; }
     }
 }
