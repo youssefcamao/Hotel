@@ -14,7 +14,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
     public class SignupViewModel : ViewModelBase
     {
         private NavigationStore _navigationStore;
-        private readonly LoginManager _loginManager = new LoginManager();
+        private readonly UserManager _loginManager = new UserManager();
 
         public SignupViewModel(NavigationStore navigationStore)
         {

@@ -13,11 +13,11 @@ namespace Hotel.UI.Wpf.MVVM.Commands
 {
     public class CreateNormalUserAccountCommand : CommandBase
     {
-        private readonly LoginManager _loginManager;
+        private readonly UserManager _loginManager;
         private readonly SignupViewModel _parentViewModel;
         private readonly NavigationStore _navigationStore;
 
-        public CreateNormalUserAccountCommand(LoginManager loginManager, SignupViewModel parentViewModel,
+        public CreateNormalUserAccountCommand(UserManager loginManager, SignupViewModel parentViewModel,
             NavigationStore navigationStore)
         {
             _loginManager = loginManager;

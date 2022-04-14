@@ -24,5 +24,10 @@ namespace Hotel.UI.Wpf.MVVM.Views.Admin
         {
             InitializeComponent();
         }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

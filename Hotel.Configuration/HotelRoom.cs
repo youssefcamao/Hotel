@@ -9,15 +9,14 @@ namespace Hotel.Configuration
 {
     public class HotelRoom : IRoom
     {
-        public HotelRoom()
+        public HotelRoom(int roomNumber, bool isRoomAvailable, Guid categoryId)
         {
-            CategoryId = Guid.NewGuid();
+            RoomNumber = roomNumber;
+            IsRoomAvailable = isRoomAvailable;
+            CategoryId = categoryId;
         }
         public int RoomNumber { get; set; }
         public bool IsRoomAvailable { get; set; }
-
-        public Guid Id { get; }
-
         public Guid CategoryId { get; }
 
     }

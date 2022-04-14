@@ -10,11 +10,23 @@ namespace Hotel.Configuration
 {
     public class HotelReservation : IHotelReservation
     {
-        public DateTime ReservationDate { get;  } = DateTime.Now;
-        public DateTime StartDate { get;  }
-        public DateTime EndDate { get;  }
-        public Guid RoomId { get; }
-
+        public HotelReservation(Guid userId, int roomNumber, DateOnly startDate, DateOnly endDate, 
+            ReservationStatus reservationStatus, double totalPrice)
+        {
+            ReservationDate = DateTime.Now;
+            ReservationId = Guid.NewGuid();
+            UserId = userId;
+            RoomNumber = roomNumber;
+            StartDate = startDate;
+            EndDate = endDate;
+            TotalPriceForNights = totalPrice;
+            ReservationStatus = reservationStatus;
+        }
+        public DateTime ReservationDate { get;  }
+        public DateOnly StartDate { get;  }
+        public DateOnly EndDate { get;  }
+        public int RoomNumber { get; }
+        public double TotalPriceForNights { get; }
         public Guid ReservationId { get; }
 
         public Guid UserId { get; }

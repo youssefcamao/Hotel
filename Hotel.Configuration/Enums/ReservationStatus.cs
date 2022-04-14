@@ -10,6 +10,6 @@ namespace Hotel.Configuration.Enums
     {
         Pending,
         Rejected,
-        Exepted,
+        Accepted,
     }
 }

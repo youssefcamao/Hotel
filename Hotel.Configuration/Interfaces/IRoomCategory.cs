@@ -12,6 +12,6 @@ namespace Hotel.Configuration.Interfaces
         string CategoryName { get; }
         string Description { get; }
         int MaximunAllowedPeople { get; }
-        double RoomPrice { get; }
+        double RoomPriceForNight { get; }
     }
 }

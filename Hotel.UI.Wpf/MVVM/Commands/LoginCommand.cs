@@ -9,7 +9,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
     {
         private readonly LoginViewModel _parentViewModel;
         private readonly NavigationStore _navigationStore;
-        private readonly LoginManager _loginManager = new LoginManager();
+        private readonly UserManager _loginManager = new UserManager();
 
         public LoginCommand(LoginViewModel parentViewModel, NavigationStore navigationStore)
         {
@@ -20,7 +20,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
         {
             var email = _parentViewModel.Email;
             var password = _parentViewModel.UserPassword;
-            var user = _loginManager.CheckAndGetUser(email, password);
+            var user = _loginManager.GetUserFromEmailPass(email, password);
             if (user == null)
             {
                 throw new ArgumentNullException(nameof(user));
@@ -30,7 +30,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
                 switch (user.UserRole)
                 {
                     case Configuration.Enums.UserRole.Admin:
-                        _navigationStore.CurrentViewModel = new AdminViewModel(_navigationStore);
+                        _navigationStore.CurrentViewModel = new AdminViewModel(_navigationStore,user);
                         break;
                     case Configuration.Enums.UserRole.NormalUser:
                         _navigationStore.CurrentViewModel = new UserViewModel();
@@ -45,7 +45,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
         {
             var email = _parentViewModel.Email;
             var password = _parentViewModel.UserPassword;
-            var user = _loginManager.CheckAndGetUser(email, password);
+            var user = _loginManager.GetUserFromEmailPass(email, password);
             return user != null;
         }
     }

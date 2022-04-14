@@ -1,4 +1,5 @@
-﻿using Hotel.UI.Wpf.MVVM.Stores;
+﻿using Hotel.Configuration.Interfaces;
+using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using System;
@@ -12,15 +13,17 @@ namespace Hotel.UI.Wpf.MVVM.Commands
     public class OpenReservationCommand : CommandBase
     {
         private AdminViewModel _parentViewModel;
+        private IUser _connectedUser;
 
-        public OpenReservationCommand(AdminViewModel parentViewModel)
+        public OpenReservationCommand(AdminViewModel parentViewModel, IUser connectedUser)
         {
             _parentViewModel = parentViewModel;
+            _connectedUser = connectedUser;
         }
 
         public override void Execute(object? parameter)
         {
-            _parentViewModel.CurrentChildAdminViewModel = new AdminReservationManagerViewModel();
+            _parentViewModel.CurrentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser);
         }
     }
 }
