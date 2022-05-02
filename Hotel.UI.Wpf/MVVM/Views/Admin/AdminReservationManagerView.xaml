@@ -6,6 +6,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hotel.UI.Wpf.MVVM.Views.Admin"
              mc:Ignorable="d" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="800" d:DesignWidth="1120">
     <Grid >
         <Grid.ColumnDefinitions>
@@ -34,16 +40,50 @@
         </ToggleButton>
         <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
                   AutoGenerateColumns="False"
+                  materialDesign:DataGridAssist.CellPadding="17 25 25 25"
                   ItemsSource="{Binding Reservations}" IsHitTestVisible="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding RoomNumber}" Header="Room Number" Width="2*" FontWeight="SemiBold">
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="2*" FontWeight="SemiBold"/>
-                <DataGridTextColumn Binding="{Binding StartDate}" Header="Start Date" Width="1.5*" FontWeight="SemiBold"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="2*" FontWeight="DemiBold"/>
+                <DataGridTextColumn Binding="{Binding StartDate}" Header="Start Date" Width="1.5*" FontWeight="DemiBold"/>
                 <DataGridTextColumn Binding="{Binding EndDate}" Header="End Date" Width="1.5*" FontWeight="SemiBold"/>
                 <DataGridTextColumn Binding="{Binding TotalPrice}" Header="Total Price" Width="1*" FontWeight="SemiBold"/>
-                <DataGridTextColumn Binding="{Binding Status}" Header="Status" Width="1*" FontWeight="SemiBold"/>
-                <DataGridTextColumn Binding="{Binding LastName}" Width="0.5*"/>
+                <!--<DataGridTextColumn Binding="{Binding Status}" Header="Status" Width="1*" FontWeight="SemiBold"/>-->
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="30" RadiusX="20" RadiusY="20">
+                                    <Rectangle.Style>
+                                        <Style TargetType="Rectangle">
+                                            <Style.Triggers >
+                                                <DataTrigger Binding="{Binding Status}" Value="Accepted">
+                                                    <Setter Property="Fill" Value="#29D19B"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}" Value="Rejected">
+                                                    <Setter Property="Fill" Value="#F00E00"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}" Value="Pending">
+                                                    <Setter Property="Fill" Value="#F0CA00"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
+                                <TextBlock Text="{Binding Status}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="0.8*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <materialDesign:PopupBox  PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25">
+                            </materialDesign:PopupBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
