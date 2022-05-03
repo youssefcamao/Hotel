@@ -32,6 +32,8 @@ namespace Hotel.Core
             AddNewReservation(new DateOnly(2022,5,26),new DateOnly(2022,5,27), singleRoomCategory.CategoryId, yousef.Id);
             AddNewReservation(new DateOnly(2022,5,1),new DateOnly(2022,5,17), doubleRoomCategory.CategoryId, ramonAdmin.Id);
             AddNewReservation(new DateOnly(2022,5,26),new DateOnly(2022,5,31), singleRoomCategory.CategoryId, paul.Id);
+            var declinedReservation = HotelRerservations.First(x => x.UserId == paul.Id) ?? throw new ArgumentNullException();
+            ChangeStatusOfReservation(ramonAdmin, declinedReservation, ReservationStatus.Declined);
         }
         public void AddNewReservation(DateOnly startDate, DateOnly endDate, Guid roomCategoryId, Guid userId)
         {
@@ -50,7 +52,17 @@ namespace Hotel.Core
             HotelRerservations.Add(new HotelReservation(userId, reservationRoom.RoomNumber, startDate, endDate,
                 reservationStatus, reservationTotalPrice));
         }
-
+        public void ChangeStatusOfReservation(IUser user, IHotelReservation reservation, ReservationStatus status)
+        {
+            if (user.UserRole == UserRole.Admin)
+            {
+                if (reservation == null)
+                {
+                    throw new ArgumentNullException(nameof(reservation));
+                }
+                reservation.ReservationStatus = status;
+            }
+        }
         private ReservationStatus GetReservationStatusDependingOnUser(Guid userId)
         {
             var user = _userManager.GetUserFromId(userId);

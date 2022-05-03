@@ -9,7 +9,7 @@ namespace Hotel.Configuration.Enums
     public enum ReservationStatus
     {
         Pending,
-        Rejected,
+        Declined,
         Accepted,
     }
 }

@@ -31,6 +31,6 @@ namespace Hotel.Configuration
 
         public Guid UserId { get; }
 
-        public ReservationStatus ReservationStatus { get; }
+        public ReservationStatus ReservationStatus { get; set; }
     }
 }

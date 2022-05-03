@@ -11,6 +11,6 @@ namespace Hotel.Configuration.Interfaces
         DateTime ReservationDate { get;  }
         DateOnly StartDate { get; }
         double TotalPriceForNights { get; }
-        ReservationStatus ReservationStatus { get; }
+        ReservationStatus ReservationStatus { get; set; }
     }
 }

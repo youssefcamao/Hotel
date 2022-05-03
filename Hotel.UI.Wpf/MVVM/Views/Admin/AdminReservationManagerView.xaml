@@ -61,7 +61,7 @@
                                                 <DataTrigger Binding="{Binding Status}" Value="Accepted">
                                                     <Setter Property="Fill" Value="#29D19B"/>
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding Status}" Value="Rejected">
+                                                <DataTrigger Binding="{Binding Status}" Value="Declined">
                                                     <Setter Property="Fill" Value="#F00E00"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding Status}" Value="Pending">
