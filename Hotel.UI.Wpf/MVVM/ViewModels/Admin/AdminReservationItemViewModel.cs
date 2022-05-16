@@ -10,17 +10,20 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
     public class AdminReservationItemViewModel : ViewModelBase
     {
         private readonly IHotelReservation _reservation;
+        private readonly IRoomCategory _roomCategory;
 
         public int RoomNumber => _reservation.RoomNumber;
+        public string RoomType => _roomCategory.CategoryName;
         public string Name { get;}
         public string StartDate => GetCustomDateStringFormat(_reservation.StartDate);
         public string EndDate => GetCustomDateStringFormat(_reservation.EndDate);
         public string TotalPrice => $"{_reservation.TotalPriceForNights} €";
         public string Status => _reservation.ReservationStatus.ToString();
 
-        public AdminReservationItemViewModel(IHotelReservation reservation, string name)
+        public AdminReservationItemViewModel(IHotelReservation reservation, IRoomCategory bookedRoom, string name)
         {
             _reservation = reservation;
+            _roomCategory = bookedRoom;
             Name = name;
         }
         private string GetCustomDateStringFormat(DateOnly date)

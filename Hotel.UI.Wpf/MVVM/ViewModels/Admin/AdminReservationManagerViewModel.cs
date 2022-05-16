@@ -33,7 +33,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             {
                 var user = _userManager.GetUserFromId(reservation.UserId) ?? throw new ArgumentNullException();
                 var name = $"{user.FirstName} {user.LastName}";
-                Reservations.Add(new AdminReservationItemViewModel(reservation, name));
+                var bookedRoom = _hotelRoomsManager.GetRoomFromNumber(reservation.RoomNumber) ?? throw new ArgumentNullException();
+                var category = _hotelRoomsManager.GetRoomCategoryFromId(bookedRoom.CategoryId) ?? throw new ArgumentNullException();
+                Reservations.Add(new AdminReservationItemViewModel(reservation, category, name));
             }
         }
     }

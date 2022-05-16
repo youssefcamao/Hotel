@@ -15,9 +15,9 @@ namespace Hotel.Core
 
         public UserManager()
         {
-            InitiateComponents();
+            InitiateComponentsTest();
         }
-        private void InitiateComponents()
+        private void InitiateComponentsTest()
         {
             _usersList.Add(new User("Ramon", "Grothe", "ramon@admin.com", "ramon123", UserRole.Admin));
             _usersList.Add(new User("Youssef", "Sbai", "youssef@gmail.com", "youssef123", UserRole.NormalUser));

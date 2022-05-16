@@ -26,6 +26,18 @@ namespace Hotel.Core
             HotelRoomsList.Add(new HotelRoom(12, true, RoomCategories[0].CategoryId));
             HotelRoomsList.Add(new HotelRoom(10, true, RoomCategories[0].CategoryId));
             HotelRoomsList.Add(new HotelRoom(50, true, RoomCategories[1].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(13, true, RoomCategories[0].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(11, true, RoomCategories[0].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(51, true, RoomCategories[1].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(14, true, RoomCategories[0].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(12, true, RoomCategories[0].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(52, true, RoomCategories[1].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(16, true, RoomCategories[0].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(16, true, RoomCategories[0].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(56, true, RoomCategories[1].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(17, true, RoomCategories[0].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(17, true, RoomCategories[0].CategoryId));
+            HotelRoomsList.Add(new HotelRoom(57, true, RoomCategories[1].CategoryId));
         }
         /// <summary>
         /// This Method returns a category from its id and returns Null if Category Not Found
@@ -45,6 +57,10 @@ namespace Hotel.Core
         public IRoom? GetRoomFromNumber(int roomNumber)
         {
             return HotelRoomsList.FirstOrDefault(x => x.RoomNumber == roomNumber);
+        }
+        public IRoomCategory? GetRoomCategoryFromId(Guid categoryId)
+        {
+            return RoomCategories.FirstOrDefault(x=> x.CategoryId == categoryId);
         }
     }
 }

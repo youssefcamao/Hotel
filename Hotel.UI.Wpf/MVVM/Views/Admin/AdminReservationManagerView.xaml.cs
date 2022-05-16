@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hotel.UI.Wpf.MVVM.ViewModels;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +30,12 @@ namespace Hotel.UI.Wpf.MVVM.Views.Admin
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            //var result = DialogHost.Show(view, "RootDialog", ClosingEventHandler);
         }
     }
 }
