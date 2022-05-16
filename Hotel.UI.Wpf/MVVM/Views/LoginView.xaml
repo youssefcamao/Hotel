@@ -15,11 +15,11 @@
             <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Log in to your existing account"/>
             <TextBox Margin="0,50,0,20" Text="{Binding Email}" 
                      x:Name="EmailContainer" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Enter Email" 
-                     BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  
+                     BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  KeyDown="Container_KeyDown"
                      Style="{StaticResource MaterialDesignOutlinedTextBox}" PreviewTextInput="EmailContainer_PreviewTextInput"/>
             <PasswordBox PasswordChanged="PasswordContainer_PasswordChanged" Margin="0,0,0,10" x:Name="PasswordContainer" Width="300" 
                          FontSize="18" materialDesign:HintAssist.Hint="Enter Password" BorderThickness="2" 
-                         BorderBrush="{DynamicResource MaterialDesignDivider}"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}" KeyDown="Container_KeyDown"
                          Tag="{Binding UserPassword}" materialDesign:ValidationAssist.FontSize="13">
                 <PasswordBox.Style>
                     <Style TargetType="PasswordBox" BasedOn="{StaticResource MaterialDesignOutlinedPasswordBox}">

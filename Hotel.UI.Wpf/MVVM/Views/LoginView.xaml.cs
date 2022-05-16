@@ -104,5 +104,16 @@ namespace Hotel.UI.Wpf.MVVM.Views
                 HintAssist.SetForeground(EmailContainer, _hintAssitsDefaultColor);
             }
         }
+
+        private void Container_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (LoginCommand.CanExecute(null))
+                {
+                    LoginCommand.Execute(null);
+                }
+            }
+        }
     }
 }
