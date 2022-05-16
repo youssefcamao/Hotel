@@ -7,6 +7,7 @@ namespace Hotel.Configuration.Interfaces
         Guid ReservationId { get; }
         Guid UserId { get; }
         int RoomNumber { get; }
+        string Email { get; }
         DateOnly EndDate { get;  }
         DateTime ReservationDate { get;  }
         DateOnly StartDate { get; }

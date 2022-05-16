@@ -11,7 +11,7 @@ namespace Hotel.Configuration
     public class HotelReservation : IHotelReservation
     {
         public HotelReservation(Guid userId, int roomNumber, DateOnly startDate, DateOnly endDate, 
-            ReservationStatus reservationStatus, double totalPrice)
+            ReservationStatus reservationStatus, double totalPrice, string email)
         {
             ReservationDate = DateTime.Now;
             ReservationId = Guid.NewGuid();
@@ -20,6 +20,7 @@ namespace Hotel.Configuration
             StartDate = startDate;
             EndDate = endDate;
             TotalPriceForNights = totalPrice;
+            Email = email;
             ReservationStatus = reservationStatus;
         }
         public DateTime ReservationDate { get;  }
@@ -30,6 +31,7 @@ namespace Hotel.Configuration
         public Guid ReservationId { get; }
 
         public Guid UserId { get; }
+        public string Email { get; }
 
         public ReservationStatus ReservationStatus { get; set; }
     }

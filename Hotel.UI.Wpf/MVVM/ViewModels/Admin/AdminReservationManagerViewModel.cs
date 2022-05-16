@@ -1,11 +1,14 @@
 ﻿using Hotel.Configuration.Interfaces;
 using Hotel.Core;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Hotel.UI.Wpf.MVVM.Commands;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
 {
@@ -38,5 +41,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
                 Reservations.Add(new AdminReservationItemViewModel(reservation, category, name));
             }
         }
+        public ICommand ShowInsertReservationDialog { get; }
     }
 }
