@@ -40,8 +40,6 @@ namespace Hotel.Core
             AddNewReservation(new DateOnly(2022, 5, 1), new DateOnly(2022, 5, 17), doubleRoomCategory.CategoryId, ramonAdmin.Id);
             AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 7, 31), singleRoomCategory.CategoryId, paul.Id);
             AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 6, 27), singleRoomCategory.CategoryId, yousef.Id);
-            //AddNewReservation(new DateOnly(2022, 5, 1), new DateOnly(2022, 5, 17), doubleRoomCategory.CategoryId, ramonAdmin.Id);
-            //AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 31), singleRoomCategory.CategoryId, paul.Id);
             var declinedReservation = HotelRerservations.First(x => x.UserId == paul.Id) ?? throw new ArgumentNullException();
             ChangeStatusOfReservation(ramonAdmin, declinedReservation, ReservationStatus.Declined);
         }

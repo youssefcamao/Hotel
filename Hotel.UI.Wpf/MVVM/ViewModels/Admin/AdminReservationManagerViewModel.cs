@@ -48,7 +48,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         }
         private async void OnShowInsertReservationDialog(object _)
         {
-            await DialogHost.Show(new AdminInsertReservationViewModel(), _dialogHostId);
+            await DialogHost.Show(new AdminInsertReservationViewModel(_hotelRoomsManager, _reservationManager), _dialogHostId);
         }
         public ICommand OpenInsertReservationDialog { get; }
     }

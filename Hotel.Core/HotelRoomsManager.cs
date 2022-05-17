@@ -48,6 +48,22 @@ namespace Hotel.Core
         {
             return RoomCategories.FirstOrDefault(x => x.CategoryId == roomCategoryId);
         }
+        public IRoomCategory? GetCategoryFromCategoryName(string categoryName)
+        {
+            var categories = RoomCategories.Where(x=> x.CategoryName == categoryName);
+            if (categories.Count() == 0)
+            {
+                throw new ArgumentNullException("No Category was found!");
+            }
+            else if (categories.Count() != 1)
+            {
+                throw new InvalidOperationException("There is more than one category with the same name");
+            }
+            else
+            {
+                return categories.First();
+            }
+        }
 
         /// <summary>
         /// This Method returns a room from its roomNumber and returns Null if Category Not Found
