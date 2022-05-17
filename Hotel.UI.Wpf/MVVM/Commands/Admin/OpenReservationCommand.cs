@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hotel.UI.Wpf.MVVM.Commands
+namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
     public class OpenReservationCommand : CommandBase
     {

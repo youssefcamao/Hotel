@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Hotel.UI.Wpf.MVVM.Commands;
+using Hotel.UI.Wpf.MVVM.Commands.Admin;
+using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
 {
@@ -17,7 +19,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         private readonly IUser _connectedUser;
         private readonly UserManager _userManager = new UserManager();
         private readonly HotelRoomsManager _hotelRoomsManager = new HotelRoomsManager();
-        private readonly ReservationManager _reservationManager; 
+        private const string _dialogHostId = "RootDialogHostId";
+        private readonly ReservationManager _reservationManager;
         public AdminReservationManagerViewModel(IUser? connectedUser)
         {
             if (connectedUser == null)
@@ -27,6 +30,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             _connectedUser = connectedUser;
             _reservationManager = new ReservationManager(_userManager, _hotelRoomsManager);
             InitiateComponents();
+            OpenInsertReservationDialog = new DelegateCommand(OnShowInsertReservationDialog);
+            
         }
         public ObservableCollection<AdminReservationItemViewModel> Reservations { get; } = new ObservableCollection<AdminReservationItemViewModel>();
         private void InitiateComponents()
@@ -41,6 +46,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
                 Reservations.Add(new AdminReservationItemViewModel(reservation, category, name));
             }
         }
-        public ICommand ShowInsertReservationDialog { get; }
+        private async void OnShowInsertReservationDialog(object _)
+        {
+            await DialogHost.Show(new AdminInsertReservationViewModel(), _dialogHostId);
+        }
+        public ICommand OpenInsertReservationDialog { get; }
     }
 }

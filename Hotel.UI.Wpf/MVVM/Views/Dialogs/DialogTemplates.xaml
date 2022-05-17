@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Hotel.UI.Wpf.MVVM.ViewModels.Dialogs"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:local="clr-namespace:Hotel.UI.Wpf.MVVM.Views.Dialogs">
+
+    <DataTemplate DataType="{x:Type vm:AdminInsertReservationViewModel}">
+        <materialDesign:Transitioner SelectedIndex="0">
+            <local:AdminInsertReservationDialogView/>
+        </materialDesign:Transitioner>
+    </DataTemplate>
+</ResourceDictionary>
+    

@@ -24,6 +24,7 @@ namespace Hotel.Core
 
         private void InitiateTestComponents()
         {
+            
             var singleRoomCategory = _hotelRoomsManager.RoomCategories[0];
             var doubleRoomCategory = _hotelRoomsManager.RoomCategories[1];
             var ramonAdmin = _userManager.GetUserFromEmailPass("ramon@admin.com", "ramon123") ?? throw new ArgumentNullException("ramonUser Not found!");
