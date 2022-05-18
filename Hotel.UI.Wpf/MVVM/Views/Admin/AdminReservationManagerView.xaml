@@ -15,7 +15,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
              d:DesignHeight="800" d:DesignWidth="1120">
 
-    <materialDesign:DialogHost DialogTheme="Inherit" x:Name="InsertReservationDialog" Identifier="RootDialogHostId" >
+    <materialDesign:DialogHost DialogTheme="Inherit" x:Name="InsertReservationDialog" Identifier="RootDialogHostId" IsOpen="{Binding IsDialogOpen,Mode=TwoWay}">
         <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Margin="0,25,0,5" HorizontalAlignment="Center" FontSize="24" 
