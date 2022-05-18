@@ -23,11 +23,17 @@ namespace Hotel.UI.Wpf.MVVM.Views.Dialogs
         public AdminInsertReservationDialogView()
         {
             InitializeComponent();
+            StartDatePicker.BlackoutDates.AddDatesInPast();
         }
 
-        private void Button_DialogOpened(object sender, MaterialDesignThemes.Wpf.DialogOpenedEventArgs eventArgs)
+        private void DatePicker_CalendarOpened(object sender, RoutedEventArgs e)
         {
-
+            CalendarDateRange calendarDateRange = new CalendarDateRange();
+            if (StartDatePicker.SelectedDate != null)
+            {
+                calendarDateRange.End = StartDatePicker.SelectedDate.Value;
+            }
+            EndDateDatePicker.BlackoutDates.Add(calendarDateRange);
         }
     }
 }
