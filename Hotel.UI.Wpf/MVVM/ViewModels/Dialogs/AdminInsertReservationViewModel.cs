@@ -151,7 +151,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             {
                 if (ReservedRoomCategory == null)
                 {
-                    return string.Empty;
+                    return null;
                 }
                 else
                 {
@@ -178,7 +178,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             {
                 if (ReservedRoomCategory == null)
                 {
-                    return string.Empty ;
+                    return null ;
                 }
                 else
                 {
