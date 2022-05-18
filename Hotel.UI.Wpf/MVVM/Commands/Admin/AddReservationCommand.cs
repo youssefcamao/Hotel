@@ -21,7 +21,6 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         private readonly UserManager _userManager;
         private readonly HotelRoomsManager _roomsManager;
         private bool _isDialogOpen;
-        private AdminViewModel _parentViewModel;
 
         public AddReservationCommand(IUser connectedUser, AdminInsertReservationViewModel adminInsertReservationViewModel,
             ReservationManager reservationManager, AdminViewModel adminViewModel, UserManager userManager, HotelRoomsManager roomsManager, bool isDialogOpen)

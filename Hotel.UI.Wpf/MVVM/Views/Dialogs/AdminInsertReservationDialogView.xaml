@@ -33,10 +33,11 @@
             <TextBox Width="200" Height="40" FontSize="14" materialDesign:HintAssist.Hint="Last Name"
                          Grid.Column="2" Grid.Row="2" Text="{Binding LastName}"></TextBox>
             <DatePicker materialDesign:HintAssist.Hint="Start Date" Width="200" Height="40"
-                            Grid.Column="1" Grid.Row="3" DisplayDate="{Binding ChoosenStartDateString}"
+                            Grid.Column="1" Grid.Row="3" SelectedDate="{Binding ChoosenStartDateString}"
                         ></DatePicker>
             <DatePicker materialDesign:HintAssist.Hint="End Date" Width="200" Height="40"
-                            Grid.Column="2" Grid.Row="3" DisplayDate="{Binding ChoosenEndDateString}"></DatePicker>
+                            Grid.Column="2" Grid.Row="3" SelectedDate="{Binding ChoosenEndDateString}"
+                        IsEnabled="{Binding IsEndDateEnabled, Mode=TwoWay}"></DatePicker>
                 <ComboBox materialDesign:HintAssist.Hint="Room Type" Width="200" Height="40"
                           Grid.Row="4" Grid.Column="1" ItemsSource="{Binding AllCategories}" SelectedItem="{Binding ReserverdRoomCategoryName}"></ComboBox>
             <ComboBox materialDesign:HintAssist.Hint="Status" Width="200" Height="40"

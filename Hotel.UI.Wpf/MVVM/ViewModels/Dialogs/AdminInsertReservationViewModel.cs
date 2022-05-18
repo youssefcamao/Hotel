@@ -78,7 +78,28 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             set
             {
                 StartDate = DateOnly.FromDateTime(value.Value);
+                if (StartDate != null)
+                {
+                    IsEndDateEnabled = true;
+                }
+                else
+                {
+                    IsEndDateEnabled = false;
+                }
                 OnPropertyChanged(nameof(ChoosenStartDateString));
+            }
+        }
+        private bool _isEndDateEnabled = false;
+        public bool IsEndDateEnabled
+        {
+            get
+            {
+                return _isEndDateEnabled;
+            }
+            set
+            {
+                _isEndDateEnabled = value;
+                OnPropertyChanged(nameof(IsEndDateEnabled));
             }
         }
         public DateOnly? EndDate { get; private set; }
