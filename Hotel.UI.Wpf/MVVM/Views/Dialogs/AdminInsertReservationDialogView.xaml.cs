@@ -26,7 +26,7 @@ namespace Hotel.UI.Wpf.MVVM.Views.Dialogs
             StartDatePicker.BlackoutDates.AddDatesInPast();
         }
 
-        private void DatePicker_CalendarOpened(object sender, RoutedEventArgs e)
+        private void EndDate_CalendarOpened(object sender, RoutedEventArgs e)
         {
             CalendarDateRange calendarDateRange = new CalendarDateRange();
             if (StartDatePicker.SelectedDate != null)
@@ -34,6 +34,11 @@ namespace Hotel.UI.Wpf.MVVM.Views.Dialogs
                 calendarDateRange.End = StartDatePicker.SelectedDate.Value;
             }
             EndDateDatePicker.BlackoutDates.Add(calendarDateRange);
+        }
+
+        private void StartDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EndDateDatePicker.SelectedDate = null;
         }
     }
 }

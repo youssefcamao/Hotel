@@ -118,7 +118,14 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
             set
             {
-                EndDate = DateOnly.FromDateTime(value.Value);
+                if (value == null)
+                {
+                    EndDate = null;
+                }
+                else
+                {
+                    EndDate = DateOnly.FromDateTime(value.Value);
+                }
                 OnPropertyChanged(nameof(ChoosenEndDateString));
             }
         }
