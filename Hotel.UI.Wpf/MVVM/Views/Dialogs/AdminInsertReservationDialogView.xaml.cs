@@ -24,5 +24,10 @@ namespace Hotel.UI.Wpf.MVVM.Views.Dialogs
         {
             InitializeComponent();
         }
+
+        private void Button_DialogOpened(object sender, MaterialDesignThemes.Wpf.DialogOpenedEventArgs eventArgs)
+        {
+
+        }
     }
 }

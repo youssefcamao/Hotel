@@ -2,6 +2,7 @@
 using Hotel.Configuration.Interfaces;
 using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +16,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
     public class AdminInsertReservationViewModel : ViewModelBase
     {
         public AdminInsertReservationViewModel(HotelRoomsManager roomsManager, ReservationManager reservationManager,
-            IUser _connectedUser, AdminViewModel _parentViewModel, UserManager userManager)
+            IUser _connectedUser, AdminViewModel _parentViewModel, UserManager userManager, bool isDialogOpen)
         {
             _roomsManager = roomsManager;
             _reservationManager = reservationManager;
@@ -23,7 +24,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             _userManager = userManager;
             AllCategories = new ObservableCollection<string>(_roomsManager.RoomCategories.Select(x => x.CategoryName));
             AllReservationStatus = new ObservableCollection<string>(Enum.GetNames(typeof(ReservationStatus)));
-            AddReservationCommand = new AddReservationCommand(_connectedUser, this, _reservationManager, _parentViewModel, _userManager, _roomsManager);
+            AddReservationCommand = new AddReservationCommand(_connectedUser, this, _reservationManager, _parentViewModel,
+                _userManager, _roomsManager, isDialogOpen);
         }
         private readonly HotelRoomsManager _roomsManager;
         private readonly ReservationManager _reservationManager;
@@ -161,6 +163,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(ReservationChoosenStatusString));
             }
         }
+        
 
         public ICommand AddReservationCommand { get; }
 

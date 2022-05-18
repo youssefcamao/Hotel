@@ -53,8 +53,23 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         }
         private async void OnShowInsertReservationDialog(object _)
         {
-            await DialogHost.Show(new AdminInsertReservationViewModel(_hotelRoomsManager, _reservationManager, 
-                _connectedUser, _parentViewModel, _userManager), _dialogHostId);
+            
+            _ = await DialogHost.Show(new AdminInsertReservationViewModel(_hotelRoomsManager, _reservationManager,
+                _connectedUser, _parentViewModel, _userManager, IsDialogOpen), _dialogHostId);
+
+        }
+        private bool _isDialogOpen;
+        public bool IsDialogOpen
+        {
+            get
+            {
+                return _isDialogOpen;
+            }
+            set
+            {
+                _isDialogOpen = value;
+                OnPropertyChanged(nameof(IsDialogOpen));
+            }
         }
         public ICommand OpenInsertReservationDialog { get; }
     }

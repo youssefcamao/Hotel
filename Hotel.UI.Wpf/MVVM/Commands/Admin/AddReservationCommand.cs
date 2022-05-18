@@ -3,6 +3,7 @@ using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,11 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         private readonly AdminViewModel _adminViewModel;
         private readonly UserManager _userManager;
         private readonly HotelRoomsManager _roomsManager;
+        private bool _isDialogOpen;
         private AdminViewModel _parentViewModel;
 
         public AddReservationCommand(IUser connectedUser, AdminInsertReservationViewModel adminInsertReservationViewModel,
-            ReservationManager reservationManager, AdminViewModel adminViewModel, UserManager userManager, HotelRoomsManager roomsManager)
+            ReservationManager reservationManager, AdminViewModel adminViewModel, UserManager userManager, HotelRoomsManager roomsManager, bool isDialogOpen)
         {
             _connectedUser = connectedUser;
             _adminInsertReservationViewModel = adminInsertReservationViewModel;
@@ -30,6 +32,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             _adminViewModel = adminViewModel;
             _userManager = userManager;
             _roomsManager = roomsManager;
+            _isDialogOpen = isDialogOpen;
         }
 
         public override void Execute(object? parameter)
@@ -41,6 +44,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
                 , _adminInsertReservationViewModel.LastName, _adminInsertReservationViewModel.Email);
             _adminViewModel.CurrentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser, _adminViewModel, _userManager,
                 _reservationManager, _roomsManager);
+            _isDialogOpen = false;
         }
     }
 }
