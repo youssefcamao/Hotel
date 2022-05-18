@@ -68,7 +68,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             {
                 if(StartDate == null)
                 {
-                    return DateTime.Now;
+                    return null;
                 }
                 else
                 {
@@ -109,7 +109,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             {
                 if (EndDate == null)
                 {
-                    return DateTime.Now;
+                    return null;
                 }
                 else
                 {
