@@ -26,16 +26,5 @@ namespace Hotel.UI.Wpf.MVVM.Views.Admin
         {
             InitializeComponent();
         }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            //var result = DialogHost.Show(view, "RootDialog", ClosingEventHandler);
-        }
     }
 }

@@ -41,10 +41,16 @@
                     <TextBlock Text="Filter"  FontSize="14" Foreground="Gray"/>
                 </StackPanel>
             </ToggleButton>
-            <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
+            <DataGrid x:Name="ReservationDataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
                   AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="17 25 25 25"
-                  ItemsSource="{Binding Reservations}" IsHitTestVisible="True" >
+                  ItemsSource="{Binding Reservations}">
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    </Style>
+                </DataGrid.CellStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding RoomNumber}" Header="Room Number" Width="1.3*" FontWeight="SemiBold" IsReadOnly ="True">
                     </DataGridTextColumn>
