@@ -30,20 +30,21 @@ namespace Hotel.Core
             var ramonAdmin = _userManager.GetUserFromEmailPass("ramon@admin.com", "ramon123") ?? throw new ArgumentNullException("ramonUser Not found!");
             var paul = _userManager.GetUserFromEmailPass("paul@gmail.com", "paul123") ?? throw new ArgumentNullException("paulUser Not found!");
             var yousef = _userManager.GetUserFromEmailPass("youssef@gmail.com", "youssef123") ?? throw new ArgumentNullException("youssefUser Not found!");
-            AddNewReservation(new DateOnly(2022,5,26),new DateOnly(2022,5,27), singleRoomCategory.CategoryId, yousef.Id);
-            AddNewReservation(new DateOnly(2022,5,1),new DateOnly(2022,5,17), doubleRoomCategory.CategoryId, ramonAdmin.Id);
-            AddNewReservation(new DateOnly(2022,5,26),new DateOnly(2022,5,31), singleRoomCategory.CategoryId, paul.Id);
-            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 27), singleRoomCategory.CategoryId, yousef.Id);
-            AddNewReservation(new DateOnly(2022, 5, 1), new DateOnly(2022, 5, 17), doubleRoomCategory.CategoryId, ramonAdmin.Id);
-            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 31), singleRoomCategory.CategoryId, paul.Id);
-            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 27), singleRoomCategory.CategoryId, yousef.Id);
-            AddNewReservation(new DateOnly(2022, 5, 1), new DateOnly(2022, 5, 17), doubleRoomCategory.CategoryId, ramonAdmin.Id);
-            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 7, 31), singleRoomCategory.CategoryId, paul.Id);
-            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 6, 27), singleRoomCategory.CategoryId, yousef.Id);
-            var declinedReservation = HotelRerservations.First(x => x.UserId == paul.Id) ?? throw new ArgumentNullException();
+            AddNewReservation(new DateOnly(2022,5,26),new DateOnly(2022,5,27), singleRoomCategory.CategoryId, yousef.Id, yousef.FirstName, yousef.LastName, yousef.Email);
+            AddNewReservation(new DateOnly(2022,5,1),new DateOnly(2022,5,17), doubleRoomCategory.CategoryId, ramonAdmin.Id, ramonAdmin.FirstName, ramonAdmin.LastName, ramonAdmin.Email);
+            AddNewReservation(new DateOnly(2022,5,26),new DateOnly(2022,5,31), singleRoomCategory.CategoryId, paul.Id, paul.FirstName, paul.LastName, paul.Email);
+            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 27), singleRoomCategory.CategoryId, yousef.Id, yousef.FirstName, yousef.LastName, yousef.Email);
+            AddNewReservation(new DateOnly(2022, 5, 1), new DateOnly(2022, 5, 17), doubleRoomCategory.CategoryId, ramonAdmin.Id, ramonAdmin.FirstName, ramonAdmin.LastName, ramonAdmin.Email);
+            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 31), singleRoomCategory.CategoryId, paul.Id, paul.FirstName, paul.LastName, paul.Email);
+            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 27), singleRoomCategory.CategoryId, yousef.Id, yousef.FirstName, yousef.LastName, yousef.Email);
+            AddNewReservation(new DateOnly(2022, 5, 1), new DateOnly(2022, 5, 17), doubleRoomCategory.CategoryId, ramonAdmin.Id, ramonAdmin.FirstName, ramonAdmin.LastName, ramonAdmin.Email);
+            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 7, 31), singleRoomCategory.CategoryId, paul.Id, paul.FirstName, paul.LastName, paul.Email);
+            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 6, 27), singleRoomCategory.CategoryId, yousef.Id, yousef.FirstName, yousef.LastName, yousef.Email);
+            var declinedReservation = HotelRerservations.First(x => x.CreationUserId == paul.Id) ?? throw new ArgumentNullException();
             ChangeStatusOfReservation(ramonAdmin, declinedReservation, ReservationStatus.Declined);
         }
-        public void AddNewReservation(DateOnly startDate, DateOnly endDate, Guid roomCategoryId, Guid userId, string email = "")
+        public void AddNewReservation(DateOnly startDate, DateOnly endDate, Guid roomCategoryId, Guid userId,
+            string firstName, string lastName, string email)
         {
             var roomCategory = _hotelRoomsManager.GetCategoryFromId(roomCategoryId);
             if (roomCategory == null)
@@ -57,14 +58,9 @@ namespace Hotel.Core
             }
             var reservationTotalPrice = CalculateResrervationPrice(startDate, endDate, roomCategory);
             var reservationStatus = GetReservationStatusDependingOnUser(userId);
-            if (email == string.Empty)
-            {
-                var user = _userManager.GetUserFromId(userId) ?? throw new ArgumentNullException();
-
-                email = user.Email;
-            }
-            HotelRerservations.Add(new HotelReservation(userId, reservationRoom.RoomNumber, startDate, endDate,
-                reservationStatus, reservationTotalPrice, email));
+            var user = _userManager.GetUserFromId(userId) ?? throw new ArgumentNullException();
+                HotelRerservations.Add(new HotelReservation(userId, reservationRoom.RoomNumber, startDate, endDate,
+                        reservationStatus, reservationTotalPrice, firstName, lastName, email));
         }
         public void ChangeStatusOfReservation(IUser user, IHotelReservation reservation, ReservationStatus status)
         {

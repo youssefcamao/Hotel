@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="CustomControls\" />
     <Folder Include="MVVM\Models\" />
+    <Folder Include="MVVM\ValidationRules\" />
     <Folder Include="Theme\" />
   </ItemGroup>
 

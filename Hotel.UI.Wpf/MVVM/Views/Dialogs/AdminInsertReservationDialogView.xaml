@@ -32,20 +32,20 @@
             <TextBox Width="200" Height="40" FontSize="14" materialDesign:HintAssist.Hint="Last Name"
                          Grid.Column="2" Grid.Row="2" Text="{Binding LastName}"></TextBox>
             <DatePicker materialDesign:HintAssist.Hint="Start Date" Width="200" Height="40"
-                            Grid.Column="1" Grid.Row="3" DisplayDate="{Binding StartDate}"></DatePicker>
+                            Grid.Column="1" Grid.Row="3" DisplayDate="{Binding ChoosenStartDateString}"></DatePicker>
             <DatePicker materialDesign:HintAssist.Hint="End Date" Width="200" Height="40"
-                            Grid.Column="2" Grid.Row="3" DisplayDate="{Binding EndDate}"></DatePicker>
-            <ComboBox materialDesign:HintAssist.Hint="Room Type" Width="200" Height="40"
+                            Grid.Column="2" Grid.Row="3" DisplayDate="{Binding ChoosenEndDateString}"></DatePicker>
+                <ComboBox materialDesign:HintAssist.Hint="Room Type" Width="200" Height="40"
                           Grid.Row="4" Grid.Column="1" ItemsSource="{Binding AllCategories}" SelectedItem="{Binding ReserverdRoomCategoryName}"></ComboBox>
             <ComboBox materialDesign:HintAssist.Hint="Status" Width="200" Height="40"
-                          Grid.Row="4" Grid.Column="2" ItemsSource="{Binding AllReservationStatus}" SelectedItem="{Binding ReservationChoosenStatus}"></ComboBox>
+                          Grid.Row="4" Grid.Column="2" ItemsSource="{Binding AllReservationStatus}" SelectedItem="{Binding ReservationChoosenStatusString}"></ComboBox>
             <TextBox Width="200" Height="40" FontSize="14" materialDesign:HintAssist.Hint="Email"
                          Grid.Row="5" Grid.Column="1" Text="{Binding Email}"></TextBox>
             <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6" 
                             Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="ADD RESERVATION" Style="{StaticResource MaterialDesignFlatButton}" 
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="50" Width="180" 
-                      FontSize="15" Margin="0,0,10,0"></Button>
+                      FontSize="15" Margin="0,0,10,0" Command="{Binding AddReservationCommand}"></Button>
                 <Button Content="CLOSE" Style="{StaticResource MaterialDesignFlatButton}" 
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="50" Width="150" 
                       FontSize="15" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"></Button>

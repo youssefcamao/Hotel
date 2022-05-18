@@ -5,7 +5,9 @@ namespace Hotel.Configuration.Interfaces
     public interface IHotelReservation
     {
         Guid ReservationId { get; }
-        Guid UserId { get; }
+        Guid CreationUserId { get; }
+        string FirstName { get; }
+        string LastName { get; }
         int RoomNumber { get; }
         string Email { get; }
         DateOnly EndDate { get;  }

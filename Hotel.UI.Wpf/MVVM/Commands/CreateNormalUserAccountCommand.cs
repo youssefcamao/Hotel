@@ -1,4 +1,5 @@
-﻿using Hotel.Core;
+﻿using Hotel.Configuration.Enums;
+using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using MaterialDesignThemes.Wpf;
@@ -29,7 +30,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
             if (CanExecute(parameter))
             {
                 _loginManager.CreateNewUser(_parentViewModel.FirstName, _parentViewModel.LastName, 
-                    _parentViewModel.Email, _parentViewModel.Password);
+                    _parentViewModel.Email, _parentViewModel.Password, UserRole.Admin);
                 var loginView = new LoginViewModel(_navigationStore);
                 _navigationStore.CurrentViewModel = loginView;
                 loginView.SendSuccessfulRegistrationMessage();

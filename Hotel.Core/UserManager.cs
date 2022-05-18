@@ -19,9 +19,9 @@ namespace Hotel.Core
         }
         private void InitiateComponentsTest()
         {
-            _usersList.Add(new User("Ramon", "Grothe", "ramon@admin.com", "ramon123", UserRole.Admin));
-            _usersList.Add(new User("Youssef", "Sbai", "youssef@gmail.com", "youssef123", UserRole.NormalUser));
-            _usersList.Add(new User("Paul", "Maibach", "paul@gmail.com", "paul123", UserRole.NormalUser));
+            CreateNewUser("Ramon", "Grothe", "ramon@admin.com", "ramon123", UserRole.Admin);
+            CreateNewUser("Youssef", "Sbai", "youssef@gmail.com", "youssef123", UserRole.NormalUser);
+            CreateNewUser("Paul", "Maibach", "paul@gmail.com", "paul123", UserRole.NormalUser);
 
         }
         public IUser? GetUserFromEmailPass(string email, string password)
@@ -29,9 +29,10 @@ namespace Hotel.Core
             var user = _usersList.FirstOrDefault(x => x.Email.ToLower() == email.ToLower() && x.Password == password);
             return user;
         }
-        public void CreateNewUser(string firstName, string lastName, string email, string password)
+        public void CreateNewUser(string firstName, string lastName, string email, string password, UserRole userRole)
         {
-            _usersList.Add(new User(firstName, lastName, email, password, UserRole.NormalUser));
+            var userId = Guid.NewGuid();
+            _usersList.Add(new User(firstName, lastName, email, password, userRole, userId));
         }
 
         public IUser? GetUserFromId(Guid UserId)

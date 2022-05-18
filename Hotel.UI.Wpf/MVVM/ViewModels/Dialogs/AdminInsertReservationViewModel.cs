@@ -1,6 +1,7 @@
 ﻿using Hotel.Configuration.Enums;
 using Hotel.Configuration.Interfaces;
 using Hotel.Core;
+using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,15 +14,21 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
 {
     public class AdminInsertReservationViewModel : ViewModelBase
     {
-        public AdminInsertReservationViewModel(HotelRoomsManager roomsManager, ReservationManager reservationManager)
+        public AdminInsertReservationViewModel(HotelRoomsManager roomsManager, ReservationManager reservationManager,
+            IUser _connectedUser, AdminViewModel _parentViewModel, UserManager userManager)
         {
             _roomsManager = roomsManager;
             _reservationManager = reservationManager;
+            this._connectedUser = _connectedUser;
+            _userManager = userManager;
             AllCategories = new ObservableCollection<string>(_roomsManager.RoomCategories.Select(x => x.CategoryName));
             AllReservationStatus = new ObservableCollection<string>(Enum.GetNames(typeof(ReservationStatus)));
+            AddReservationCommand = new AddReservationCommand(_connectedUser, this, _reservationManager, _parentViewModel, _userManager, _roomsManager);
         }
         private readonly HotelRoomsManager _roomsManager;
         private readonly ReservationManager _reservationManager;
+        private readonly IUser _connectedUser;
+        private readonly UserManager _userManager;
 
         public ObservableCollection<string> AllCategories { get; }
         public ObservableCollection<string> AllReservationStatus { get; }
@@ -52,44 +59,44 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(LastName));
             }
         }
-        private DateOnly? _startDate;
-        public DateTime? StartDate
+        public DateOnly? StartDate { get; private set; }
+        public DateTime? ChoosenStartDateString
         {
             get
             {
-                if(_startDate == null)
+                if(StartDate == null)
                 {
                     return DateTime.Now;
                 }
                 else
                 {
-                    return _startDate.Value.ToDateTime(new TimeOnly());
+                    return StartDate.Value.ToDateTime(new TimeOnly());
                 }
             }
             set
             {
-                _startDate = DateOnly.FromDateTime(value.Value);
-                OnPropertyChanged(nameof(StartDate));
+                StartDate = DateOnly.FromDateTime(value.Value);
+                OnPropertyChanged(nameof(ChoosenStartDateString));
             }
         }
-        private DateOnly? _endDate;
-        public DateTime? EndDate
+        public DateOnly? EndDate { get; private set; }
+        public DateTime? ChoosenEndDateString
         {
             get
             {
-                if (_endDate == null)
+                if (EndDate == null)
                 {
                     return DateTime.Now;
                 }
                 else
                 {
-                    return _endDate.Value.ToDateTime(new TimeOnly());
+                    return EndDate.Value.ToDateTime(new TimeOnly());
                 }
             }
             set
             {
-                _endDate = DateOnly.FromDateTime(value.Value);
-                OnPropertyChanged(nameof(EndDate));
+                EndDate = DateOnly.FromDateTime(value.Value);
+                OnPropertyChanged(nameof(ChoosenEndDateString));
             }
         }
         private string _email;
@@ -134,8 +141,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(ReserverdRoomCategoryName));
             }
         }
-        public ReservationStatus? _reservationStatus { get; private set; }
-        public string ReservationChoosenStatus
+        public ReservationStatus? ReservationStatus { get; private set; }
+        public string ReservationChoosenStatusString
         {
             get
             {
@@ -145,17 +152,17 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 }
                 else
                 {
-                    return _reservationStatus.ToString();
+                    return ReservationStatus.ToString();
                 }
             }
             set
             {
-                _reservationStatus = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), value);
-                OnPropertyChanged(nameof(ReservationChoosenStatus));
+                ReservationStatus = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), value);
+                OnPropertyChanged(nameof(ReservationChoosenStatusString));
             }
         }
 
-        public ICommand AddReservation { get; }
+        public ICommand AddReservationCommand { get; }
 
     }
 }

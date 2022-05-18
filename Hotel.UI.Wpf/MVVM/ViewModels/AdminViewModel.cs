@@ -1,4 +1,5 @@
 ﻿using Hotel.Configuration.Interfaces;
+using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.Stores;
@@ -16,12 +17,15 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         private ViewModelBase _currentChildAdminViewModel;
         private readonly NavigationStore _navigationStore;
         private readonly IUser _connectedUser;
+        private readonly ReservationManager _reservationManager;
+        private readonly HotelRoomsManager _hotelRoomsManager = new HotelRoomsManager();
 
-        public AdminViewModel(NavigationStore navigationStore, IUser connectedUser)
+        public AdminViewModel(NavigationStore navigationStore, IUser connectedUser, UserManager userManager)
         {
             _navigationStore = navigationStore;
             _connectedUser = connectedUser;
-            OpenReservationCommand = new OpenReservationCommand(this, connectedUser);
+            _reservationManager = new ReservationManager(userManager, _hotelRoomsManager);
+            OpenReservationCommand = new OpenReservationCommand(this, connectedUser, userManager, _reservationManager, _hotelRoomsManager);
             OpenUserManagerCommand = new OpenUserManagerCommand(this);
             OpenHotelRoomsManager = new OpenHotelRoomsManagerCommand(this);
             LogoutCommand = new LogoutCommand(_navigationStore);

@@ -10,9 +10,9 @@ namespace Hotel.Configuration
 {
     public class User : IUser
     {
-        public User(string firstName, string lastName, string email, string password, UserRole userRole)
+        public User(string firstName, string lastName, string email, string password, UserRole userRole,Guid id)
         {
-            Id = Guid.NewGuid();
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Email = email;

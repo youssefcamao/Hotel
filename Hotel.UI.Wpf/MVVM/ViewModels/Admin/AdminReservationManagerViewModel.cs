@@ -17,18 +17,23 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
     public class AdminReservationManagerViewModel : ViewModelBase
     {
         private readonly IUser _connectedUser;
-        private readonly UserManager _userManager = new UserManager();
-        private readonly HotelRoomsManager _hotelRoomsManager = new HotelRoomsManager();
+        private readonly AdminViewModel _parentViewModel;
+        private readonly UserManager _userManager;
+        private readonly HotelRoomsManager _hotelRoomsManager;
         private const string _dialogHostId = "RootDialogHostId";
         private readonly ReservationManager _reservationManager;
-        public AdminReservationManagerViewModel(IUser? connectedUser)
+        public AdminReservationManagerViewModel(IUser? connectedUser, AdminViewModel _parentViewModel, UserManager userManager
+            ,ReservationManager reservationManager, HotelRoomsManager hotelRoomsManager )
         {
             if (connectedUser == null)
             {
                 throw new ArgumentNullException(nameof(connectedUser));
             }
             _connectedUser = connectedUser;
-            _reservationManager = new ReservationManager(_userManager, _hotelRoomsManager);
+            this._parentViewModel = _parentViewModel;
+            _userManager = userManager;
+            _reservationManager = reservationManager;
+            _hotelRoomsManager = hotelRoomsManager;
             InitiateComponents();
             OpenInsertReservationDialog = new DelegateCommand(OnShowInsertReservationDialog);
             
@@ -39,8 +44,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             var reservations = _reservationManager.HotelRerservations;
             foreach (var reservation in reservations)
             {
-                var user = _userManager.GetUserFromId(reservation.UserId) ?? throw new ArgumentNullException();
-                var name = $"{user.FirstName} {user.LastName}";
+                var user = _userManager.GetUserFromId(reservation.CreationUserId) ?? throw new ArgumentNullException();
+                var name = $"{reservation.FirstName} {reservation.LastName}";
                 var bookedRoom = _hotelRoomsManager.GetRoomFromNumber(reservation.RoomNumber) ?? throw new ArgumentNullException();
                 var category = _hotelRoomsManager.GetRoomCategoryFromId(bookedRoom.CategoryId) ?? throw new ArgumentNullException();
                 Reservations.Add(new AdminReservationItemViewModel(reservation, category, name));
@@ -48,7 +53,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         }
         private async void OnShowInsertReservationDialog(object _)
         {
-            await DialogHost.Show(new AdminInsertReservationViewModel(_hotelRoomsManager, _reservationManager), _dialogHostId);
+            await DialogHost.Show(new AdminInsertReservationViewModel(_hotelRoomsManager, _reservationManager, 
+                _connectedUser, _parentViewModel, _userManager), _dialogHostId);
         }
         public ICommand OpenInsertReservationDialog { get; }
     }
