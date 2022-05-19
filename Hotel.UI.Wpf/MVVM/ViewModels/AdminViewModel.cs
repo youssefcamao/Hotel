@@ -3,6 +3,8 @@ using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.Stores;
+using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         private readonly IUser _connectedUser;
         private readonly ReservationManager _reservationManager;
         private readonly HotelRoomsManager _hotelRoomsManager = new HotelRoomsManager();
+        private const string _dialogHostIdentifier = "LogoutDialog";
 
         public AdminViewModel(NavigationStore navigationStore, IUser connectedUser, UserManager userManager)
         {
@@ -28,7 +31,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             OpenReservationCommand = new OpenReservationCommand(this, connectedUser, userManager, _reservationManager, _hotelRoomsManager);
             OpenUserManagerCommand = new OpenUserManagerCommand(this);
             OpenHotelRoomsManager = new OpenHotelRoomsManagerCommand(this);
-            LogoutCommand = new LogoutCommand(_navigationStore);
+            LogoutCommandWithConfirmation = new DelegateCommand(OnLogoutConfirmation);
         }
 
         public ViewModelBase CurrentChildAdminViewModel
@@ -43,10 +46,13 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(CurrentChildAdminViewModel));
             }
         }
-
+        private async void OnLogoutConfirmation(object _)
+        {
+            await DialogHost.Show(new ConfirmationDialogViewModel("Are You Sure You Want To Logout ?", new LogoutCommand(_navigationStore)), _dialogHostIdentifier);
+        }
         public ICommand OpenReservationCommand { get; }
         public ICommand OpenUserManagerCommand { get; }
         public ICommand OpenHotelRoomsManager { get; }
-        public ICommand LogoutCommand { get; }
+        public ICommand LogoutCommandWithConfirmation { get; }
     }
 }

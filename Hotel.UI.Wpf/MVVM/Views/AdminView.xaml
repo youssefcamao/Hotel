@@ -48,7 +48,7 @@
                 </ListViewItem>
                 <ListViewItem HorizontalAlignment="Center" Margin="0 120 0 0" VerticalAlignment="Bottom">
                     <Button Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left"
-                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Command="{Binding LogoutCommand}">
+                             BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" Command="{Binding LogoutCommandWithConfirmation}">
                         <StackPanel Margin="-5">
                             <materialDesign:PackIcon Kind="ExitToApp"/>
                         </StackPanel>
@@ -56,20 +56,22 @@
                 </ListViewItem>
             </ListView>
         </Grid>
+        
         <Grid Grid.Column="1" Name="RenderPages">
-            <Grid.Resources>
-                <DataTemplate DataType="{x:Type avms:AdminReservationManagerViewModel}">
-                    <aviews:AdminReservationManagerView />
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type avms:AdminUserManagerViewModel}">
-                    <aviews:AdminUserManagerViewModel/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type avms:AdminHotelRoomsManagerViewModel}">
-                    <aviews:AdminHotelRoomManagerView/>
-                </DataTemplate>
-            </Grid.Resources>
+                <Grid.Resources>
+                    <DataTemplate DataType="{x:Type avms:AdminReservationManagerViewModel}">
+                        <aviews:AdminReservationManagerView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type avms:AdminUserManagerViewModel}">
+                        <aviews:AdminUserManagerViewModel/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type avms:AdminHotelRoomsManagerViewModel}">
+                        <aviews:AdminHotelRoomManagerView/>
+                    </DataTemplate>
+                </Grid.Resources>
+            <materialDesign:DialogHost Identifier="LogoutDialog">
             <ContentControl x:Name="AdminViewController" Content="{Binding CurrentChildAdminViewModel}"/>
-        </Grid>
+            </materialDesign:DialogHost>
+            </Grid>
     </Grid>
-
 </UserControl>

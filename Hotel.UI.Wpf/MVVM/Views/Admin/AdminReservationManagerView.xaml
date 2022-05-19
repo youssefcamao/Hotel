@@ -16,6 +16,7 @@
              d:DesignHeight="800" d:DesignWidth="1120">
 
     <materialDesign:DialogHost DialogTheme="Inherit" x:Name="InsertReservationDialog" Identifier="RootDialogHostId" IsOpen="{Binding IsDialogOpen,Mode=TwoWay}">
+        <Border BorderBrush="{StaticResource MaterialDesignDataGridRowHoverBackground}" BorderThickness="2" Margin="30" CornerRadius="10">
         <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -27,9 +28,9 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Margin="0,25,0,5" HorizontalAlignment="Center" FontSize="24" 
+            <TextBlock Margin="0,25,20,5" HorizontalAlignment="Center" FontSize="24" 
                    VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="Reservations"/>
-            <Button  Margin="0,20,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+            <Button  Margin="0,20,20,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" 
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="40" Width="150" 
                      materialDesign:ButtonAssist.CornerRadius="10" FontSize="14" FontWeight="Light" Content="+ Add Reservation"
                      Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding OpenInsertReservationDialog}"/>
@@ -42,7 +43,7 @@
                 </StackPanel>
             </ToggleButton>
             <DataGrid x:Name="ReservationDataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
-                  AutoGenerateColumns="False"
+                  AutoGenerateColumns="False" 
                   materialDesign:DataGridAssist.CellPadding="17 25 25 25"
                   ItemsSource="{Binding Reservations}">
                 <DataGrid.CellStyle>
@@ -117,5 +118,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
+        </Border>
     </materialDesign:DialogHost>
 </UserControl>

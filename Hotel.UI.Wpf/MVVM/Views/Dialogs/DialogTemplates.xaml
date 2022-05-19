@@ -9,5 +9,10 @@
             <local:AdminInsertReservationDialogView HasEmailError="{Binding EmailHasError, Mode=TwoWay}"/>
         </materialDesign:Transitioner>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ConfirmationDialogViewModel}">
+        <materialDesign:Transitioner SelectedIndex="0">
+            <local:ConfirmationDialogView/>
+        </materialDesign:Transitioner>
+    </DataTemplate>
 </ResourceDictionary>
     
