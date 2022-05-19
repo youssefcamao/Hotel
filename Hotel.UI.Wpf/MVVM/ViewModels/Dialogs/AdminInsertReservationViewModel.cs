@@ -34,6 +34,19 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
 
         public ObservableCollection<string> AllCategories { get; }
         public ObservableCollection<string> AllReservationStatus { get; }
+        private bool _emailHasError;
+        public bool EmailHasError
+        {
+            get
+            {
+                return _emailHasError;
+            }
+            set
+            {
+                _emailHasError = value;
+                OnPropertyChanged(nameof(EmailHasError));
+            }
+        }
 
         private string _firstName;
         public string FirstName
@@ -191,7 +204,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(ReservationChoosenStatusString));
             }
         }
-
         public ICommand AddReservationCommand { get; }
 
     }

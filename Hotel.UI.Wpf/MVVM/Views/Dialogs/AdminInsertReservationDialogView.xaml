@@ -42,8 +42,8 @@
                           Grid.Row="4" Grid.Column="1" ItemsSource="{Binding AllCategories}" SelectedItem="{Binding ReserverdRoomCategoryName}"></ComboBox>
             <ComboBox materialDesign:HintAssist.Hint="Status" Width="200" Height="40"
                           Grid.Row="4" Grid.Column="2" ItemsSource="{Binding AllReservationStatus}" SelectedItem="{Binding ReservationChoosenStatusString}"></ComboBox>
-            <TextBox Width="200" Height="40" FontSize="14" materialDesign:HintAssist.Hint="Email"
-                         Grid.Row="5" Grid.Column="1" >
+            <TextBox x:Name="EmailBox" Width="200" Height="40" FontSize="14" materialDesign:HintAssist.Hint="Email"
+                         Grid.Row="5" Grid.Column="1" TextChanged="TextBox_TextChanged" >
                 <TextBox.Text>
                     <Binding Path="Email" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>

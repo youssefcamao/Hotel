@@ -102,8 +102,8 @@
                                                     <StackPanel />
                                                 </ItemsPanelTemplate>
                                             </Menu.ItemsPanel>
-                                            <MenuItem Header="Respond To Reservation" Foreground="#F0CA00" Height="50" Visibility="{Binding IsRespondToReservationVisible}">
-                                                <MenuItem Header="Accept Reservation" Foreground="#29D19B" />
+                                            <MenuItem Header="Respond To Reservation" Foreground="#3895D3" Height="40" Visibility="{Binding IsRespondToReservationVisible}">
+                                                <MenuItem Header="Accept Reservation" Foreground="#29D19B"/>
                                                 <MenuItem Header="Decline Reservation" Foreground="#F00E00"/>
                                             </MenuItem>
                                             <MenuItem Header="View Details"/>

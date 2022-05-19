@@ -1,11 +1,13 @@
 ﻿using Hotel.Configuration.Interfaces;
 using Hotel.Core;
+using Hotel.UI.Wpf.MVVM.ValidationRules;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +34,9 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             _userManager = userManager;
             _roomsManager = roomsManager;
             _isDialogOpen = isDialogOpen;
+            _adminInsertReservationViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
+
 
         public override void Execute(object? parameter)
         {
@@ -44,6 +48,18 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             _adminViewModel.CurrentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser, _adminViewModel, _userManager,
                 _reservationManager, _roomsManager);
             _isDialogOpen = false;
+        }
+        public override bool CanExecute(object? parameter)
+        {
+            var areAllInputsFilledAndCorrect = _adminInsertReservationViewModel.StartDate != null && _adminInsertReservationViewModel.EndDate != null
+                && _adminInsertReservationViewModel.Email != null && _adminInsertReservationViewModel.FirstName != null
+                && _adminInsertReservationViewModel.LastName != null && _adminInsertReservationViewModel.ReservedRoomCategory != null
+                && !_adminInsertReservationViewModel.EmailHasError;
+            return base.CanExecute(parameter) && areAllInputsFilledAndCorrect;
+        }
+        private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            OnCanExcutedChanged();
         }
     }
 }

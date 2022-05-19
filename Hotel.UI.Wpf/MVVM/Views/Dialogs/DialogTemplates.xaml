@@ -6,7 +6,7 @@
 
     <DataTemplate DataType="{x:Type vm:AdminInsertReservationViewModel}">
         <materialDesign:Transitioner SelectedIndex="0">
-            <local:AdminInsertReservationDialogView/>
+            <local:AdminInsertReservationDialogView HasEmailError="{Binding EmailHasError, Mode=TwoWay}"/>
         </materialDesign:Transitioner>
     </DataTemplate>
 </ResourceDictionary>
