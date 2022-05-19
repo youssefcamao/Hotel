@@ -16,7 +16,6 @@
              d:DesignHeight="800" d:DesignWidth="1120">
 
     <materialDesign:DialogHost DialogTheme="Inherit" x:Name="InsertReservationDialog" Identifier="RootDialogHostId" IsOpen="{Binding IsDialogOpen,Mode=TwoWay}">
-        <Border BorderBrush="{StaticResource MaterialDesignDataGridRowHoverBackground}" BorderThickness="2" Margin="30" CornerRadius="10">
         <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -28,22 +27,75 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Margin="0,25,20,5" HorizontalAlignment="Center" FontSize="24" 
+            <TextBlock Margin="0,25,0,5" HorizontalAlignment="Center" FontSize="24" 
                    VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="Reservations"/>
-            <Button  Margin="0,20,20,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+            <Button  Margin="0,20,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" 
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="40" Width="150" 
                      materialDesign:ButtonAssist.CornerRadius="10" FontSize="14" FontWeight="Light" Content="+ Add Reservation"
                      Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding OpenInsertReservationDialog}"/>
-            <ToggleButton Grid.Column="2" Grid.Row="0" Style="{StaticResource MaterialDesignFlatToggleButton}" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                      Margin="0,30,0,0" Command="{Binding OpenUserManagerCommand}"
-                Width="90" HorizontalContentAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Filter" Margin="0,-6,3,1" Width="15" Foreground="Gray"/>
-                    <TextBlock Text="Filter"  FontSize="14" Foreground="Gray"/>
-                </StackPanel>
-            </ToggleButton>
+            <materialDesign:PopupBox Grid.Column="2" Grid.Row="0"
+            StaysOpen="True" Margin="0,30,0,0" HorizontalContentAlignment="Center" 
+             HorizontalAlignment="Left" VerticalAlignment="Center">
+                <materialDesign:PopupBox.ToggleContent>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Filter" Margin="0,-6,3,1" Width="15" Foreground="Gray"/>
+                        <TextBlock Text="Filter"  FontSize="14" Foreground="Gray"/>
+                    </StackPanel>
+                </materialDesign:PopupBox.ToggleContent>
+                <Grid Width="200" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <TextBox
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    materialDesign:HintAssist.Hint="Setting 1"
+                    Text="200" />
+                                <TextBox
+                    Grid.Column="2"
+                    Grid.Row="2"
+                    materialDesign:HintAssist.Hint="Setting 2"
+                    Text="400" />
+                    <TextBox Grid.Column="2"  Grid.Row="3"
+                    materialDesign:HintAssist.Hint="Setting 3" />
+                                <CheckBox
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    VerticalAlignment="Bottom" />
+                                <CheckBox
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    IsChecked="True"
+                    VerticalAlignment="Bottom" />
+                            <CheckBox
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    VerticalAlignment="Bottom" />   
+                    <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                        <Button Content="_Save"
+                        Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}" />
+                        <Button Content="_Cancel"
+                        Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}">
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:PopupBox>
+            <!--</ToggleButton>-->
             <DataGrid x:Name="ReservationDataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
-                  AutoGenerateColumns="False" 
+                  AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="17 25 25 25"
                   ItemsSource="{Binding Reservations}">
                 <DataGrid.CellStyle>
@@ -62,7 +114,6 @@
                     <DataGridTextColumn Binding="{Binding StartDate}" Header="Start Date" Width="1.5*" FontWeight="DemiBold" IsReadOnly ="True"/>
                     <DataGridTextColumn Binding="{Binding EndDate}" Header="End Date" Width="1.5*" FontWeight="SemiBold" IsReadOnly ="True"/>
                     <DataGridTextColumn Binding="{Binding TotalPrice}" Header="Total Price" Width="1*" FontWeight="SemiBold" IsReadOnly ="True"/>
-                    <!--<DataGridTextColumn Binding="{Binding Status}" Header="Status" Width="1*" FontWeight="SemiBold"/>-->
                     <DataGridTemplateColumn IsReadOnly ="True">
                         <DataGridTemplateColumn.Header>
                             <TextBlock Text="Status"/>
@@ -118,6 +169,5 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        </Border>
     </materialDesign:DialogHost>
 </UserControl>
