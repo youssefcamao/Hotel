@@ -34,7 +34,7 @@
                      materialDesign:ButtonAssist.CornerRadius="10" FontSize="14" FontWeight="Light" Content="+ Add Reservation"
                      Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding OpenInsertReservationDialog}"/>
             <ToggleButton Grid.Column="2" Grid.Row="0" Style="{StaticResource MaterialDesignFlatToggleButton}" HorizontalAlignment="Left" VerticalAlignment="Center" 
-                      Margin="0,30,0,0" BorderBrush="{x:Null}" Background="{x:Null}" Command="{Binding OpenUserManagerCommand}"
+                      Margin="0,30,0,0" Command="{Binding OpenUserManagerCommand}"
                 Width="90" HorizontalContentAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Filter" Margin="0,-6,3,1" Width="15" Foreground="Gray"/>
@@ -94,7 +94,22 @@
                     <DataGridTemplateColumn Width="0.8*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <materialDesign:PopupBox  PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25">
+                                <materialDesign:PopupBox  PlacementMode="BottomAndAlignRightEdges" PopupMode="Click" Height="25">
+                                    <materialDesign:PopupBox.PopupContent>
+                                        <Menu>
+                                            <Menu.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel />
+                                                </ItemsPanelTemplate>
+                                            </Menu.ItemsPanel>
+                                            <MenuItem Header="Respond To Reservation" Foreground="#F0CA00" Height="50" Visibility="{Binding IsRespondToReservationVisible}">
+                                                <MenuItem Header="Accept Reservation" Foreground="#29D19B" />
+                                                <MenuItem Header="Decline Reservation" Foreground="#F00E00"/>
+                                            </MenuItem>
+                                            <MenuItem Header="View Details"/>
+                                            <MenuItem Header="Delete Reservation" Foreground="Red" />
+                                        </Menu>
+                                    </materialDesign:PopupBox.PopupContent>
                                 </materialDesign:PopupBox>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

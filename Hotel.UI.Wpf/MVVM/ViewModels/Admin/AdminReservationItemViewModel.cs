@@ -1,35 +1,53 @@
 ﻿using Hotel.Configuration.Interfaces;
+using Hotel.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hotel.Configuration.Interfaces;
+using Hotel.Configuration;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
 {
     public class AdminReservationItemViewModel : ViewModelBase
     {
         private readonly IHotelReservation _reservation;
-        private readonly IRoomCategory _roomCategory;
+        private IRoomCategory _roomCategory;
+        private readonly UserManager _userManager;
+        private HotelRoomsManager _hotelRoomsManager;
+        private IUser _creationUser;
+        private IRoom _reservationRoom;
 
         public int RoomNumber => _reservation.RoomNumber;
         public string RoomType => _roomCategory.CategoryName;
-        public string Name { get;}
+        public string Name { get; private set; }
         public string StartDate => GetCustomDateStringFormat(_reservation.StartDate);
         public string EndDate => GetCustomDateStringFormat(_reservation.EndDate);
         public string TotalPrice => $"{_reservation.TotalPriceForNights} €";
         public string Status => _reservation.ReservationStatus.ToString();
 
-        public AdminReservationItemViewModel(IHotelReservation reservation, IRoomCategory bookedRoom, string name)
+        public string IsRespondToReservationVisible => _reservation.ReservationStatus == Configuration.Enums.ReservationStatus.Pending ? "Visible" : "Collapsed";
+
+        public AdminReservationItemViewModel(IHotelReservation reservation, UserManager userManager, HotelRoomsManager hotelRoomsManager)
         {
             _reservation = reservation;
-            _roomCategory = bookedRoom;
-            Name = name;
+            _userManager = userManager;
+            _hotelRoomsManager = hotelRoomsManager;
+            InitiateCompnents();
         }
+
         private string GetCustomDateStringFormat(DateOnly date)
         {
             var day = date.Day > 9 ? $"{date.Day}": $"{date.Day}";
             return $"{date.ToString("MMMM")} {day},{date.Year}";
+        }
+        private void InitiateCompnents()
+        {
+            _creationUser = _userManager.GetUserFromId(_reservation.CreationUserId) ?? throw new ArgumentNullException();
+            Name = $"{_reservation.FirstName} {_reservation.LastName}";
+            _reservationRoom = _hotelRoomsManager.GetRoomFromNumber(_reservation.RoomNumber) ?? throw new ArgumentNullException();
+            _roomCategory = _hotelRoomsManager.GetRoomCategoryFromId(_reservationRoom.CategoryId) ?? throw new ArgumentNullException();
         }
     }
 }

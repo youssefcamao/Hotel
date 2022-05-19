@@ -44,17 +44,13 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             var reservations = _reservationManager.HotelRerservations;
             foreach (var reservation in reservations)
             {
-                var user = _userManager.GetUserFromId(reservation.CreationUserId) ?? throw new ArgumentNullException();
-                var name = $"{reservation.FirstName} {reservation.LastName}";
-                var bookedRoom = _hotelRoomsManager.GetRoomFromNumber(reservation.RoomNumber) ?? throw new ArgumentNullException();
-                var category = _hotelRoomsManager.GetRoomCategoryFromId(bookedRoom.CategoryId) ?? throw new ArgumentNullException();
-                Reservations.Add(new AdminReservationItemViewModel(reservation, category, name));
+                Reservations.Add(new AdminReservationItemViewModel(reservation,_userManager,_hotelRoomsManager));
             }
         }
         private async void OnShowInsertReservationDialog(object _)
         {
             
-            _ = await DialogHost.Show(new AdminInsertReservationViewModel(_hotelRoomsManager, _reservationManager,
+            await DialogHost.Show(new AdminInsertReservationViewModel(_hotelRoomsManager, _reservationManager,
                 _connectedUser, _parentViewModel, _userManager, IsDialogOpen), _dialogHostId);
 
         }
@@ -72,5 +68,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             }
         }
         public ICommand OpenInsertReservationDialog { get; }
+        public ICommand RemoveReservation { get; }
     }
 }

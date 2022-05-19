@@ -23,7 +23,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             this._connectedUser = _connectedUser;
             _userManager = userManager;
             AllCategories = new ObservableCollection<string>(_roomsManager.RoomCategories.Select(x => x.CategoryName));
-            AllReservationStatus = new ObservableCollection<string>(Enum.GetNames(typeof(ReservationStatus)));
+            AllReservationStatus = new ObservableCollection<string> { ReservationStatus.Accepted.ToString(), ReservationStatus.Pending.ToString()};
             AddReservationCommand = new AddReservationCommand(_connectedUser, this, _reservationManager, _parentViewModel,
                 _userManager, _roomsManager, isDialogOpen);
         }
@@ -171,7 +171,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(ReserverdRoomCategoryName));
             }
         }
-        public ReservationStatus? ReservationStatus { get; private set; }
+        public ReservationStatus? ReservationStatusType { get; private set; }
         public string ReservationChoosenStatusString
         {
             get
@@ -182,16 +182,15 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 }
                 else
                 {
-                    return ReservationStatus.ToString();
+                    return ReservationStatusType.ToString();
                 }
             }
             set
             {
-                ReservationStatus = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), value);
+                ReservationStatusType = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), value);
                 OnPropertyChanged(nameof(ReservationChoosenStatusString));
             }
         }
-        
 
         public ICommand AddReservationCommand { get; }
 
