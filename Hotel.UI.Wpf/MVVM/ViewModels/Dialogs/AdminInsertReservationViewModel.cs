@@ -90,13 +90,17 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
             set
             {
-                StartDate = DateOnly.FromDateTime(value.Value);
-                if (StartDate != null)
+                if (value != null)
                 {
+                    StartDate = DateOnly.FromDateTime(value.Value);
                     IsEndDateEnabled = true;
                 }
                 else
                 {
+                    if (EndDate != null)
+                    {
+                        ChoosenEndDateString = null;
+                    }
                     IsEndDateEnabled = false;
                 }
                 OnPropertyChanged(nameof(ChoosenStartDateString));
