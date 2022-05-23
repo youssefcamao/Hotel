@@ -32,8 +32,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             OpenUserManagerCommand = new OpenUserManagerCommand(this);
             OpenHotelRoomsManager = new OpenHotelRoomsManagerCommand(this);
             LogoutCommandWithConfirmation = new DelegateCommand(OnLogoutConfirmation);
+            CurrentUserString = $"Admin/{_connectedUser.FirstName} {_connectedUser.LastName}";
         }
-
+        public string CurrentUserString { get; }
         public ViewModelBase CurrentChildAdminViewModel
         {
             get
