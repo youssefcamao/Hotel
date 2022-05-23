@@ -20,7 +20,8 @@ namespace Hotel.Core
         private void InitiateComponentsTest()
         {
             CreateNewUser("Ramon", "Grothe", "ramon@admin.com", "ramon123", UserRole.Admin);
-            CreateNewUser("Youssef", "Sbai", "youssef@gmail.com", "youssef123", UserRole.NormalUser);
+            CreateNewUser("Youssef", "Sbai", "youssef@admin.com", "youssef123", UserRole.Admin);
+            CreateNewUser("Jannik", "Krusch", "jannik@gmail.com", "jannik123", UserRole.NormalUser);
             CreateNewUser("Paul", "Maibach", "paul@gmail.com", "paul123", UserRole.NormalUser);
 
         }
