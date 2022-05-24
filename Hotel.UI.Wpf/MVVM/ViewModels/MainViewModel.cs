@@ -16,17 +16,21 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
-        private bool _isUserAdmin;
-        public bool IsUserAdmin
+        private string _menuButtonStatus;
+        public string MenuButtonStatus
         {
             get
             {
-                return _isUserAdmin;
+                if (_menuButtonStatus == null)
+                {
+                    _menuButtonStatus = "Collapsed";
+                }
+                return _menuButtonStatus;
             }
             set
             {
-                _isUserAdmin = value;
-                OnPropertyChanged(nameof(IsUserAdmin));
+                _menuButtonStatus = value;
+                OnPropertyChanged(nameof(MenuButtonStatus));
             }
         }
         public ViewModelBase? CurrentViewModel { get => _navigationStore.CurrentViewModel; }
@@ -35,12 +39,12 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             OnPropertyChanged(nameof(CurrentViewModel));
             if (CurrentViewModel is AdminViewModel)
             {
-                IsUserAdmin = true;
-                OnPropertyChanged(nameof(IsUserAdmin));
+                MenuButtonStatus = "Visible";
+                OnPropertyChanged(nameof(MenuButtonStatus));
             }
             else
             {
-                IsUserAdmin = false;
+                MenuButtonStatus = "Collapsed";
             }
         }
     }
