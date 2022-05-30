@@ -57,11 +57,16 @@ namespace Hotel.Core
                 throw new ArgumentNullException(nameof(reservationRoom));
             }
             var reservationTotalPrice = CalculateResrervationPrice(startDate, endDate, roomCategory);
+            //Clean Naming
+            firstName = NamingHelper.MakeFirstLetterUpperCase(firstName);
+            lastName = NamingHelper.MakeFirstLetterUpperCase(lastName);
+
             var status = reservationStatus ?? ReservationStatus.Pending;
-            var user = _userManager.GetUserFromId(userId) ?? throw new ArgumentNullException();
-                HotelRerservations.Add(new HotelReservation(userId, reservationRoom.RoomNumber, startDate, endDate,
-                        status, reservationTotalPrice, firstName, lastName, email));
+            HotelRerservations.Add(new HotelReservation(userId, reservationRoom.RoomNumber, startDate, endDate,
+                    status, reservationTotalPrice, firstName, lastName, email));
         }
+
+
         public void ChangeStatusOfReservation(IUser user, IHotelReservation reservation, ReservationStatus status)
         {
             if (user.UserRole == UserRole.Admin)
