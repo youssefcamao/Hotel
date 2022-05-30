@@ -11,6 +11,7 @@ using System.Windows.Input;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
+using Hotel.UI.Wpf.MVVM.ViewModels.Popups;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
 {
@@ -36,9 +37,11 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             _hotelRoomsManager = hotelRoomsManager;
             InitiateComponents();
             OpenInsertReservationDialog = new DelegateCommand(OnShowInsertReservationDialog);
-            
+            AdminReservationsFilterPopupViewModel = new AdminReservationsFilterPopupViewModel(_hotelRoomsManager, _reservationManager,
+                _userManager, Reservations);
         }
         public ObservableCollection<AdminReservationItemViewModel> Reservations { get; } = new ObservableCollection<AdminReservationItemViewModel>();
+        public AdminReservationsFilterPopupViewModel AdminReservationsFilterPopupViewModel { get; }
         private void InitiateComponents()
         {
             var reservations = _reservationManager.HotelRerservations;

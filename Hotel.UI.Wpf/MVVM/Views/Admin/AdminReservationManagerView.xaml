@@ -42,11 +42,12 @@
                         <TextBlock Text="Filter"  FontSize="14" Foreground="Gray"/>
                     </StackPanel>
                 </materialDesign:PopupBox.ToggleContent>
-                <Grid Width="200" >
+                <Grid DataContext="{Binding AdminReservationsFilterPopupViewModel}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
                         <ColumnDefinition Width="0.2*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -55,45 +56,59 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
-                    <TextBox
-                    Grid.Column="2"
-                    Grid.Row="1"
-                    materialDesign:HintAssist.Hint="Setting 1"
-                    Text="200" />
-                                <TextBox
-                    Grid.Column="2"
-                    Grid.Row="2"
-                    materialDesign:HintAssist.Hint="Setting 2"
-                    Text="400" />
-                    <TextBox Grid.Column="2"  Grid.Row="3"
-                    materialDesign:HintAssist.Hint="Setting 3" />
-                                <CheckBox
-                    Grid.Column="1"
-                    Grid.Row="1"
-                    VerticalAlignment="Bottom" />
-                                <CheckBox
-                    Grid.Column="1"
-                    Grid.Row="2"
-                    IsChecked="True"
-                    VerticalAlignment="Bottom" />
-                            <CheckBox
-                    Grid.Column="1"
-                    Grid.Row="3"
-                    VerticalAlignment="Bottom" />   
-                    <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                    <TextBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"
+                    materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFilledTextBox}"
+                    Text="{Binding Name}" IsEnabled="{Binding IsNameFilterOn}"/>
+                    <CheckBox Grid.Column="1" Grid.Row="1" Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                    VerticalAlignment="Center" IsChecked="{Binding IsNameFilterOn, Mode=TwoWay}"/>
+                    <TextBox Grid.Column="2" Grid.Row="2" Style="{StaticResource MaterialDesignFilledTextBox}"
+                    materialDesign:HintAssist.Hint="MinPrice"
+                    Text="{Binding MinPrice}" IsEnabled="{Binding IsPriceFilterON}"/>
+                    <TextBox Grid.Column="3" Grid.Row="2" Style="{StaticResource MaterialDesignFilledTextBox}"
+                    materialDesign:HintAssist.Hint="MaxPrice"
+                    Text="{Binding MaxPrice}" IsEnabled="{Binding IsPriceFilterON}"/>
+                    <CheckBox Grid.Column="1" Grid.Row="2"
+                    IsChecked="{Binding IsPriceFilterON, Mode=TwoWay}" Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                    VerticalAlignment="Center"/>
+                    <ComboBox materialDesign:HintAssist.Hint="Status"
+                              Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" ItemsSource="{Binding AllReservationStatus}" 
+                              SelectedItem="{Binding ReservationChoosenStatusString}" Style="{StaticResource MaterialDesignFilledComboBox}"
+                              IsEnabled="{Binding IsStatusFilterOn}"/>
+                    <CheckBox Grid.Column="1" Grid.Row="3" IsChecked="{Binding IsStatusFilterOn, Mode=TwoWay}"
+                    VerticalAlignment="Center" Style="{StaticResource MaterialDesignFilterChipCheckBox}"/>
+                    <ComboBox materialDesign:HintAssist.Hint="Room Type"
+                              ItemsSource="{Binding AllCategories}" 
+                              SelectedItem="{Binding ReserverdRoomCategoryName}" 
+                              IsEnabled="{Binding IsRoomTypeFilterOn}"
+                              Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Style="{StaticResource MaterialDesignFilledComboBox}"/>
+                    <CheckBox Grid.Column="1" Grid.Row="4" IsChecked="{Binding IsRoomTypeFilterOn, Mode=TwoWay}"
+                    VerticalAlignment="Center" Style="{StaticResource MaterialDesignFilterChipCheckBox}"/>
+                    <DatePicker x:Name="StartDatePicker" materialDesign:HintAssist.Hint="Start Date"
+                            Grid.Row="5" Grid.Column="2" SelectedDate="{Binding ChoosenStartDateString}"
+                            Style="{StaticResource MaterialDesignFilledDatePicker}" IsEnabled="{Binding IsDateFilterOn}">
+                    </DatePicker>
+                    <DatePicker x:Name="EndDatePicker" materialDesign:HintAssist.Hint="End Date"
+                            Grid.Row="5" Grid.Column="3" SelectedDate="{Binding ChoosenEndDateString}"
+                        IsEnabled="{Binding IsDateFilterOn}"
+                                Style="{StaticResource MaterialDesignFilledDatePicker}"
+                                CalendarOpened="EndData_CalendarOpened"></DatePicker>
+                    <CheckBox Grid.Column="1" Grid.Row="5" IsChecked="{Binding IsDateFilterOn, Mode=TwoWay}"
+                    VerticalAlignment="Center" Style="{StaticResource MaterialDesignFilterChipCheckBox}"/>
+                    <StackPanel Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                        <Button Content="_Save"
-                        Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}" />
-                        <Button Content="_Cancel"
+                        <Button Content="Save"
+                        Command="{Binding SaveFilterCommand}"/>
+                        <Button Content="Close"
                         Command="{x:Static materialDesign:PopupBox.ClosePopupCommand}">
                         </Button>
                     </StackPanel>
                 </Grid>
             </materialDesign:PopupBox>
-            <!--</ToggleButton>-->
             <DataGrid x:Name="ReservationDataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
                   AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="17 25 25 25"
@@ -155,8 +170,8 @@
                                                 </ItemsPanelTemplate>
                                             </Menu.ItemsPanel>
                                             <MenuItem Header="Respond To Reservation" Foreground="#3895D3" Height="40" Visibility="{Binding IsRespondToReservationVisible}">
-                                                <MenuItem Header="Accept Reservation" Foreground="#29D19B"/>
-                                                <MenuItem Header="Decline Reservation" Foreground="#F00E00"/>
+                                                <MenuItem Header="Accept Reservation" Foreground="{StaticResource MaterialDesignBody}" Background="#29D19B"/>
+                                                <MenuItem Header="Decline Reservation" Foreground="{StaticResource MaterialDesignBody}" Background="#F00E00"/>
                                             </MenuItem>
                                             <MenuItem Header="View Details"/>
                                             <MenuItem Header="Delete Reservation" Foreground="Red" />

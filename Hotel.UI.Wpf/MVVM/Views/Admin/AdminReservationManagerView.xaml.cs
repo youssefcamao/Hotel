@@ -26,5 +26,15 @@ namespace Hotel.UI.Wpf.MVVM.Views.Admin
         {
             InitializeComponent();
         }
+
+        private void EndData_CalendarOpened(object sender, RoutedEventArgs e)
+        {
+            CalendarDateRange calendarDateRange = new CalendarDateRange();
+            if (StartDatePicker.SelectedDate != null)
+            {
+                calendarDateRange.End = StartDatePicker.SelectedDate.Value;
+                EndDatePicker.BlackoutDates.Add(calendarDateRange);
+            }
+        }
     }
 }
