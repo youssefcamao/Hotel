@@ -24,7 +24,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         public string Name { get; private set; }
         public string StartDate => GetCustomDateStringFormat(_reservation.StartDate);
         public string EndDate => GetCustomDateStringFormat(_reservation.EndDate);
-        public string TotalPrice => $"{_reservation.TotalPriceForNights} €";
+        public double TotalPrice => _reservation.TotalPriceForNights;
         public string Status => _reservation.ReservationStatus.ToString();
 
         public string IsRespondToReservationVisible => _reservation.ReservationStatus == Configuration.Enums.ReservationStatus.Pending ? "Visible" : "Collapsed";
