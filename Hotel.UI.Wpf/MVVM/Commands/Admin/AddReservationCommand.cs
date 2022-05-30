@@ -44,7 +44,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             var endDate = _adminInsertReservationViewModel.EndDate ?? throw new ArgumentNullException();
             _reservationManager.AddNewReservation(startDate, endDate,
                 _adminInsertReservationViewModel.ReservedRoomCategory.CategoryId, _connectedUser.Id, _adminInsertReservationViewModel.FirstName
-                , _adminInsertReservationViewModel.LastName, _adminInsertReservationViewModel.Email);
+                , _adminInsertReservationViewModel.LastName, _adminInsertReservationViewModel.Email, _adminInsertReservationViewModel.ReservationStatusType);
             _adminViewModel.CurrentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser, _adminViewModel, _userManager,
                 _reservationManager, _roomsManager);
             _isDialogOpen = false;
