@@ -28,10 +28,10 @@ namespace Hotel.Core.Test
             var doubleRoomCategory = _hotelRoomsManager.RoomCategories[1];
             _reservationManager.HotelRerservations.Clear();
             var ramonAdmin = userManager.GetUserFromEmailPass("ramon@admin.com", "ramon123") ?? throw new ArgumentNullException("ramonUser Not found!");
-            _reservationManager.AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 27), doubleRoomCategory.CategoryId, ramonAdmin.Id, "ramon", "Grothe", "Ramon@email.com");
-            _reservationManager.AddNewReservation(new DateOnly(2022, 9, 26), new DateOnly(2022, 10, 10), singleRoomCategory.CategoryId, ramonAdmin.Id, "youssef", "ramon", "youssef@email.com");
-            _reservationManager.AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 27), doubleRoomCategory.CategoryId, ramonAdmin.Id, "jannik", "camao", "jannik@email.com");
-            _reservationManager.AddNewReservation(new DateOnly(2022, 6, 26), new DateOnly(2022, 7, 2), singleRoomCategory.CategoryId, ramonAdmin.Id, "paul", "camao", "paul@email.com");
+            _reservationManager.AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 27), doubleRoomCategory.CategoryId, ramonAdmin.Id, "ramon", "Grothe", "Ramon@email.com", ReservationStatus.Accepted);
+            _reservationManager.AddNewReservation(new DateOnly(2022, 9, 26), new DateOnly(2022, 10, 10), singleRoomCategory.CategoryId, ramonAdmin.Id, "youssef", "ramon", "youssef@email.com", ReservationStatus.Accepted);
+            _reservationManager.AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 27), doubleRoomCategory.CategoryId, ramonAdmin.Id, "jannik", "camao", "jannik@email.com", ReservationStatus.Accepted);
+            _reservationManager.AddNewReservation(new DateOnly(2022, 6, 26), new DateOnly(2022, 7, 2), singleRoomCategory.CategoryId, ramonAdmin.Id, "paul", "camao", "paul@email.com", ReservationStatus.Declined);
             _reservationSearchHelper = new ReservationSearchHelper(_hotelRoomsManager);
         }
         [Fact]
@@ -60,7 +60,7 @@ var name = "Ramon";
         public void GetReservationsFromStatus_Successfull()
         {
             var resutl = _reservationSearchHelper.GetReservationsFromStatus(_reservationManager.HotelRerservations, ReservationStatus.Accepted);
-            Assert.Equal(4, resutl.Count);
+            Assert.Equal(3, resutl.Count);
         }
         [Theory]
         [InlineData(10,null,4)]
