@@ -12,6 +12,11 @@ using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
 using Hotel.UI.Wpf.MVVM.ViewModels.Popups;
+using Hotel.Configuration.Enums;
+using System.Reflection.Metadata;
+using System.Collections.Specialized;
+using Hotel.UI.Wpf.MVVM.Stores;
+using System.Data.Common;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
 {
@@ -35,15 +40,23 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             _userManager = userManager;
             _reservationManager = reservationManager;
             _hotelRoomsManager = hotelRoomsManager;
-            InitiateComponents();
+            Reservations = new ObservableCollection<AdminReservationItemViewModel>();
+            GetReservationsFromCore();
             OpenInsertReservationDialog = new DelegateCommand(OnShowInsertReservationDialog);
             AdminReservationsFilterPopupViewModel = new AdminReservationsFilterPopupViewModel(_hotelRoomsManager, _reservationManager,
                 _userManager, Reservations);
+            AcceptReservationCommand = new DelegateCommand(OnAcceptReservation);
+            DeclineReservationCommand = new DelegateCommand(OnDeclineReservation);
+            OpenDeleteReservationConfirmationCommand = new DelegateCommand(OnOpenDeleteReservationConfiramtion);
         }
-        public ObservableCollection<AdminReservationItemViewModel> Reservations { get; } = new ObservableCollection<AdminReservationItemViewModel>();
+        public ObservableCollection<AdminReservationItemViewModel> Reservations { get; } 
         public AdminReservationsFilterPopupViewModel AdminReservationsFilterPopupViewModel { get; }
-        private void InitiateComponents()
+        internal void GetReservationsFromCore()
         {
+            if (Reservations.Count != 0)
+            {
+                Reservations.Clear();
+            }
             var reservations = _reservationManager.HotelRerservations;
             foreach (var reservation in reservations)
             {
@@ -56,6 +69,24 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             await DialogHost.Show(new AdminInsertReservationViewModel(_hotelRoomsManager, _reservationManager,
                 _connectedUser, _parentViewModel, _userManager, IsDialogOpen), _dialogHostId);
 
+        }
+        private void OnAcceptReservation(object parameter)
+        {
+            if (parameter is AdminReservationItemViewModel itemViewModel)
+            {
+                itemViewModel.Status = ReservationStatus.Accepted;
+            }
+        }
+        private void OnDeclineReservation(object parameter)
+        {
+            if (parameter is AdminReservationItemViewModel itemViewModel)
+            {
+                itemViewModel.Status = ReservationStatus.Declined;
+            }
+        }
+        private async void OnOpenDeleteReservationConfiramtion(object paramater)
+{
+            await DialogHost.Show(new ConfirmationDialogViewModel("Are You Sure You Want To Delete this Reservation ?",new DeleteReservationCommand(_reservationManager,paramater,this) ), _dialogHostId);
         }
         private bool _isDialogOpen;
         public bool IsDialogOpen
@@ -71,6 +102,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             }
         }
         public ICommand OpenInsertReservationDialog { get; }
-        public ICommand RemoveReservation { get; }
+        public ICommand OpenDeleteReservationConfirmationCommand { get; }
+        public ICommand AcceptReservationCommand { get; }
+        public ICommand DeclineReservationCommand { get; }
     }
 }

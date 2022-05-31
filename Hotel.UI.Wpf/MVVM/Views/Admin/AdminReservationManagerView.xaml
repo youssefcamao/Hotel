@@ -112,7 +112,7 @@
             <DataGrid x:Name="ReservationDataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
                   AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="17 25 25 25"
-                  ItemsSource="{Binding Reservations}">
+                  ItemsSource="{Binding Reservations,NotifyOnTargetUpdated=True}">
                 <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
                         <Setter Property="BorderThickness" Value="0"/>
@@ -170,11 +170,17 @@
                                                 </ItemsPanelTemplate>
                                             </Menu.ItemsPanel>
                                             <MenuItem Header="Respond To Reservation" Foreground="#3895D3" Height="40" Visibility="{Binding IsRespondToReservationVisible}">
-                                                <MenuItem Header="Accept Reservation" Foreground="{StaticResource MaterialDesignBody}" Background="#29D19B"/>
-                                                <MenuItem Header="Decline Reservation" Foreground="{StaticResource MaterialDesignBody}" Background="#F00E00"/>
+                                                <MenuItem Header="Accept Reservation" Foreground="{StaticResource MaterialDesignBody}" Background="#29D19B" 
+                                                          Command="{Binding Path=DataContext.AcceptReservationCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                          CommandParameter="{Binding}"/>       
+                                                <MenuItem Header="Decline Reservation" Foreground="{StaticResource MaterialDesignBody}" Background="#F00E00"
+                                                          Command="{Binding Path=DataContext.DeclineReservationCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                          CommandParameter="{Binding}"/>
                                             </MenuItem>
                                             <MenuItem Header="View Details"/>
-                                            <MenuItem Header="Delete Reservation" Foreground="Red" />
+                                            <MenuItem Header="Delete Reservation" Foreground="Red" 
+                                                      Command="{Binding Path=DataContext.OpenDeleteReservationConfirmationCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                          CommandParameter="{Binding}"/>
                                         </Menu>
                                     </materialDesign:PopupBox.PopupContent>
                                 </materialDesign:PopupBox>

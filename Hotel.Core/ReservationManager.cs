@@ -124,5 +124,9 @@ namespace Hotel.Core
             int nightsCount = (endDate.ToDateTime(new TimeOnly()) - startDate.ToDateTime(new TimeOnly())).Days;
             return nightsCount * roomCategory.RoomPriceForNight;
         }
+        public void DeleteReservationFromId(Guid reservationId)
+        {
+            HotelRerservations.RemoveAll(x => x.ReservationId == reservationId);
+        }
     }
 }
