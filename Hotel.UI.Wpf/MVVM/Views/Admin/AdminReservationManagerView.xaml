@@ -126,8 +126,8 @@
                     <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="2*" FontWeight="DemiBold" 
                     IsReadOnly ="True"
                     />
-                    <DataGridTextColumn Binding="{Binding StartDate}" Header="Start Date" Width="1.5*" FontWeight="DemiBold" IsReadOnly ="True"/>
-                    <DataGridTextColumn Binding="{Binding EndDate}" Header="End Date" Width="1.5*" FontWeight="SemiBold" IsReadOnly ="True"/>
+                    <DataGridTextColumn Binding="{Binding StartDate, StringFormat=MMMM dd\,yyyy}" Header="Start Date" Width="1.5*" FontWeight="DemiBold" IsReadOnly ="True"/>
+                    <DataGridTextColumn Binding="{Binding EndDate, StringFormat=MMMM dd\,yyyy}" Header="End Date" Width="1.5*" FontWeight="SemiBold" IsReadOnly ="True"/>
                     <DataGridTextColumn Binding="{Binding TotalPrice, StringFormat=€ {0}}" Header="Total Price" Width="1*" FontWeight="SemiBold" IsReadOnly ="True"/>
                     <DataGridTemplateColumn IsReadOnly ="True">
                         <DataGridTemplateColumn.Header>

@@ -22,8 +22,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         public int RoomNumber => _reservation.RoomNumber;
         public string RoomType => _roomCategory.CategoryName;
         public string Name { get; private set; }
-        public string StartDate => GetCustomDateStringFormat(_reservation.StartDate);
-        public string EndDate => GetCustomDateStringFormat(_reservation.EndDate);
+        public DateOnly StartDate => _reservation.StartDate;
+        public DateOnly EndDate => _reservation.EndDate;
         public double TotalPrice => _reservation.TotalPriceForNights;
         public string Status => _reservation.ReservationStatus.ToString();
 
@@ -35,12 +35,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             _userManager = userManager;
             _hotelRoomsManager = hotelRoomsManager;
             InitiateCompnents();
-        }
-
-        private string GetCustomDateStringFormat(DateOnly date)
-        {
-            var day = date.Day > 9 ? $"{date.Day}": $"{date.Day}";
-            return $"{date.ToString("MMMM")} {day},{date.Year}";
         }
         private void InitiateCompnents()
         {
