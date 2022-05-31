@@ -177,7 +177,9 @@
                                                           Command="{Binding Path=DataContext.DeclineReservationCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                                           CommandParameter="{Binding}"/>
                                             </MenuItem>
-                                            <MenuItem Header="View Details"/>
+                                            <MenuItem Header="View Details" Command="{Binding Path=DataContext.OpenShowDetailsCommand, 
+                                                RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                          CommandParameter="{Binding}"/>
                                             <MenuItem Header="Delete Reservation" Foreground="Red" 
                                                       Command="{Binding Path=DataContext.OpenDeleteReservationConfirmationCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                                           CommandParameter="{Binding}"/>

@@ -48,6 +48,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             AcceptReservationCommand = new DelegateCommand(OnAcceptReservation);
             DeclineReservationCommand = new DelegateCommand(OnDeclineReservation);
             OpenDeleteReservationConfirmationCommand = new DelegateCommand(OnOpenDeleteReservationConfiramtion);
+            OpenShowDetailsCommand = new DelegateCommand(OnOpenShowDetailsDialog);
         }
         public ObservableCollection<AdminReservationItemViewModel> Reservations { get; } 
         public AdminReservationsFilterPopupViewModel AdminReservationsFilterPopupViewModel { get; }
@@ -85,8 +86,12 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             }
         }
         private async void OnOpenDeleteReservationConfiramtion(object paramater)
-{
+        {
             await DialogHost.Show(new ConfirmationDialogViewModel("Are You Sure You Want To Delete this Reservation ?",new DeleteReservationCommand(_reservationManager,paramater,this) ), _dialogHostId);
+        }
+        private async void OnOpenShowDetailsDialog(object paramater)
+        {
+            await DialogHost.Show(new AdminShowDetailsViewModel(), _dialogHostId);
         }
         private bool _isDialogOpen;
         public bool IsDialogOpen
@@ -105,5 +110,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         public ICommand OpenDeleteReservationConfirmationCommand { get; }
         public ICommand AcceptReservationCommand { get; }
         public ICommand DeclineReservationCommand { get; }
+        public ICommand OpenShowDetailsCommand { get; }
     }
 }

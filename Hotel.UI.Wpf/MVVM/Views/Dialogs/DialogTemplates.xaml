@@ -14,5 +14,10 @@
             <local:ConfirmationDialogView/>
         </materialDesign:Transitioner>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AdminShowDetailsViewModel}">
+        <materialDesign:Transitioner SelectedIndex="0">
+            <local:AdminReservationShowDetailsDialog/>
+        </materialDesign:Transitioner>
+    </DataTemplate>
 </ResourceDictionary>
     
