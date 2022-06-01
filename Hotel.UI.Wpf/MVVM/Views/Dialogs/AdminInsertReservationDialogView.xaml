@@ -62,6 +62,9 @@
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="50" Width="150" 
                       FontSize="15" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"></Button>
             </StackPanel>
+            <TextBlock Text="No free room was found with the given details!" Foreground="{StaticResource MaterialDesignValidationErrorBrush}"
+                       Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="{Binding NoAvailableRoomWasFoundErrorVisibility}">
+            </TextBlock>
         </Grid>
     </Grid>
 </UserControl>

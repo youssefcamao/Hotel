@@ -1,4 +1,5 @@
-﻿using Hotel.Configuration.Interfaces;
+﻿using Hotel.Configuration.Exceptions;
+using Hotel.Configuration.Interfaces;
 using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.ValidationRules;
 using Hotel.UI.Wpf.MVVM.ViewModels;
@@ -42,9 +43,18 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         {
             var startDate = _adminInsertReservationViewModel.StartDate ?? throw new ArgumentNullException();
             var endDate = _adminInsertReservationViewModel.EndDate ?? throw new ArgumentNullException();
-            _reservationManager.AddNewReservation(startDate, endDate,
-                _adminInsertReservationViewModel.ReservedRoomCategory.CategoryId, _connectedUser.Id, _adminInsertReservationViewModel.FirstName
-                , _adminInsertReservationViewModel.LastName, _adminInsertReservationViewModel.Email, _adminInsertReservationViewModel.ReservationStatusType);
+            try
+            {
+                _reservationManager.AddNewReservation(startDate, endDate,
+                    _adminInsertReservationViewModel.ReservedRoomCategory.CategoryId, _connectedUser.Id, _adminInsertReservationViewModel.FirstName
+                    , _adminInsertReservationViewModel.LastName, _adminInsertReservationViewModel.Email, _adminInsertReservationViewModel.ReservationStatusType);
+
+            }
+            catch (NoRoomFoundException)
+            {
+                _adminInsertReservationViewModel.NoAvailableRoomWasFound = true;
+                return;
+            }
             _adminViewModel.CurrentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser, _adminViewModel, _userManager,
                 _reservationManager, _roomsManager);
             _isDialogOpen = false;
@@ -54,8 +64,9 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             var areAllInputsFilledAndCorrect = _adminInsertReservationViewModel.StartDate != null && _adminInsertReservationViewModel.EndDate != null
                 && _adminInsertReservationViewModel.Email != null && _adminInsertReservationViewModel.FirstName != null
                 && _adminInsertReservationViewModel.LastName != null && _adminInsertReservationViewModel.ReservedRoomCategory != null
-                && !_adminInsertReservationViewModel.EmailHasError;
-            return base.CanExecute(parameter) && areAllInputsFilledAndCorrect;
+                && !_adminInsertReservationViewModel.EmailHasError; 
+                var canExecute = base.CanExecute(parameter) && areAllInputsFilledAndCorrect;
+            return canExecute;
         }
         private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {

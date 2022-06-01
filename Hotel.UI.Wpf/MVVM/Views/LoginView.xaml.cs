@@ -1,4 +1,4 @@
-﻿using Hotel.UI.Wpf.ValidationRules;
+﻿using Hotel.UI.Wpf.MVVM.ValidationRules;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Text;

@@ -47,6 +47,26 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(EmailHasError));
             }
         }
+        private bool _noAvailableRoomWasFound;
+        public bool NoAvailableRoomWasFound
+        {
+            get
+            {
+                return _noAvailableRoomWasFound;
+            }
+            set
+            {
+                _noAvailableRoomWasFound = value;
+                OnPropertyChanged(nameof(NoAvailableRoomWasFoundErrorVisibility));
+            }
+        }
+        public string NoAvailableRoomWasFoundErrorVisibility
+        {
+            get
+            {
+                return NoAvailableRoomWasFound ? "Visible" : "Collapsed";
+            }
+        }
 
         private string _firstName;
         public string FirstName

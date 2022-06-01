@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Hotel.UI.Wpf.ValidationRules
+namespace Hotel.UI.Wpf.MVVM.ValidationRules
 {
     public class EmptyValidationRule : ValidationRule
     {

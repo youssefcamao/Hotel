@@ -1,6 +1,7 @@
 ﻿using Hotel.Configuration;
 using Hotel.Configuration.Enums;
 using Hotel.Configuration.Interfaces;
+using Hotel.Configuration.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,9 +31,9 @@ namespace Hotel.Core
             var ramonAdmin = _userManager.GetUserFromEmailPass("ramon@admin.com", "ramon123") ?? throw new ArgumentNullException("ramonUser Not found!");
             var paul = _userManager.GetUserFromEmailPass("paul@gmail.com", "paul123") ?? throw new ArgumentNullException("paulUser Not found!");
             var jannik = _userManager.GetUserFromEmailPass("jannik@gmail.com", "jannik123") ?? throw new ArgumentNullException("jannikUser Not found!");
-            AddNewReservation(new DateOnly(2022,5,26),new DateOnly(2022,5,27), singleRoomCategory.CategoryId, jannik.Id, jannik.FirstName, jannik.LastName, jannik.Email, ReservationStatus.Pending);
-            AddNewReservation(new DateOnly(2022,5,1),new DateOnly(2022,5,17), doubleRoomCategory.CategoryId, ramonAdmin.Id, ramonAdmin.FirstName, ramonAdmin.LastName, ramonAdmin.Email, ReservationStatus.Accepted);
-            AddNewReservation(new DateOnly(2022,5,26),new DateOnly(2022,5,31), singleRoomCategory.CategoryId, paul.Id, paul.FirstName, paul.LastName, paul.Email, ReservationStatus.Accepted);
+            AddNewReservation(new DateOnly(2022,6,26),new DateOnly(2022,6,27), singleRoomCategory.CategoryId, jannik.Id, jannik.FirstName, jannik.LastName, jannik.Email, ReservationStatus.Pending);
+            AddNewReservation(new DateOnly(2022, 5, 1), new DateOnly(2022, 5, 17), doubleRoomCategory.CategoryId, ramonAdmin.Id, ramonAdmin.FirstName, ramonAdmin.LastName, ramonAdmin.Email, ReservationStatus.Accepted);
+            AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 31), singleRoomCategory.CategoryId, paul.Id, paul.FirstName, paul.LastName, paul.Email, ReservationStatus.Accepted);
             AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 27), singleRoomCategory.CategoryId, jannik.Id, jannik.FirstName, jannik.LastName, jannik.Email, ReservationStatus.Declined);
             AddNewReservation(new DateOnly(2022, 5, 1), new DateOnly(2022, 5, 17), doubleRoomCategory.CategoryId, ramonAdmin.Id, ramonAdmin.FirstName, ramonAdmin.LastName, ramonAdmin.Email, ReservationStatus.Accepted);
             AddNewReservation(new DateOnly(2022, 5, 26), new DateOnly(2022, 5, 31), singleRoomCategory.CategoryId, paul.Id, paul.FirstName, paul.LastName, paul.Email, ReservationStatus.Declined);
@@ -54,7 +55,7 @@ namespace Hotel.Core
             var reservationRoom = GetFreeRoomFromRoomNumberOnTimePeriod(startDate, endDate, roomCategory);
             if (reservationRoom == null)
             {
-                throw new ArgumentNullException(nameof(reservationRoom));
+                throw new NoRoomFoundException();
             }
             var reservationTotalPrice = CalculateResrervationPrice(startDate, endDate, roomCategory);
             //Clean Naming
@@ -78,23 +79,6 @@ namespace Hotel.Core
                 reservation.ReservationStatus = status;
             }
         }
-        private ReservationStatus GetReservationStatusDependingOnUser(Guid userId)
-        {
-            var user = _userManager.GetUserFromId(userId);
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
-            switch (user.UserRole)
-            {
-                case UserRole.Admin:
-                    return ReservationStatus.Accepted;
-                case UserRole.NormalUser:
-                    return ReservationStatus.Pending;
-                default:
-                    throw new ArgumentException($"Invalid {user.UserRole}");
-            }
-        }
 
         public IRoom? GetFreeRoomFromRoomNumberOnTimePeriod(DateOnly startDate, DateOnly endDate, IRoomCategory category)
         {
@@ -111,7 +95,7 @@ namespace Hotel.Core
         private bool CheckIfReservationPeriodOverlap(DateOnly startDate, DateOnly endDate, IRoom room)
         {
             var overlapReservationsCount = HotelRerservations.Count(x => (x.StartDate < endDate && startDate < x.EndDate) 
-            && x.RoomNumber == room.RoomNumber);
+            && x.RoomNumber == room.RoomNumber && x.ReservationStatus != ReservationStatus.Declined);
             if (overlapReservationsCount == 0)
             {
                 return false;
