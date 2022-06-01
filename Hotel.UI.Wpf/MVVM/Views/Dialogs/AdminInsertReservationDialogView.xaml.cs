@@ -45,13 +45,17 @@ namespace Hotel.UI.Wpf.MVVM.Views.Dialogs
             if (StartDatePicker.SelectedDate != null)
             {
                 calendarDateRange.End = StartDatePicker.SelectedDate.Value;
+                EndDateDatePicker.BlackoutDates.Clear();
+                EndDateDatePicker.BlackoutDates.Add(calendarDateRange);
             }
-            EndDateDatePicker.BlackoutDates.Add(calendarDateRange);
         }
 
         private void StartDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            EndDateDatePicker.SelectedDate = null;
+            if (StartDatePicker.SelectedDate >= EndDateDatePicker.SelectedDate)
+            {
+                EndDateDatePicker.SelectedDate = null;
+            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
