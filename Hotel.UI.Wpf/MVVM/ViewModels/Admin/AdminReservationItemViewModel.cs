@@ -37,9 +37,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             {
                 Reservation.ReservationStatus = value;
                 OnPropertyChanged(nameof(Status));
+                OnPropertyChanged(nameof(IsRespondToReservationVisible));
             }
         }
-
         public string IsRespondToReservationVisible => Reservation.ReservationStatus == Configuration.Enums.ReservationStatus.Pending ? "Visible" : "Collapsed";
 
         public AdminReservationItemViewModel(IHotelReservation reservation, UserManager userManager, HotelRoomsManager hotelRoomsManager)
