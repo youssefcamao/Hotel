@@ -41,26 +41,26 @@
                     </Grid.RowDefinitions>
                     <TextBox Grid.Column="1" Grid.Row="1"
                     materialDesign:HintAssist.Hint="First Name" Style="{StaticResource MaterialDesignFilledTextBox}"
-                    Text="{Binding Name}" IsReadOnly="True" />
+                    Text="{Binding FirstName,Mode=OneWay}" IsReadOnly="True" />
                     <TextBox Grid.Column="2" Grid.Row="1"
                     materialDesign:HintAssist.Hint="Last Name" Style="{StaticResource MaterialDesignFilledTextBox}"
-                    Text="{Binding Name}" IsReadOnly="True" />
+                    Text="{Binding LastName,Mode=OneWay}" IsReadOnly="True" />
                     <TextBox materialDesign:HintAssist.Hint="Start Date"
-                            Grid.Row="2" Grid.Column="1"
+                            Grid.Row="2" Grid.Column="1" Text="{Binding StartDate, StringFormat=MMMM dd\,yyyy, Mode=OneWay}"
                             Style="{StaticResource MaterialDesignFilledTextBox}" IsReadOnly="True"/>
                     <TextBox materialDesign:HintAssist.Hint="End Date"
-                            Grid.Row="2" Grid.Column="2"
+                            Grid.Row="2" Grid.Column="2" Text="{Binding EndDate, StringFormat=MMMM dd\,yyyy, Mode=OneWay}"
                                 Style="{StaticResource MaterialDesignFilledTextBox}" IsReadOnly="True"/>
-                    <TextBox materialDesign:HintAssist.Hint="Room Type" 
+                    <TextBox materialDesign:HintAssist.Hint="Room Category" Text="{Binding RoomCategoryName, Mode=OneWay}"
                               Grid.Column="2" Grid.Row="3" Style="{StaticResource MaterialDesignFilledTextBox}" IsReadOnly="True"/>
-                    <TextBox materialDesign:HintAssist.Hint="Room Number" 
+                    <TextBox materialDesign:HintAssist.Hint="Room Number" Text="{Binding RoomNumber, Mode=OneWay}"
                               Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignFilledTextBox}" IsReadOnly="True"/>
-                    <TextBox materialDesign:HintAssist.Hint="Status"
+                    <TextBox materialDesign:HintAssist.Hint="Status" Text="{Binding ReservationStatus, Mode=OneWay}"
                               Grid.Column="1" Grid.Row="4" Style="{StaticResource MaterialDesignFilledTextBox}" IsReadOnly="True"/>
-                    <TextBox Grid.Column="2" Grid.Row="4" Style="{StaticResource MaterialDesignFilledTextBox}"
+                    <TextBox Grid.Column="2" Grid.Row="4" Style="{StaticResource MaterialDesignFilledTextBox}" Text="{Binding TotalPriceForNights, Mode=OneWay}"
                     materialDesign:HintAssist.Hint="Total Price" IsReadOnly="True"/>
                     <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Style="{StaticResource MaterialDesignFilledTextBox}"
-                    materialDesign:HintAssist.Hint="Email" IsReadOnly="True"/>
+                    materialDesign:HintAssist.Hint="Email" IsReadOnly="True" Text="{Binding Email, Mode=OneWay}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Advanced Information">
@@ -78,11 +78,11 @@
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
                     <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource MaterialDesignFilledTextBox}"
-                    materialDesign:HintAssist.Hint="Reservation Id"/>
-                    <TextBox materialDesign:HintAssist.Hint="Creation Date" 
-                              Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignFilledTextBox}"/>
-                    <TextBox materialDesign:HintAssist.Hint="Created From User: "
-                              Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                    materialDesign:HintAssist.Hint="Reservation Id" Text="{Binding ReservationId, Mode=OneWay}" IsReadOnly="True"/>
+                    <TextBox materialDesign:HintAssist.Hint="Creation Date" Text="{Binding ReservationCreationTime, Mode=OneWay}"
+                              Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignFilledTextBox}" IsReadOnly="True"/>
+                    <TextBox materialDesign:HintAssist.Hint="Created From User: " Text="{Binding CreationUser, Mode=OneWay}"
+                              Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignFilledTextBox}" IsReadOnly="True"/>
                 </Grid>
             </TabItem>
         </TabControl>

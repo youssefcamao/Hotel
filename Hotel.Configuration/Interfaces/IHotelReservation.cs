@@ -11,7 +11,7 @@ namespace Hotel.Configuration.Interfaces
         int RoomNumber { get; }
         string Email { get; }
         DateOnly EndDate { get;  }
-        DateTime ReservationDate { get;  }
+        DateTime ReservationCreationTime { get;  }
         DateOnly StartDate { get; }
         double TotalPriceForNights { get; }
         ReservationStatus ReservationStatus { get; set; }

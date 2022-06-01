@@ -5,6 +5,7 @@ using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
+using Hotel.UI.Wpf.Ui_Helpers;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             OpenUserManagerCommand = new OpenUserManagerCommand(this);
             OpenHotelRoomsManager = new OpenHotelRoomsManagerCommand(this);
             LogoutCommandWithConfirmation = new DelegateCommand(OnLogoutConfirmation);
-            CurrentUserString = $"Admin/{_connectedUser.FirstName} {_connectedUser.LastName}";
+            CurrentUserString = UiStringHelpers.GetUserNameFromUser(_connectedUser);
             _currentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser, this, userManager, _reservationManager, _hotelRoomsManager);
         }
         public string CurrentUserString { get; }

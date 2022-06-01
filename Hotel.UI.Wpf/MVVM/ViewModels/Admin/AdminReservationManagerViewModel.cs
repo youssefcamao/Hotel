@@ -91,7 +91,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         }
         private async void OnOpenShowDetailsDialog(object paramater)
         {
-            await DialogHost.Show(new AdminShowDetailsViewModel(), _dialogHostId);
+            await DialogHost.Show(new AdminShowDetailsViewModel(paramater, _reservationManager, _hotelRoomsManager, _userManager), _dialogHostId);
         }
         private bool _isDialogOpen;
         public bool IsDialogOpen

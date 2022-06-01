@@ -58,8 +58,8 @@ namespace Hotel.Core
             }
             var reservationTotalPrice = CalculateResrervationPrice(startDate, endDate, roomCategory);
             //Clean Naming
-            firstName = NamingHelper.MakeFirstLetterUpperCase(firstName);
-            lastName = NamingHelper.MakeFirstLetterUpperCase(lastName);
+            firstName = NamingHelper.FixNameFormat(firstName);
+            lastName = NamingHelper.FixNameFormat(lastName);
 
             var status = reservationStatus ?? ReservationStatus.Pending;
             HotelRerservations.Add(new HotelReservation(userId, reservationRoom.RoomNumber, startDate, endDate,

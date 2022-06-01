@@ -8,14 +8,14 @@ namespace Hotel.Core
 {
     public static class NamingHelper
     {
-        public static string MakeFirstLetterUpperCase(string firstName)
+        public static string FixNameFormat(string name)
         {
-            if (firstName.Count() > 1)
+            if (name.Count() > 1)
             {
-                firstName = char.ToUpper(firstName[0]) + firstName.Substring(1);
+                name = char.ToUpper(name[0]) + name.Substring(1).ToLower();
             }
 
-            return firstName;
+            return name;
         }
     }
 }
