@@ -8,8 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Signika-Bold.ttf" />
+    <None Remove="Fonts\Signika-Medium.ttf" />
+    <None Remove="Fonts\Signika-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="CustomControls\" />
-    <Folder Include="MVVM\Models\" />
     <Folder Include="Theme\" />
   </ItemGroup>
 
@@ -19,6 +24,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hotel.Core\Hotel.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Signika-Bold.ttf" />
+    <Resource Include="Fonts\Signika-Medium.ttf" />
+    <Resource Include="Fonts\Signika-SemiBold.ttf" />
   </ItemGroup>
 
 </Project>
