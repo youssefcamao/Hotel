@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using Hotel.UI.Wpf.MVVM.ViewModels;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,6 +80,22 @@ namespace Hotel.UI.Wpf
             else
             {
                 this.WindowState = System.Windows.WindowState.Normal;
+            }
+        }
+
+        private void MenuToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var content = ViewController.Content;
+            if (content is AdminViewModel adminViewModel)
+            {
+                if (adminViewModel.IsNavigationMenuExpanded == false)
+                {
+                    adminViewModel.IsNavigationMenuExpanded = true;
+                }
+                else
+                {
+                    adminViewModel.IsNavigationMenuExpanded = false;
+                }
             }
         }
     }

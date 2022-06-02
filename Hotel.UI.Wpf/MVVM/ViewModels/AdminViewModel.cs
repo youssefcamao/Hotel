@@ -38,6 +38,19 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             _currentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser, this, userManager, _reservationManager, _hotelRoomsManager);
         }
         public string CurrentUserString { get; }
+        private bool _isNavigationMenuExpanded = false;
+        public bool IsNavigationMenuExpanded
+        {
+            get
+            {
+                return _isNavigationMenuExpanded;
+            }
+            set
+            {
+                _isNavigationMenuExpanded = value;
+                OnPropertyChanged(nameof(IsNavigationMenuExpanded));
+            }
+        }
         public ViewModelBase CurrentChildAdminViewModel
         {
             get

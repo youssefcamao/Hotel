@@ -82,8 +82,22 @@
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
                     </StackPanel>
-                    <TextBlock Text="{Binding CurrentViewModel.CurrentUserString}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="SemiBold" Grid.Column="0" Grid.ColumnSpan="2"/>
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                    <TextBlock Text="{Binding CurrentViewModel.CurrentUserString}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                               FontSize="16" FontWeight="SemiBold" Grid.Column="0" Grid.ColumnSpan="2"/>
+                    <DockPanel Grid.Column="1" HorizontalAlignment="Right" FlowDirection="LeftToRight">
+                        <ToggleButton
+                                Margin="10,0,10,0"
+                                x:Name="MenuToggleButton"
+                                IsChecked="False"
+                                Visibility="{Binding MenuButtonStatus}"
+                                Width="30"
+                                VerticalAlignment="Center"
+                                AutomationProperties.Name="HamburgerToggleButton"
+                                Click="MenuToggleButton_Click">
+                            <ToggleButton.Style>
+                                <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MaterialDesignHamburgerToggleButton}"/>
+                            </ToggleButton.Style>
+                        </ToggleButton>
                         <Button
                             x:Name="ChangeThemeButton"    
                             Margin="0,0,10,0"
@@ -93,24 +107,12 @@
                                 Style="{StaticResource MaterialDesignToolButton}"
                                 Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                 materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"/>
-                        <ToggleButton
-                                Margin="0,0,10,0"
-                                x:Name="MenuToggleButton"
-                                IsChecked="False"
-                                Visibility="{Binding MenuButtonStatus}"
-                                Width="30"
-                                VerticalAlignment="Center"
-                                AutomationProperties.Name="HamburgerToggleButton">
-                            <ToggleButton.Style>
-                                <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MaterialDesignHamburgerToggleButton}"/>
-                            </ToggleButton.Style>
-                        </ToggleButton>
-                    </StackPanel>
+                    </DockPanel>
                 </Grid>
             </DockPanel>
         </materialDesign:ColorZone>
             <materialDesign:Card Background="{DynamicResource MaterialDesignPaper}" Grid.Row="1" materialDesign:ShadowAssist.ShadowDepth="Depth4">
-            <ContentControl x:Name="ViewController" Content="{Binding CurrentViewModel}"/>
+            <ContentControl x:Name="ViewController" Content="{Binding CurrentViewModel}" />
             </materialDesign:Card>
     </Grid>
 </Window>
