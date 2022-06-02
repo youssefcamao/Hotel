@@ -11,11 +11,12 @@
     <None Remove="Fonts\Signika-Bold.ttf" />
     <None Remove="Fonts\Signika-Medium.ttf" />
     <None Remove="Fonts\Signika-SemiBold.ttf" />
+    <None Remove="Theme\hotel-logo.png" />
+    <None Remove="Theme\SmallYRLogo.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="CustomControls\" />
-    <Folder Include="Theme\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,8 @@
     <Resource Include="Fonts\Signika-Bold.ttf" />
     <Resource Include="Fonts\Signika-Medium.ttf" />
     <Resource Include="Fonts\Signika-SemiBold.ttf" />
+    <Resource Include="Theme\hotel-logo.png" />
+    <Resource Include="Theme\SmallYRLogo.png" />
   </ItemGroup>
 
 </Project>

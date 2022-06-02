@@ -37,8 +37,6 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             _isDialogOpen = isDialogOpen;
             _adminInsertReservationViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
-
-
         public override void Execute(object? parameter)
         {
             var startDate = _adminInsertReservationViewModel.StartDate ?? throw new ArgumentNullException();
