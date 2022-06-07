@@ -27,6 +27,10 @@ namespace Hotel.Core
         }
         public IUser? GetUserFromEmailPass(string email, string password)
         {
+            if (email == null || password == null)
+            {
+                return null;
+            }
             var user = _usersList.FirstOrDefault(x => x.Email.ToLower() == email.ToLower() && x.Password == password);
             return user;
         }
