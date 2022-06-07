@@ -33,6 +33,8 @@ namespace Hotel.UI.Wpf.MVVM.Views.Admin
             if (StartDatePicker.SelectedDate != null)
             {
                 calendarDateRange.End = StartDatePicker.SelectedDate.Value;
+                EndDatePicker.BlackoutDates.Clear();
+                calendarDateRange.End = StartDatePicker.SelectedDate.Value;
                 EndDatePicker.BlackoutDates.Add(calendarDateRange);
             }
         }
