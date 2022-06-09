@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="12541fa3-677a-44b1-9076-4d84ce21070f" ChangeDateTime="06/07/2022 13:09:41">
+    <Property Name="ElementName" Value="[dbo].[RoomsTable].[IsRoom]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RoomsTable]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsRoomAvailble" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9a4611d1-5f74-48cd-9444-cd4e7c3e3e86" ChangeDateTime="06/07/2022 13:09:53">
+    <Property Name="ElementName" Value="[dbo].[RoomsTable].[IsRoomAvailble]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RoomsTable]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsRoomAvailable" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e215c8e3-488b-45db-806f-b05a84d2183a" ChangeDateTime="06/07/2022 13:21:53">
+    <Property Name="ElementName" Value="[dbo].[RoomsTable].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RoomsTable]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RoomNumber" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5859020f-6ce7-4f33-afb4-f8902336a086" ChangeDateTime="06/08/2022 14:03:25">
+    <Property Name="ElementName" Value="[dbo].[UsersTable].[UserRole]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UsersTable]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsUserAdmin" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1341f2ea-ec98-4d6c-874f-f4bfc07ffbb6" ChangeDateTime="06/08/2022 15:08:26">
+    <Property Name="ElementName" Value="[dbo].[UsersTable].[Password]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UsersTable]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserPassword" />
+  </Operation>
+</Operations>
