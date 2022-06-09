@@ -23,7 +23,7 @@ namespace Hotel.Configuration.Repos
 
         public void DeleteModel(IHotelReservation model)
         {
-            _dataAccess.SaveData("DeleteReservation", model);
+            _dataAccess.SaveData("DeleteReservation", new {Id = model.Id});
         }
 
         public IList<IHotelReservation> GetAll()

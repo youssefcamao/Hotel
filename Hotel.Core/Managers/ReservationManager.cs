@@ -90,7 +90,7 @@ namespace Hotel.Core
         public void DeleteReservationFromId(Guid reservationId)
         {
             var reservation = HotelRerservations.FirstOrDefault(x => x.Id == reservationId);
-            if (reservation != null)
+            if (reservation == null)
             {
                 throw new ArgumentNullException(nameof(reservation));
             }
