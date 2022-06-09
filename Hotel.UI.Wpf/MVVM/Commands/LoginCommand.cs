@@ -1,4 +1,5 @@
-﻿using Hotel.Core;
+﻿using Hotel.Configuration.Interfaces.Repos;
+using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using System;
@@ -10,12 +11,15 @@ namespace Hotel.UI.Wpf.MVVM.Commands
         private readonly LoginViewModel _parentViewModel;
         private readonly NavigationStore _navigationStore;
         private readonly UserManager _userManager;
+        private readonly ISqlDataAccess _sqlDataAccess;
 
-        public LoginCommand(LoginViewModel parentViewModel, NavigationStore navigationStore, UserManager userManager)
+        public LoginCommand(LoginViewModel parentViewModel, NavigationStore navigationStore,
+            UserManager userManager, ISqlDataAccess sqlDataAccess)
         {
             _parentViewModel = parentViewModel;
             _navigationStore = navigationStore;
             _userManager = userManager;
+            _sqlDataAccess = sqlDataAccess;
         }
         public override void Execute(object? parameter)
         {
@@ -30,7 +34,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
             {
                 if (user.IsUserAdmin)
                 {
-                    _navigationStore.CurrentViewModel = new AdminViewModel(_navigationStore, user, _userManager);
+                    _navigationStore.CurrentViewModel = new AdminViewModel(_navigationStore, user, _userManager, _sqlDataAccess);
                 }
                 else
                 {

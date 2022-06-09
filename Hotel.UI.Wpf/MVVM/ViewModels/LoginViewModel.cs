@@ -12,14 +12,16 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
-        private readonly IUserRepository _userRepository = new UsersRepository(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HotelDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        private readonly ISqlDataAccess _sqlDataAccess = new DapperSqlDataAccess(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HotelDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"); 
+        private readonly IUserRepository _userRepository;
         private readonly UserManager _userManager;
 
         public LoginViewModel(NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
+            _userRepository = new UsersRepository(_sqlDataAccess);
             _userManager = new UserManager(_userRepository);
-            LoginCommand = new LoginCommand(this, _navigationStore, _userManager);
+            LoginCommand = new LoginCommand(this, _navigationStore, _userManager, _sqlDataAccess);
             SignupCommand = new SignupCommand(_navigationStore, _userManager);
         }
         private string _email;
