@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Core", "Hotel.Core\Hotel.Core.csproj", "{2BD1951A-338B-4C29-81D9-9AA65B6D71CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Core", "Hotel.Core\Hotel.Core.csproj", "{2BD1951A-338B-4C29-81D9-9AA65B6D71CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Core.Test", "Hotel.Core.Test\Hotel.Core.Test.csproj", "{1E63A4DF-995E-44A8-B0ED-ECE7D3F0C848}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Core.Test", "Hotel.Core.Test\Hotel.Core.Test.csproj", "{1E63A4DF-995E-44A8-B0ED-ECE7D3F0C848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.Configuration", "Hotel.Configuration\Hotel.Configuration.csproj", "{796FA6AA-82B6-44C4-86CB-EAC90FC6041C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Configuration", "Hotel.Configuration\Hotel.Configuration.csproj", "{796FA6AA-82B6-44C4-86CB-EAC90FC6041C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{25CC3044-0DC7-4662-A07B-587AB70FE850}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotel.UI.Wpf", "Hotel.UI.Wpf\Hotel.UI.Wpf.csproj", "{804CF730-F393-428F-AB25-08E6EB6545B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.UI.Wpf", "Hotel.UI.Wpf\Hotel.UI.Wpf.csproj", "{804CF730-F393-428F-AB25-08E6EB6545B0}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "HotelDb", "HotelDb\HotelDb.sqlproj", "{EF568B81-98EF-44C7-A808-ACDAD93750F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,12 @@ Global
 		{804CF730-F393-428F-AB25-08E6EB6545B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{804CF730-F393-428F-AB25-08E6EB6545B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{804CF730-F393-428F-AB25-08E6EB6545B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF568B81-98EF-44C7-A808-ACDAD93750F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF568B81-98EF-44C7-A808-ACDAD93750F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF568B81-98EF-44C7-A808-ACDAD93750F6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EF568B81-98EF-44C7-A808-ACDAD93750F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF568B81-98EF-44C7-A808-ACDAD93750F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF568B81-98EF-44C7-A808-ACDAD93750F6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
