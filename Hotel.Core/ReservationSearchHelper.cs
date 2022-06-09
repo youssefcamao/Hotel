@@ -1,10 +1,5 @@
 ﻿using Hotel.Configuration.Enums;
-using Hotel.Configuration.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Hotel.Configuration.Interfaces.Models;
 
 namespace Hotel.Core
 {
@@ -18,7 +13,7 @@ namespace Hotel.Core
         }
         public List<IHotelReservation> GetReservationsFromName(List<IHotelReservation> hotelReservations, string name)
         {
-            return hotelReservations.Where(x=> x.FirstName.ToLower().Contains(name.ToLower()) || x.LastName.ToLower().Contains(name.ToLower())).ToList();
+            return hotelReservations.Where(x => x.FirstName.ToLower().Contains(name.ToLower()) || x.LastName.ToLower().Contains(name.ToLower())).ToList();
         }
         public List<IHotelReservation> GetReservationsFromDateRange(List<IHotelReservation> hotelReservations, DateOnly? startDate, DateOnly? endDate)
         {
@@ -33,15 +28,15 @@ namespace Hotel.Core
                     return endDate <= targetedEndDate;
                 }
             };
-            return hotelReservations.Where(x=> x.StartDate >= (startDate ?? new DateOnly()) && isEndDateApplying(x.EndDate, endDate)).ToList();
+            return hotelReservations.Where(x => x.StartDate >= (startDate ?? new DateOnly()) && isEndDateApplying(x.EndDate, endDate)).ToList();
         }
         public List<IHotelReservation> GetReservationFromRoomType(List<IHotelReservation> hotelReservations, IRoomCategory roomCategory)
         {
-            return hotelReservations.Where(x=> GetIfReservationCategoryMatches(x, roomCategory)).ToList();
+            return hotelReservations.Where(x => GetIfReservationCategoryMatches(x, roomCategory)).ToList();
         }
         public List<IHotelReservation> GetReservationsFromStatus(List<IHotelReservation> hotelReservations, ReservationStatus status)
         {
-            return hotelReservations.Where(x=> x.ReservationStatus == status).ToList();
+            return hotelReservations.Where(x => x.ReservationStatus == status).ToList();
         }
         public List<IHotelReservation> GetReservationsFromPriceRange(List<IHotelReservation> hotelReservations, double? minPrice, double? maxPrice)
         {
@@ -67,7 +62,7 @@ namespace Hotel.Core
             }
             else
             {
-                return room.CategoryId == Category.CategoryId;
+                return room.CategoryId == Category.Id;
             }
         }
     }

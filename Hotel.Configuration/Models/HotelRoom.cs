@@ -1,11 +1,6 @@
-﻿using Hotel.Configuration.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Configuration.Interfaces.Models;
 
-namespace Hotel.Configuration
+namespace Hotel.Configuration.Models
 {
     public class HotelRoom : IRoom
     {

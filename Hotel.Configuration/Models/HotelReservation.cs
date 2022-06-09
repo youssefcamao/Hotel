@@ -1,20 +1,15 @@
 ﻿using Hotel.Configuration.Enums;
-using Hotel.Configuration.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Hotel.Configuration.Interfaces.Models;
 
-namespace Hotel.Configuration
+namespace Hotel.Configuration.Models
 {
     public class HotelReservation : IHotelReservation
     {
-        public HotelReservation(Guid userId, int roomNumber, DateOnly startDate, DateOnly endDate, 
+        public HotelReservation(Guid userId, int roomNumber, DateOnly startDate, DateOnly endDate,
             ReservationStatus reservationStatus, double totalPrice, string firstName, string lastName, string email)
         {
             ReservationCreationTime = DateTime.Now;
-            ReservationId = Guid.NewGuid();
+            Id = Guid.NewGuid();
             CreationUserId = userId;
             RoomNumber = roomNumber;
             StartDate = startDate;
@@ -25,12 +20,12 @@ namespace Hotel.Configuration
             Email = email;
             ReservationStatus = reservationStatus;
         }
-        public DateTime ReservationCreationTime { get;  }
-        public DateOnly StartDate { get;  }
-        public DateOnly EndDate { get;  }
+        public DateTime ReservationCreationTime { get; }
+        public DateOnly StartDate { get; }
+        public DateOnly EndDate { get; }
         public int RoomNumber { get; }
         public double TotalPriceForNights { get; }
-        public Guid ReservationId { get; }
+        public Guid Id { get; }
 
         public Guid CreationUserId { get; }
         public string FirstName { get; }
@@ -40,6 +35,6 @@ namespace Hotel.Configuration
 
         public ReservationStatus ReservationStatus { get; set; }
 
-        
+
     }
 }
