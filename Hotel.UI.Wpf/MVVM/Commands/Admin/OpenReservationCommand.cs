@@ -1,13 +1,7 @@
-﻿using Hotel.Configuration.Interfaces;
+﻿using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
-using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
@@ -19,7 +13,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         private readonly ReservationManager _reservationManager;
         private readonly HotelRoomsManager _roomsManager;
 
-        public OpenReservationCommand(AdminViewModel adminViewModel, IUser connectedUser, UserManager userManager, 
+        public OpenReservationCommand(AdminViewModel adminViewModel, IUser connectedUser, UserManager userManager,
             ReservationManager reservationManager, HotelRoomsManager roomsManager)
         {
             _adminViewModel = adminViewModel;

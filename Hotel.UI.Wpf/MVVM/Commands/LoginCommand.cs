@@ -9,12 +9,13 @@ namespace Hotel.UI.Wpf.MVVM.Commands
     {
         private readonly LoginViewModel _parentViewModel;
         private readonly NavigationStore _navigationStore;
-        private readonly UserManager _userManager = new UserManager();
+        private readonly UserManager _userManager;
 
-        public LoginCommand(LoginViewModel parentViewModel, NavigationStore navigationStore)
+        public LoginCommand(LoginViewModel parentViewModel, NavigationStore navigationStore, UserManager userManager)
         {
             _parentViewModel = parentViewModel;
             _navigationStore = navigationStore;
+            _userManager = userManager;
         }
         public override void Execute(object? parameter)
         {
@@ -27,16 +28,13 @@ namespace Hotel.UI.Wpf.MVVM.Commands
             }
             else
             {
-                switch (user.UserRole)
+                if (user.IsUserAdmin)
                 {
-                    case Configuration.Enums.UserRole.Admin:
-                        _navigationStore.CurrentViewModel = new AdminViewModel(_navigationStore,user, _userManager);
-                        break;
-                    case Configuration.Enums.UserRole.NormalUser:
-                        _navigationStore.CurrentViewModel = new UserViewModel();
-                        break;
-                    default:
-                        break;
+                    _navigationStore.CurrentViewModel = new AdminViewModel(_navigationStore, user, _userManager);
+                }
+                else
+                {
+                    _navigationStore.CurrentViewModel = new UserViewModel();
                 }
             }
 

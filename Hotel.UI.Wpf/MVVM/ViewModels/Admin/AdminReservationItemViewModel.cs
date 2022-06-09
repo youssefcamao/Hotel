@@ -1,15 +1,7 @@
-﻿using Hotel.Configuration.Interfaces;
+﻿using Hotel.Configuration.Enums;
+using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hotel.Configuration.Interfaces;
-using Hotel.Configuration;
-using System.Windows.Input;
-using Hotel.UI.Wpf.MVVM.Commands.Admin;
-using Hotel.Configuration.Enums;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
 {
@@ -56,6 +48,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             _reservationRoom = _hotelRoomsManager.GetRoomFromNumber(Reservation.RoomNumber) ?? throw new ArgumentNullException();
             _roomCategory = _hotelRoomsManager.GetRoomCategoryFromId(_reservationRoom.CategoryId) ?? throw new ArgumentNullException();
         }
-        
+
     }
 }

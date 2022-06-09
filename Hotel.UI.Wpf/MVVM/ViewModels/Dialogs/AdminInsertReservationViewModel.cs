@@ -1,14 +1,10 @@
 ﻿using Hotel.Configuration.Enums;
-using Hotel.Configuration.Interfaces;
+using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
-using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
@@ -23,7 +19,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             this._connectedUser = _connectedUser;
             _userManager = userManager;
             AllCategories = new ObservableCollection<string>(_roomsManager.RoomCategories.Select(x => x.CategoryName));
-            AllReservationStatus = new ObservableCollection<string> { ReservationStatus.Accepted.ToString(), ReservationStatus.Pending.ToString()};
+            AllReservationStatus = new ObservableCollection<string> { ReservationStatus.Accepted.ToString(), ReservationStatus.Pending.ToString() };
             AddReservationCommand = new AddReservationCommand(_connectedUser, this, _reservationManager, _parentViewModel,
                 _userManager, _roomsManager, isDialogOpen);
         }
@@ -99,7 +95,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
         {
             get
             {
-                if(StartDate == null)
+                if (StartDate == null)
                 {
                     return null;
                 }
@@ -215,7 +211,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             {
                 if (ReservedRoomCategory == null)
                 {
-                    return null ;
+                    return null;
                 }
                 else
                 {

@@ -1,29 +1,25 @@
 ﻿using Hotel.Configuration.Enums;
-using Hotel.Configuration.Interfaces;
+using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
-using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.Commands.Popups;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
 {
     public class AdminReservationsFilterPopupViewModel : ViewModelBase
     {
-        public AdminReservationsFilterPopupViewModel(HotelRoomsManager roomsManager, ReservationManager reservationManager, 
+        public AdminReservationsFilterPopupViewModel(HotelRoomsManager roomsManager, ReservationManager reservationManager,
             UserManager userManager, ObservableCollection<AdminReservationItemViewModel> reservationsViewModel)
         {
             _roomsManager = roomsManager;
             _reservationManager = reservationManager;
             _userManager = userManager;
             AllCategories = new ObservableCollection<string>(_roomsManager.RoomCategories.Select(x => x.CategoryName));
-            AllReservationStatus = new ObservableCollection<string> ( Enum.GetNames(typeof(ReservationStatus)) );
+            AllReservationStatus = new ObservableCollection<string>(Enum.GetNames(typeof(ReservationStatus)));
             SaveFilterCommand = new SaveFilterSettingsCommand(this, _reservationManager, _roomsManager,
                _userManager, reservationsViewModel);
         }
@@ -236,7 +232,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
                 OnPropertyChanged(nameof(ChoosenEndDateString));
             }
         }
-        
+
         public ICommand SaveFilterCommand { get; }
     }
 }

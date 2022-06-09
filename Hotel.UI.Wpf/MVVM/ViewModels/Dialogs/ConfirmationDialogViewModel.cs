@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
@@ -17,7 +13,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
             else if (confirmationCommand == null)
             {
-                throw new ArgumentNullException(nameof (confirmationCommand));
+                throw new ArgumentNullException(nameof(confirmationCommand));
             }
             Message = message;
             ConfirmationCommand = confirmationCommand;

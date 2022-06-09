@@ -1,13 +1,9 @@
 ﻿using Hotel.Configuration.Enums;
-using Hotel.Configuration.Interfaces;
+using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.Ui_Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
 {
@@ -18,7 +14,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
         private readonly HotelRoomsManager _hotelRoomsManager;
         private readonly UserManager _userManager;
 
-        public AdminShowDetailsViewModel(object paramater, ReservationManager reservationManager, 
+        public AdminShowDetailsViewModel(object paramater, ReservationManager reservationManager,
             HotelRoomsManager hotelRoomsManager, UserManager userManager)
         {
             if (paramater is AdminReservationItemViewModel param)
@@ -34,8 +30,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             _userManager = userManager;
         }
         //Main Info
-        public string FirstName  => _hotelReservation.FirstName;
-        public string LastName  => _hotelReservation.LastName;
+        public string FirstName => _hotelReservation.FirstName;
+        public string LastName => _hotelReservation.LastName;
         public DateOnly StartDate => _hotelReservation.StartDate;
         public DateOnly EndDate => _hotelReservation.EndDate;
         public int RoomNumber => _hotelReservation.RoomNumber;
@@ -47,7 +43,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
         //Advanced Info
         public DateTime ReservationCreationTime => _hotelReservation.ReservationCreationTime;
         public string CreationUser => GetUserNameFromUserId(_hotelReservation.CreationUserId);
-        public Guid ReservationId => _hotelReservation.ReservationId;
+        public Guid ReservationId => _hotelReservation.Id;
 
         private string GetRoomCategoryNameFromRoomNumber(int roomNumber)
         {

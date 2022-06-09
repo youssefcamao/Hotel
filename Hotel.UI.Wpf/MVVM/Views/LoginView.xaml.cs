@@ -1,7 +1,6 @@
 ﻿using Hotel.UI.Wpf.MVVM.ValidationRules;
 using MaterialDesignThemes.Wpf;
 using System;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,7 +12,7 @@ namespace Hotel.UI.Wpf.MVVM.Views
     /// Interaction logic for LoginView.xaml
     /// </summary>
     public partial class LoginView : UserControl
-    {        
+    {
         private ValidationError _validationProp;
         private Brush _defaultForgroundBrush;
         private Brush _hintAssitsDefaultColor;

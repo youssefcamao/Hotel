@@ -1,10 +1,5 @@
 ﻿using Hotel.Core;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace Hotel.UI.Wpf.MVVM.ValidationRules
@@ -28,7 +23,7 @@ namespace Hotel.UI.Wpf.MVVM.ValidationRules
             }
             else
             {
-                return new ValidationResult(false,"Email Required!");
+                return new ValidationResult(false, "Email Required!");
             }
         }
     }

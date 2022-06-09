@@ -1,14 +1,9 @@
-﻿using Hotel.Configuration.Interfaces;
+﻿using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
-using Hotel.UI.Wpf.MVVM.ViewModels;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Popups;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Popups
 {

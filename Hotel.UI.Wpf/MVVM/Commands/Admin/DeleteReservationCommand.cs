@@ -1,12 +1,7 @@
-﻿using Hotel.Configuration.Enums;
-using Hotel.Core;
+﻿using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
@@ -27,7 +22,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         {
             if (_param is AdminReservationItemViewModel itemViewModel)
             {
-                _reservationManager.DeleteReservationFromId(itemViewModel.Reservation.ReservationId);
+                _reservationManager.DeleteReservationFromId(itemViewModel.Reservation.Id);
                 _parentViewModel.GetReservationsFromCore();
                 DialogHost.CloseDialogCommand.Execute(null, null);
             }

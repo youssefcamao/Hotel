@@ -1,17 +1,11 @@
 ﻿using Hotel.Configuration.Exceptions;
-using Hotel.Configuration.Interfaces;
+using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
-using Hotel.UI.Wpf.MVVM.ValidationRules;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
-using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
@@ -44,7 +38,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             try
             {
                 _reservationManager.AddNewReservation(startDate, endDate,
-                    _adminInsertReservationViewModel.ReservedRoomCategory.CategoryId, _connectedUser.Id, _adminInsertReservationViewModel.FirstName
+                    _adminInsertReservationViewModel.ReservedRoomCategory.Id, _connectedUser.Id, _adminInsertReservationViewModel.FirstName
                     , _adminInsertReservationViewModel.LastName, _adminInsertReservationViewModel.Email, _adminInsertReservationViewModel.ReservationStatusType);
 
             }
@@ -62,8 +56,8 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             var areAllInputsFilledAndCorrect = _adminInsertReservationViewModel.StartDate != null && _adminInsertReservationViewModel.EndDate != null
                 && _adminInsertReservationViewModel.Email != null && _adminInsertReservationViewModel.FirstName != null
                 && _adminInsertReservationViewModel.LastName != null && _adminInsertReservationViewModel.ReservedRoomCategory != null
-                && !_adminInsertReservationViewModel.EmailHasError; 
-                var canExecute = base.CanExecute(parameter) && areAllInputsFilledAndCorrect;
+                && !_adminInsertReservationViewModel.EmailHasError;
+            var canExecute = base.CanExecute(parameter) && areAllInputsFilledAndCorrect;
             return canExecute;
         }
         private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)

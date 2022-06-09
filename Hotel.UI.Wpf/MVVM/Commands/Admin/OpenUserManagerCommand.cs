@@ -1,10 +1,5 @@
-﻿using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
-using Hotel.UI.Wpf.MVVM.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.UI.Wpf.MVVM.ViewModels;
+using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {

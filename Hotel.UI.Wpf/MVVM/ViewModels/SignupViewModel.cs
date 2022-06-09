@@ -1,12 +1,6 @@
 ﻿using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Stores;
-using MaterialDesignThemes.Wpf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels
@@ -14,13 +8,14 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
     public class SignupViewModel : ViewModelBase
     {
         private NavigationStore _navigationStore;
-        private readonly UserManager _loginManager = new UserManager();
+        private readonly UserManager _userManager;
 
-        public SignupViewModel(NavigationStore navigationStore)
+        public SignupViewModel(NavigationStore navigationStore, UserManager userManager)
         {
             _navigationStore = navigationStore;
+            _userManager = userManager;
             CancelSignUpCommand = new CancelSignUpCommand(_navigationStore);
-            CreateNewNormalUserCommand = new CreateNormalUserAccountCommand(_loginManager, this, _navigationStore);
+            CreateNewNormalUserCommand = new CreateNormalUserAccountCommand(_userManager, this, _navigationStore);
         }
         private string _firstName;
         public string FirstName

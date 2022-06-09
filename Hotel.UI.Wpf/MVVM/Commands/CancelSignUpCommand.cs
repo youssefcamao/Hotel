@@ -1,11 +1,6 @@
 ﻿using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.Commands
 {

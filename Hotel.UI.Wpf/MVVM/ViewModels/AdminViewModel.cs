@@ -1,4 +1,4 @@
-﻿using Hotel.Configuration.Interfaces;
+﻿using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
@@ -7,11 +7,6 @@ using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
 using Hotel.UI.Wpf.Ui_Helpers;
 using MaterialDesignThemes.Wpf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels
