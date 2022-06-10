@@ -10,6 +10,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         private IRoomCategory _roomCategory;
         private readonly UserManager _userManager;
         private HotelRoomsManager _hotelRoomsManager;
+        private readonly ReservationManager _reservationManager;
         private IUser _creationUser;
         private IRoom _reservationRoom;
         public IHotelReservation Reservation { get; }
@@ -27,18 +28,23 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             }
             set
             {
-                Reservation.ReservationStatus = value;
+                if (Reservation != null)
+                {
+                    _reservationManager.ChangeStatusOfReservation(Reservation, value);
+                }
                 OnPropertyChanged(nameof(Status));
                 OnPropertyChanged(nameof(IsRespondToReservationVisible));
             }
         }
         public string IsRespondToReservationVisible => Reservation.ReservationStatus == Configuration.Enums.ReservationStatus.Pending ? "Visible" : "Collapsed";
 
-        public AdminReservationItemViewModel(IHotelReservation reservation, UserManager userManager, HotelRoomsManager hotelRoomsManager)
+        public AdminReservationItemViewModel(IHotelReservation reservation, UserManager userManager, 
+            HotelRoomsManager hotelRoomsManager, ReservationManager reservationManager)
         {
             Reservation = reservation;
             _userManager = userManager;
             _hotelRoomsManager = hotelRoomsManager;
+            _reservationManager = reservationManager;
             InitiateCompnents();
         }
         private void InitiateCompnents()

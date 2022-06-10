@@ -53,7 +53,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             var reservations = _reservationManager.HotelRerservations;
             foreach (var reservation in reservations)
             {
-                Reservations.Add(new AdminReservationItemViewModel(reservation, _userManager, _hotelRoomsManager));
+                Reservations.Add(new AdminReservationItemViewModel(reservation, _userManager, _hotelRoomsManager, _reservationManager));
             }
         }
         private async void OnShowInsertReservationDialog(object _)

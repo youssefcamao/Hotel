@@ -56,7 +56,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Popups
             _reservationsViewModel.Clear();
             foreach (var reservation in filteredReservations)
             {
-                _reservationsViewModel.Add(new AdminReservationItemViewModel(reservation, _userManager, _hotelRoomManager));
+                _reservationsViewModel.Add(new AdminReservationItemViewModel(reservation, _userManager, _hotelRoomManager, _reservationManager));
             }
         }
     }

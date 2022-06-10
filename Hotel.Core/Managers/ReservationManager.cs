@@ -45,17 +45,14 @@ namespace Hotel.Core
         }
 
 
-        public void ChangeStatusOfReservation(IUser user, IHotelReservation reservation, ReservationStatus status)
+        public void ChangeStatusOfReservation(IHotelReservation reservation, ReservationStatus status)
         {
-            if (user.IsUserAdmin)
+            if (reservation == null)
             {
-                if (reservation == null)
-                {
-                    throw new ArgumentNullException(nameof(reservation));
-                }
-                reservation.ReservationStatus = status;
-                _reservationsRepo.UpdateModel(reservation);
+                throw new ArgumentNullException(nameof(reservation));
             }
+            reservation.ReservationStatus = status;
+            _reservationsRepo.UpdateModel(reservation);
         }
 
         public IRoom? GetFreeRoomFromRoomNumberOnTimePeriod(DateOnly startDate, DateOnly endDate, IRoomCategory category)

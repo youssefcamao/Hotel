@@ -12,10 +12,6 @@ namespace Hotel.Configuration.Models
             Email = email;
             IsUserAdmin = isAdmin;
         }
-        public User()
-        {
-
-        }
         public Guid Id { get; }
 
         public string FirstName { get; }
