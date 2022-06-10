@@ -9,8 +9,8 @@
              d:DesignHeight="850" d:DesignWidth="1200">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
@@ -18,12 +18,18 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Center" FontSize="24" 
+        <TextBlock HorizontalAlignment="Center" FontSize="24"
                    VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="User Management"/>
-        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Border BorderBrush="{StaticResource MaterialDesignFlatButtonRipple }" BorderThickness="1" 
-                    CornerRadius="20" Height="40">
-                <StackPanel Orientation="Horizontal" Width="400">
+                    CornerRadius="20" Height="40" Grid.Column="0">
+                <StackPanel Orientation="Horizontal" Width="auto">
                     <Button Style="{StaticResource MaterialDesignToolButton}">
                         <materialDesign:PackIcon
                                         Kind="Search"
@@ -40,33 +46,32 @@
                                     VerticalAlignment="Center"/>
                 </StackPanel>
             </Border>
-            <Border BorderBrush="{StaticResource MaterialDesignFlatButtonRipple }" BorderThickness="1" 
-                    CornerRadius="20" Height="40" Width="100" Margin="10,0,0,0">
+            <Border BorderBrush="{StaticResource MaterialDesignFlatButtonRipple}" BorderThickness="1" 
+                    CornerRadius="20" Height="40" Margin="10,0,0,0" Grid.Column="1">
                 <ComboBox materialDesign:HintAssist.Hint="Status" Margin="0,0,0,0" BorderThickness="0"
                               ItemsSource="{Binding AllReservationStatus}" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                               SelectedItem="{Binding ReservationChoosenStatusString}"
                               IsEnabled="{Binding IsStatusFilterOn}" Height="50">
-
                     <ComboBox.Style>
                         <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignOutlinedComboBox}">
                         </Style>
                     </ComboBox.Style>
                 </ComboBox>
             </Border>
-            <Button  Margin="10,0,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+            <Button  Margin="10,0,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" Grid.Column="2"
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="40" Width="150" 
                      materialDesign:ButtonAssist.CornerRadius="20" FontSize="14" FontWeight="Light" Content="+ Add Users"
                       HorizontalAlignment="Left"  Command="{Binding OpenInsertReservationDialog}"/>
-            <Button  Margin="10,0,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+            <Button  Margin="10,0,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" Grid.Column="3"
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="40" Width="150" Background="#F00E00" BorderBrush="#F00E00"
                      materialDesign:ButtonAssist.CornerRadius="20" FontSize="14" FontWeight="Light" Content="- Delete Selection"
                       HorizontalAlignment="Left"  Command="{Binding OpenInsertReservationDialog}"/>
-        </StackPanel>
+        </Grid>
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
             <DataGrid x:Name="ReservationDataGrid"  
                   AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="17 25 25 25"
-                  ItemsSource="{Binding Reservations,NotifyOnTargetUpdated=True}">
+                  ItemsSource="{Binding Users,NotifyOnTargetUpdated=True}">
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
                     <Setter Property="BorderThickness" Value="0"/>
@@ -91,17 +96,25 @@
                             </Style>
                         </DataGridCheckBoxColumn.HeaderStyle>
                     </DataGridCheckBoxColumn>
-                    <DataGridTextColumn Header="Name" Width="1.5*" FontWeight="DemiBold" IsReadOnly ="True"/>
-                    <DataGridTextColumn Header="Email" Width="1.5*" FontWeight="DemiBold" IsReadOnly ="True"/>
-                    <DataGridTextColumn Header="Role" Width="1.5*" FontWeight="DemiBold" IsReadOnly ="True"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="1.5*" FontWeight="DemiBold" IsReadOnly ="True"/>
+                    <DataGridTextColumn Binding="{Binding Email}" Header="Email" Width="1.5*" FontWeight="DemiBold" IsReadOnly ="True"/>
+                    <DataGridTextColumn Binding="{Binding UserRole}" Header="Role" Width="1.5*" FontWeight="DemiBold" IsReadOnly ="True"/>
                     <DataGridTemplateColumn IsReadOnly ="True" Width="200">
                         <DataGridTemplateColumn.Header>
                             <TextBlock Text="Actions"/>
                         </DataGridTemplateColumn.Header>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <StackPanel>
-                                    
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Style="{StaticResource MaterialDesignToolButton}">
+                                        <materialDesign:PackIcon Kind="CardAccountDetails" Margin="0,-6,0,0" Width="25" Foreground="Gray"/>
+                                    </Button>
+                                    <Button Style="{StaticResource MaterialDesignToolButton}">
+                                        <materialDesign:PackIcon Kind="LockReset" Margin="5,-6,0,0" Width="30" Foreground="Gray"/>
+                                    </Button>
+                                    <Button Style="{StaticResource MaterialDesignToolButton}">
+                                        <materialDesign:PackIcon Kind="AccountRemove" Margin="5,-6,0,0" Width="25" Foreground="#F00E00"/>
+                                    </Button>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
