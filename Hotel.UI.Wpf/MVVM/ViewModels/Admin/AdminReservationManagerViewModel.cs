@@ -8,6 +8,7 @@ using Hotel.UI.Wpf.MVVM.ViewModels.Popups;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
@@ -41,9 +42,17 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             DeclineReservationCommand = new DelegateCommand(OnDeclineReservation);
             OpenDeleteReservationConfirmationCommand = new DelegateCommand(OnOpenDeleteReservationConfiramtion);
             OpenShowDetailsCommand = new DelegateCommand(OnOpenShowDetailsDialog);
+            Reservations.CollectionChanged += Reservations_CollectionChanged;
         }
+
+        private void Reservations_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(NoDataAvailableMessageVisibility));
+        }
+
         public ObservableCollection<AdminReservationItemViewModel> Reservations { get; }
         public AdminReservationsFilterPopupViewModel AdminReservationsFilterPopupViewModel { get; }
+        public string NoDataAvailableMessageVisibility => Reservations.Count == 0 ? "Visible" : "Collapsed";
         internal void GetReservationsFromCore()
         {
             if (Reservations.Count != 0)

@@ -109,7 +109,8 @@
                     </StackPanel>
                 </Grid>
             </materialDesign:PopupBox>
-            <DataGrid x:Name="ReservationDataGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" 
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+            <DataGrid x:Name="ReservationDataGrid"  
                   AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="17 25 25 25"
                   ItemsSource="{Binding Reservations,NotifyOnTargetUpdated=True}">
@@ -191,6 +192,9 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+            <TextBlock Text="No Reservation Was Found !" FontSize="20" FontWeight="SemiBold" 
+                       HorizontalAlignment="Center" Margin="0,20,0,0" Visibility="{Binding NoDataAvailableMessageVisibility}"/>
+            </StackPanel>
         </Grid>
     </materialDesign:DialogHost>
 </UserControl>
