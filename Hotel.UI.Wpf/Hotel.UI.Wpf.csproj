@@ -13,6 +13,7 @@
     <None Remove="Fonts\Signika-SemiBold.ttf" />
     <None Remove="Theme\hotel-logo.png" />
     <None Remove="Theme\SmallYRLogo.png" />
+    <None Remove="Theme\workInProgress.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +30,7 @@
     <Resource Include="Fonts\Signika-SemiBold.ttf" />
     <Resource Include="Theme\hotel-logo.png" />
     <Resource Include="Theme\SmallYRLogo.png" />
+    <Resource Include="Theme\workInProgress.png" />
   </ItemGroup>
 
 </Project>

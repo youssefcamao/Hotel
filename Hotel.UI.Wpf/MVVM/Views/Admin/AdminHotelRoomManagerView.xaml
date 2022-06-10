@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Hotel.UI.Wpf.MVVM.Views.Admin"
              mc:Ignorable="d" 
              d:DesignHeight="850" d:DesignWidth="1200">
-    <Grid Background="GreenYellow">
-            
-    </Grid>
+    <StackPanel VerticalAlignment="Center">
+        <Image Source="/Theme/workInprogress.png" Height="400" Stretch="Uniform" 
+                    Width="400" Margin="0,-80,0,0"/>
+    </StackPanel>
 </UserControl>
