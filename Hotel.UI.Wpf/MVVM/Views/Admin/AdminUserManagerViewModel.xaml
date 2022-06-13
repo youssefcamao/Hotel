@@ -50,11 +50,11 @@
                 </ComboBox>
             </Border>
             <Button  Margin="10,0,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" Grid.Column="2"
-                     materialDesign:ShadowAssist.ShadowDepth="Depth2" Height="40" Width="100" 
+                     materialDesign:ShadowAssist.ShadowDepth="Depth1" Height="40" Width="100" 
                      materialDesign:ButtonAssist.CornerRadius="20" FontSize="14" FontWeight="Medium" Content="+ Add Users"
                       HorizontalAlignment="Left"  Command="{Binding OpenInsertReservationDialog}"/>
             <Button  Margin="10,0,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" Grid.Column="3"
-                     materialDesign:ShadowAssist.ShadowDepth="Depth2" Height="40" Width="150" Background="#F00E00" BorderBrush="#F00E00"
+                     materialDesign:ShadowAssist.ShadowDepth="Depth1" Height="40" Width="150" Background="#F00E00" BorderBrush="#F00E00"
                      materialDesign:ButtonAssist.CornerRadius="20" FontSize="14" FontWeight="Medium" Content="- Delete Selection"
                       HorizontalAlignment="Left"  Command="{Binding OpenInsertReservationDialog}"/>
         </Grid>
