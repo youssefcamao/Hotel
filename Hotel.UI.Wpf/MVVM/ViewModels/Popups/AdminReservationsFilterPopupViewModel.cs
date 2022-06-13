@@ -5,6 +5,7 @@ using Hotel.UI.Wpf.MVVM.Commands.Popups;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 
@@ -234,5 +235,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
         }
 
         public ICommand SaveFilterCommand { get; }
+
     }
 }

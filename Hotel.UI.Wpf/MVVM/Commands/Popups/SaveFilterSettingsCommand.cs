@@ -29,7 +29,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Popups
         {
             var reservationSearchHelper = new ReservationSearchHelper(_hotelRoomManager);
             var reservationFilterdList = new List<IHotelReservation>(_reservationManager.HotelRerservations);
-            if (_parentviewModel.IsNameFilterOn)
+            if (_parentviewModel.IsNameFilterOn && !string.IsNullOrEmpty(_parentviewModel.Name))
             {
                 reservationFilterdList = reservationSearchHelper.GetReservationsFromName(reservationFilterdList, _parentviewModel.Name);
             }
@@ -37,11 +37,11 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Popups
             {
                 reservationFilterdList = reservationSearchHelper.GetReservationsFromPriceRange(reservationFilterdList, _parentviewModel.MinPrice, _parentviewModel.MaxPrice);
             }
-            if (_parentviewModel.IsRoomTypeFilterOn)
+            if (_parentviewModel.IsRoomTypeFilterOn && _parentviewModel.ReservedRoomCategory != null)
             {
                 reservationFilterdList = reservationSearchHelper.GetReservationFromRoomType(reservationFilterdList, _parentviewModel.ReservedRoomCategory);
             }
-            if (_parentviewModel.IsStatusFilterOn)
+            if (_parentviewModel.IsStatusFilterOn && _parentviewModel.ReservationStatusType != null)
             {
                 reservationFilterdList = reservationSearchHelper.GetReservationsFromStatus(reservationFilterdList, _parentviewModel.ReservationStatusType.Value);
             }
