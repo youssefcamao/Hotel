@@ -46,6 +46,28 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
                 }
             }
         }
+        public bool? IsAllUsersSelected
+        {
+            get
+            {
+                var selected = Users.Select(item => item.IsSelected).Distinct().ToList();
+                return selected.Count == 1 ? selected.Single() : (bool?)null;
+            }
+            set
+            {
+                if (value.HasValue)
+                {
+                    SelectAll(value.Value);
+                }
+            }
+        }
+        private void SelectAll(bool select)
+        {
+            foreach (var user in Users)
+            {
+                user.IsSelected = select;
+            }
+        }
         public ObservableCollection<string> AllFilters => new ObservableCollection<string> { "All", "Admin", "User" };
         public string NoDataAvailableMessageVisibility => Users.Count == 0 ? "Visible" : "Collapsed";
         private string _selectedFilter = "All";

@@ -63,7 +63,7 @@
                     <TextBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"
                     materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFilledTextBox}"
                     Text="{Binding Name}" IsEnabled="{Binding IsNameFilterOn}"/>
-                    <CheckBox Grid.Column="1" Grid.Row="1" Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                    <ToggleButton Grid.Column="1" Grid.Row="1" 
                     VerticalAlignment="Center" IsChecked="{Binding IsNameFilterOn, Mode=TwoWay}"/>
                     <TextBox Grid.Column="2" Grid.Row="2" Style="{StaticResource MaterialDesignFilledTextBox}"
                     materialDesign:HintAssist.Hint="MinPrice"
@@ -71,22 +71,22 @@
                     <TextBox Grid.Column="3" Grid.Row="2" Style="{StaticResource MaterialDesignFilledTextBox}"
                     materialDesign:HintAssist.Hint="MaxPrice"
                     Text="{Binding MaxPrice, TargetNullValue=''}" IsEnabled="{Binding IsPriceFilterON}"/>
-                    <CheckBox Grid.Column="1" Grid.Row="2"
-                    IsChecked="{Binding IsPriceFilterON, Mode=TwoWay}" Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                    <ToggleButton Grid.Column="1" Grid.Row="2"
+                    IsChecked="{Binding IsPriceFilterON, Mode=TwoWay}"
                     VerticalAlignment="Center"/>
                     <ComboBox materialDesign:HintAssist.Hint="Status"
                               Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" ItemsSource="{Binding AllReservationStatus}" 
                               SelectedItem="{Binding ReservationChoosenStatusString}" Style="{StaticResource MaterialDesignFilledComboBox}"
                               IsEnabled="{Binding IsStatusFilterOn}"/>
-                    <CheckBox Grid.Column="1" Grid.Row="3" IsChecked="{Binding IsStatusFilterOn, Mode=TwoWay}"
-                    VerticalAlignment="Center" Style="{StaticResource MaterialDesignFilterChipCheckBox}"/>
+                    <ToggleButton Grid.Column="1" Grid.Row="3" IsChecked="{Binding IsStatusFilterOn, Mode=TwoWay}"
+                    VerticalAlignment="Center"/>
                     <ComboBox materialDesign:HintAssist.Hint="Room Type"
                               ItemsSource="{Binding AllCategories}" 
                               SelectedItem="{Binding ReserverdRoomCategoryName}" 
                               IsEnabled="{Binding IsRoomTypeFilterOn}"
                               Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Style="{StaticResource MaterialDesignFilledComboBox}"/>
-                    <CheckBox Grid.Column="1" Grid.Row="4" IsChecked="{Binding IsRoomTypeFilterOn, Mode=TwoWay}"
-                    VerticalAlignment="Center" Style="{StaticResource MaterialDesignFilterChipCheckBox}"/>
+                    <ToggleButton Grid.Column="1" Grid.Row="4" IsChecked="{Binding IsRoomTypeFilterOn, Mode=TwoWay}"
+                    VerticalAlignment="Center"/>
                     <DatePicker x:Name="StartDatePicker" materialDesign:HintAssist.Hint="Start Date"
                             Grid.Row="5" Grid.Column="2" SelectedDate="{Binding ChoosenStartDateString}"
                             Style="{StaticResource MaterialDesignFilledDatePicker}" IsEnabled="{Binding IsDateFilterOn}">
@@ -96,8 +96,8 @@
                         IsEnabled="{Binding IsDateFilterOn}"
                                 Style="{StaticResource MaterialDesignFilledDatePicker}"
                                 CalendarOpened="EndData_CalendarOpened"></DatePicker>
-                    <CheckBox Grid.Column="1" Grid.Row="5" IsChecked="{Binding IsDateFilterOn, Mode=TwoWay}"
-                    VerticalAlignment="Center" Style="{StaticResource MaterialDesignFilterChipCheckBox}"/>
+                    <ToggleButton Grid.Column="1" Grid.Row="5" IsChecked="{Binding IsDateFilterOn, Mode=TwoWay}"
+                    VerticalAlignment="Center"/>
                     <StackPanel Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">

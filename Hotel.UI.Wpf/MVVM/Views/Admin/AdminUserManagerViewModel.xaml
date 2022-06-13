@@ -77,7 +77,7 @@
                         <DataGridCheckBoxColumn.Header>
                             <Border Background="Transparent">
                                 <CheckBox
-                                    IsChecked="{Binding Data.IsAllItems1Selected}"/>
+                                    IsChecked="{Binding Path=DataContext.IsAllUsersSelected ,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"/>
                             </Border>
                         </DataGridCheckBoxColumn.Header>
 

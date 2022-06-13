@@ -22,5 +22,18 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager
         public string Name => User.FirstName + " " + User.LastName;
         public string Email => User.Email;
         public string UserRole => User.IsUserAdmin ? "Admin" : "User";
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get
+            {
+                return _isSelected;
+            }
+            set
+            {
+                _isSelected = value;
+                OnPropertyChanged(nameof(IsSelected));
+            }
+        }
     }
 }
