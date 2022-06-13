@@ -9,7 +9,7 @@ namespace Hotel.UI.Wpf.Ui_Helpers
         {
             var firstName = NamingHelper.FixNameFormat(user.FirstName);
             var lastName = NamingHelper.FixNameFormat(user.LastName);
-            var userRole = user.IsUserAdmin ? "Admin" : "NormalUser";
+            var userRole = user.IsUserAdmin ? "Admin" : "User";
             return $"{userRole}/{firstName} {lastName}";
         }
     }
