@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hotel.UI.Wpf.MVVM.Views.Admin"
              mc:Ignorable="d" 
@@ -30,11 +31,9 @@
             <Border BorderBrush="{StaticResource MaterialDesignFlatButtonRipple }" BorderThickness="1" 
                     CornerRadius="20" Height="40" Grid.Column="0">
                 <StackPanel Orientation="Horizontal" Width="auto">
-                    <Button Style="{StaticResource MaterialDesignToolButton}">
-                        <materialDesign:PackIcon Kind="Search" Opacity=".56"/>
-                    </Button>
+                    <materialDesign:PackIcon Kind="Search" Opacity=".56" Margin="5,5,0,0"/>
                     <TextBox Grid.Column="1" Margin="8 0 0 0"
-                             materialDesign:HintAssist.Hint="Search Users" 
+                             materialDesign:HintAssist.Hint="Search Users" Text="{Binding SearchContent,UpdateSourceTrigger=PropertyChanged}"
                              materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
                              MinWidth="200" VerticalAlignment="Center"/>
                 </StackPanel>
@@ -51,11 +50,11 @@
                 </ComboBox>
             </Border>
             <Button  Margin="10,0,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" Grid.Column="2"
-                     materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="40" Width="100" 
+                     materialDesign:ShadowAssist.ShadowDepth="Depth2" Height="40" Width="100" 
                      materialDesign:ButtonAssist.CornerRadius="20" FontSize="14" FontWeight="Medium" Content="+ Add Users"
                       HorizontalAlignment="Left"  Command="{Binding OpenInsertReservationDialog}"/>
             <Button  Margin="10,0,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" Grid.Column="3"
-                     materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="40" Width="150" Background="#F00E00" BorderBrush="#F00E00"
+                     materialDesign:ShadowAssist.ShadowDepth="Depth2" Height="40" Width="150" Background="#F00E00" BorderBrush="#F00E00"
                      materialDesign:ButtonAssist.CornerRadius="20" FontSize="14" FontWeight="Medium" Content="- Delete Selection"
                       HorizontalAlignment="Left"  Command="{Binding OpenInsertReservationDialog}"/>
         </Grid>

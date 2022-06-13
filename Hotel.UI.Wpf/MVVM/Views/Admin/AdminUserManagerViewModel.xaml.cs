@@ -11,5 +11,6 @@ namespace Hotel.UI.Wpf.MVVM.Views.Admin
         {
             InitializeComponent();
         }
+
     }
 }

@@ -9,7 +9,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager
 {
     public class AdminUserItemViewModel : ViewModelBase
     {
-        private readonly IUser _user;
+        public IUser User { get; }
 
         public AdminUserItemViewModel(IUser user)
         {
@@ -17,10 +17,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager
             {
                 throw new ArgumentNullException(nameof(user));
             }
-            _user = user;
+            User = user;
         }
-        public string Name => _user.FirstName + " " + _user.LastName;
-        public string Email => _user.Email;
-        public string UserRole => _user.IsUserAdmin ? "Admin" : "User";
+        public string Name => User.FirstName + " " + User.LastName;
+        public string Email => User.Email;
+        public string UserRole => User.IsUserAdmin ? "Admin" : "User";
     }
 }
