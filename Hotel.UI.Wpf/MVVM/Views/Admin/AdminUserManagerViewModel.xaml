@@ -28,7 +28,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="{StaticResource MaterialDesignFlatButtonRipple }" BorderThickness="1" 
+            <Border BorderBrush="{StaticResource MaterialDesignFlatButtonRipple }" BorderThickness="2" 
                     CornerRadius="20" Height="40" Grid.Column="0">
                 <StackPanel Orientation="Horizontal" Width="auto">
                     <materialDesign:PackIcon Kind="Search" Opacity=".56" Margin="5,5,0,0"/>
@@ -38,7 +38,7 @@
                              MinWidth="200" VerticalAlignment="Center"/>
                 </StackPanel>
             </Border>
-            <Border BorderBrush="{StaticResource MaterialDesignFlatButtonRipple}" BorderThickness="1" 
+            <Border BorderBrush="{StaticResource MaterialDesignFlatButtonRipple}" BorderThickness="2" 
                     CornerRadius="20" Height="40" Margin="10,0,0,0" Grid.Column="1">
                 <ComboBox Margin="0,-9,0,0" Background="{x:Null}" 
                               ItemsSource="{Binding AllFilters}" 
@@ -62,10 +62,10 @@
             <DataGrid x:Name="ReservationDataGrid" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   AutoGenerateColumns="False"
                   materialDesign:DataGridAssist.CellPadding="17 25 25 25"
-                  ItemsSource="{Binding Users,NotifyOnTargetUpdated=True}">
+                  ItemsSource="{Binding Users,NotifyOnTargetUpdated=True}" >
             <DataGrid.CellStyle>
-                <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                        <Setter Property="BorderThickness" Value="0"/>
                     <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                 </Style>
             </DataGrid.CellStyle>
@@ -98,13 +98,13 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Button Style="{StaticResource MaterialDesignToolButton}">
-                                        <materialDesign:PackIcon Kind="CardAccountDetails" Margin="0,-6,0,0" Width="25" Foreground="Gray"/>
+                                        <materialDesign:PackIcon Kind="SquareEditOutline" Margin="0,-6,0,0" Width="25" Foreground="Gray"/>
                                     </Button>
                                     <Button Style="{StaticResource MaterialDesignToolButton}">
-                                        <materialDesign:PackIcon Kind="LockReset" Margin="5,-6,0,0" Width="25" Foreground="Gray"/>
+                                        <materialDesign:PackIcon Kind="LockReset" Margin="0,-6,0,0" Width="25" Foreground="Gray"/>
                                     </Button>
                                     <Button Style="{StaticResource MaterialDesignToolButton}">
-                                        <materialDesign:PackIcon Kind="AccountRemove" Margin="5,-6,0,0" Width="25" Foreground="#F00E00"/>
+                                        <materialDesign:PackIcon Kind="AccountRemove" Margin="0,-6,0,0" Width="25" Foreground="#F00E00"/>
                                     </Button>
                                 </StackPanel>
                             </DataTemplate>
