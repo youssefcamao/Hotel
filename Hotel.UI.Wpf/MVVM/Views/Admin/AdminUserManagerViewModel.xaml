@@ -112,6 +112,8 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+            <TextBlock Text="No User Was Found !" FontSize="20" FontWeight="SemiBold" 
+                       HorizontalAlignment="Center" Margin="0,20,0,0" Visibility="{Binding NoDataAvailableMessageVisibility}"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -12,15 +12,24 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
     public class AdminUserManagerViewModel : ViewModelBase
     {
         private readonly UserManager _userManager;
+        private readonly IUser _connectedUser;
         private IList<IUser> _usersViewedList;
 
-        public AdminUserManagerViewModel(UserManager userManager)
+        public AdminUserManagerViewModel(UserManager userManager, IUser connectedUser)
         {
             _userManager = userManager;
+            _connectedUser = connectedUser;
             Users = new ObservableCollection<AdminUserItemViewModel>();
             _usersViewedList = _userManager.UsersList;
             FillViewUsersFromList(_usersViewedList);
+            Users.CollectionChanged += Users_CollectionChanged;
         }
+
+        private void Users_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(NoDataAvailableMessageVisibility));
+        }
+
         public ObservableCollection<AdminUserItemViewModel> Users { get; }
         internal void FillViewUsersFromList(IEnumerable<IUser> usersList)
         {
@@ -31,10 +40,14 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             var users = usersList;
             foreach (var user in users)
             {
+                if (user.Id != _connectedUser.Id)
+                {
                 Users.Add(new AdminUserItemViewModel(user));
+                }
             }
         }
         public ObservableCollection<string> AllFilters => new ObservableCollection<string> { "All", "Admin", "User" };
+        public string NoDataAvailableMessageVisibility => Users.Count == 0 ? "Visible" : "Collapsed";
         private string _selectedFilter = "All";
         public string SelectedFilter
         {
