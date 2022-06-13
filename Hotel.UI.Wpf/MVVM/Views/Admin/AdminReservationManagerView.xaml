@@ -31,7 +31,7 @@
                    VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="Reservations"/>
             <Button  Margin="0,20,0,0" Style="{StaticResource MaterialDesignFlatMidBgButton}" 
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="40" Width="150" 
-                     materialDesign:ButtonAssist.CornerRadius="10" FontSize="14" FontWeight="Light" Content="+ Add Reservation"
+                     materialDesign:ButtonAssist.CornerRadius="10" FontSize="14" FontWeight="Medium" Content="+ Add Reservation"
                      Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding OpenInsertReservationDialog}"/>
             <materialDesign:PopupBox Grid.Column="2" Grid.Row="0"
             StaysOpen="True" Margin="0,30,0,0" HorizontalContentAlignment="Center" 
