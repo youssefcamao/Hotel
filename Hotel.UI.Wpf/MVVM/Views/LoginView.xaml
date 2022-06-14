@@ -51,7 +51,7 @@
             <TextBlock Text="YR Technology" FontFamily="LogoFontBold" FontSize="20" FontWeight="SemiBold"/>
         </StackPanel>
         <materialDesign:Snackbar MessageQueue="{Binding BoundMessageQueue}" 
-                     x:Name="Snackbar"
+                     x:Name="Snackbar" Grid.Row="4"
                      HorizontalAlignment="Stretch" Height="50"/>
     </Grid>
 

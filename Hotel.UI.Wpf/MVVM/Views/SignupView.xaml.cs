@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Hotel.Core;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Hotel.UI.Wpf.MVVM.Views
@@ -12,19 +13,21 @@ namespace Hotel.UI.Wpf.MVVM.Views
         {
             InitializeComponent();
         }
-        public string Password
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            get { return (string)GetValue(PasswordProperty); }
-            set { SetValue(PasswordProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Password.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty PasswordProperty =
-            DependencyProperty.Register("Password", typeof(string), typeof(SignupView), new PropertyMetadata(string.Empty));
-
-        private void PasswordContainer_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            Password = PasswordContainer.Password;
+            if (this.DataContext != null)
+            {
+                var passwordCheckService = new PasswordCheckService();
+                var password = ((PasswordBox)sender).Password;
+                if (passwordCheckService.CheckIfValid(password))
+                {
+                    ((dynamic)this.DataContext).Password = password;
+                }
+                else
+                {
+                    ((dynamic)this.DataContext).Password = null;
+                }
+            }
         }
     }
 }

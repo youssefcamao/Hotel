@@ -3,7 +3,7 @@
 	@FirstName nvarchar(30),
 	@LastName nvarchar(30),
 	@Email nvarchar(30),
-	@Password nvarchar(50) null,
+	@Password nvarchar(50),
 	@IsUserAdmin Bit
     
 AS

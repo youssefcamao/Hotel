@@ -36,7 +36,7 @@
                 <views:UserView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type vms:SignupViewModel}">
-                <views:SignupView Password="{Binding Password, Mode=OneWayToSource}"/>
+                <views:SignupView/>
             </DataTemplate>
         </Grid.Resources>
         <Grid.RowDefinitions>
