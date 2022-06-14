@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hotel.Core;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Hotel.UI.Wpf.MVVM.Views.Dialogs
 {
@@ -23,6 +12,27 @@ namespace Hotel.UI.Wpf.MVVM.Views.Dialogs
         public AdminChangePasswordDialogView()
         {
             InitializeComponent();
+        }
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null)
+            {
+                var passwordCheckService = new PasswordCheckService();
+                var password = ((PasswordBox)sender).Password;
+                if (passwordCheckService.CheckIfValid(password))
+                {
+                    ((dynamic)this.DataContext).NewPassword = password;
+                }
+                else
+                {
+                    ((dynamic)this.DataContext).NewPassword = null;
+                }
+            }
+        }
+        private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null)
+            { ((dynamic)this.DataContext).ConfirmedPassword = ((PasswordBox)sender).Password; }
         }
     }
 }

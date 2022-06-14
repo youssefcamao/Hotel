@@ -145,9 +145,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         {
             await DialogHost.Show(new AdminAddNewUserDialogViewModel(_userManager, this), _dialogHostId);
         }
-        private async void OnShowChangePasswordDialog(object _)
+        private async void OnShowChangePasswordDialog(object param)
         {
-            await DialogHost.Show(new AdminChangeUserPassViewModel(), _dialogHostId);
+            await DialogHost.Show(new AdminChangeUserPassViewModel(param, _userManager, this), _dialogHostId);
         }
         private async void OnShowEditUseDetailsDialog(object param)
         {

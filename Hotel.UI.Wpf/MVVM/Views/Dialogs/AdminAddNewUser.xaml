@@ -29,8 +29,16 @@
             </TextBox>
         <PasswordBox Margin="0,25,0,0" x:Name="PasswordContainer" Width="300" FontSize="12"
                              materialDesign:HintAssist.Hint="Password" BorderThickness="2" 
-                             BorderBrush="{DynamicResource MaterialDesignDivider}" 
-                             Style="{StaticResource MaterialDesignOutlinedPasswordBox}" PasswordChanged="PasswordBox_PasswordChanged"/>
+                             BorderBrush="{DynamicResource MaterialDesignDivider}"
+                             Style="{StaticResource MaterialDesignOutlinedPasswordBox}" PasswordChanged="PasswordBox_PasswordChanged">
+            <PasswordBox.Tag>
+                <Binding Path="Password" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <vr:PasswordValidationRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </PasswordBox.Tag>
+        </PasswordBox>
         <ComboBox materialDesign:HintAssist.Hint="User Role" Width="300" BorderBrush="{DynamicResource MaterialDesignDivider}"
                           ItemsSource="{Binding UserRole}" Margin="0,25,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth0"
                   SelectedItem="{Binding SelectedRole}" Style="{StaticResource MaterialDesignOutlinedComboBox}"></ComboBox>

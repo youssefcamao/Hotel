@@ -31,7 +31,6 @@
                          Tag="{Binding UserPassword}" materialDesign:ValidationAssist.FontSize="13">
                 <PasswordBox.Style>
                     <Style TargetType="PasswordBox" BasedOn="{StaticResource MaterialDesignOutlinedPasswordBox}">
-
                     </Style>
                 </PasswordBox.Style>
             </PasswordBox>
