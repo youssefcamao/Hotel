@@ -24,6 +24,8 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         }
         public override void Execute(object? parameter)
         {
+            
+            
             if (_parentViewModel.IsUserAdmin == null)
             {
                 throw new ArgumentNullException(nameof(_parentViewModel.IsUserAdmin));

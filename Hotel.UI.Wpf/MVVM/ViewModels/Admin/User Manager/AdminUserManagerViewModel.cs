@@ -1,6 +1,7 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Commands;
+using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
 using MaterialDesignThemes.Wpf;
@@ -31,6 +32,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             OpenAddNewUserDialogCommand = new DelegateCommand(OnShowAddUserDialog);
             OpenChangeUserPasswordDialogCommand = new DelegateCommand(OnShowChangePasswordDialog);
             OpenEditUserDetailsDialogCommand = new DelegateCommand(OnShowEditUseDetailsDialog);
+            OpenDeleteUserConfirmationDialog = new DelegateCommand(OnOpenDeleteReservationConfiramtion);
         }
 
         private void Users_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -153,8 +155,13 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         {
             await DialogHost.Show(new AdminEditUserDetailsViewModel(param, _userRoles, _userManager, this), _dialogHostId);
         }
+        private async void OnOpenDeleteReservationConfiramtion(object paramater)
+        {
+            await DialogHost.Show(new ConfirmationDialogViewModel("Are You Sure You Want To Delete this User ?", new AdminDeleteUserCommand(_userManager, paramater, this)), _dialogHostId);
+        }
         public ICommand OpenAddNewUserDialogCommand { get; }
         public ICommand OpenChangeUserPasswordDialogCommand { get; }
         public ICommand OpenEditUserDetailsDialogCommand { get; }
+        public ICommand OpenDeleteUserConfirmationDialog { get; }
     }
 }

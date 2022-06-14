@@ -106,7 +106,7 @@
                                             RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}">
                                         <materialDesign:PackIcon Kind="LockReset" Margin="0,-6,0,0" Width="25" Foreground="Gray"/>
                                     </Button>
-                                        <Button Style="{StaticResource MaterialDesignToolButton}" Command="{Binding Path=DataContext.AcceptReservationCommand,
+                                        <Button Style="{StaticResource MaterialDesignToolButton}" Command="{Binding Path=DataContext.OpenDeleteUserConfirmationDialog,
                                             RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}">
                                         <materialDesign:PackIcon Kind="AccountRemove" Margin="0,-6,0,0" Width="25" Foreground="#F00E00"/>
                                     </Button>

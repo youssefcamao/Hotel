@@ -35,8 +35,8 @@ namespace Hotel.Core
             {
                 throw new ArgumentNullException(nameof(user));
             }
-            user.FirstName = firstName;
-            user.LastName = lastName;
+            user.FirstName = NamingHelper.FixNameFormat(firstName);
+            user.LastName = NamingHelper.FixNameFormat(lastName);
             user.Email = email;
             user.IsUserAdmin = isUserAdmin;
             _userRepository.UpdateModel(user,password);

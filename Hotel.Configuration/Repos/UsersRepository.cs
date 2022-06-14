@@ -37,7 +37,7 @@ namespace Hotel.Configuration.Repos
         }
 
         public void DeleteModel(IUser model) =>
-            _dataAccess.SaveData("DeleteUser", model);
+            _dataAccess.SaveData("DeleteUser", new { UserId = model.Id});
         
 
         public IList<IUser> GetAll()
