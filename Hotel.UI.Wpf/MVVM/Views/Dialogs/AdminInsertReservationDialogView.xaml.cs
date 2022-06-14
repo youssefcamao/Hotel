@@ -46,11 +46,10 @@ namespace Hotel.UI.Wpf.MVVM.Views.Dialogs
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void EmailBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var hasError = Validation.GetHasError(EmailBox);
             HasEmailError = hasError;
-
         }
     }
 }

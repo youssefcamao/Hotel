@@ -1,6 +1,7 @@
 ﻿using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
+using Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,15 +12,30 @@ using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
 {
-    public class AdminAddNewUserDialogViewModel : ViewModelBase
+    public class AdminEditUserDetailsViewModel : ViewModelBase
     {
-        public AdminAddNewUserDialogViewModel(UserManager userManager, AdminUserManagerViewModel adminUserManagerViewModel)
+        public AdminEditUserDetailsViewModel(Object param, ObservableCollection<string> userRoles,
+            UserManager userManager, AdminUserManagerViewModel adminUserManagerViewModel)
         {
-            _userManager = userManager;
-            _adminUserManagerViewModel = adminUserManagerViewModel;
-            UserRole = new ObservableCollection<string> { "Admin", "User" };
-            AddNewUserCommand = new AddNewUserCommand(_userManager, this, _adminUserManagerViewModel);
-        }
+            if (param is AdminUserItemViewModel adminUserItemViewModel)
+            {
+                AdminUserItemViewModel = adminUserItemViewModel;
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(param));
+            }
+           if (AdminUserItemViewModel.User == null)
+            {
+                throw new ArgumentNullException(nameof(AdminUserItemViewModel.User));
+            }
+            _firstName = AdminUserItemViewModel.User.FirstName;
+            _lastName = AdminUserItemViewModel.User.LastName;
+            _email = AdminUserItemViewModel.User.Email;
+            UserRoleCollection = userRoles;
+            IsUserAdmin = AdminUserItemViewModel.User.IsUserAdmin;
+            SaveChangesCommand = new AdminSaveNewUsersEditedChangesCommand(userManager, this, adminUserManagerViewModel, adminUserItemViewModel);
+    }
         private string _firstName;
         public string FirstName
         {
@@ -47,6 +63,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
         private string _email;
+
         public string Email
         {
             get
@@ -59,25 +76,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(Email));
             }
         }
-        private string _password;
-        private readonly UserManager _userManager;
-        private readonly AdminUserManagerViewModel _adminUserManagerViewModel;
-
-        public string Password
-        {
-            get
-            {
-                return _password;
-            }
-            set
-            {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
-            }
-        }
-        public ObservableCollection<string> UserRole { get; }
         public bool? IsUserAdmin { get; set; }
-        public string SelectedRole
+        public string UserRole
         {
             get
             {
@@ -87,7 +87,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                         return "Admin";
                     case false:
                         return "User";
-                    default: 
+                    default:
                         return null;
                 }
             }
@@ -99,15 +99,17 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                         IsUserAdmin = true;
                         break;
                     case "User":
-                        IsUserAdmin= false;
+                        IsUserAdmin = false;
                         break;
                     default:
                         IsUserAdmin = null;
                         break;
                 }
-                OnPropertyChanged(nameof(SelectedRole));
+                OnPropertyChanged(nameof(UserRole));
             }
         }
-        public ICommand AddNewUserCommand { get; }
+        public AdminUserItemViewModel AdminUserItemViewModel { get; }
+        public ObservableCollection<string> UserRoleCollection { get; } = new ObservableCollection<string>();
+        public ICommand SaveChangesCommand { get; }
     }
 }

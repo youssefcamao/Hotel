@@ -17,6 +17,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         private readonly UserManager _userManager;
         private readonly IUser _connectedUser;
         private IList<IUser> _usersViewedList;
+        private readonly ObservableCollection<string> _userRoles = new ObservableCollection<string> { "Admin", "User"};
         private readonly string _dialogHostId = "UserManagerDialog";
 
         public AdminUserManagerViewModel(UserManager userManager, IUser connectedUser)
@@ -29,6 +30,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             Users.CollectionChanged += Users_CollectionChanged;
             OpenAddNewUserDialogCommand = new DelegateCommand(OnShowAddUserDialog);
             OpenChangeUserPasswordDialogCommand = new DelegateCommand(OnShowChangePasswordDialog);
+            OpenEditUserDetailsDialogCommand = new DelegateCommand(OnShowEditUseDetailsDialog);
         }
 
         private void Users_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -141,13 +143,18 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         }
         private async void OnShowAddUserDialog(object _)
         {
-            await DialogHost.Show(new AdminAddNewUserDialogViewModel(), _dialogHostId);
+            await DialogHost.Show(new AdminAddNewUserDialogViewModel(_userManager, this), _dialogHostId);
         }
         private async void OnShowChangePasswordDialog(object _)
         {
             await DialogHost.Show(new AdminChangeUserPassViewModel(), _dialogHostId);
         }
+        private async void OnShowEditUseDetailsDialog(object param)
+        {
+            await DialogHost.Show(new AdminEditUserDetailsViewModel(param, _userRoles, _userManager, this), _dialogHostId);
+        }
         public ICommand OpenAddNewUserDialogCommand { get; }
         public ICommand OpenChangeUserPasswordDialogCommand { get; }
+        public ICommand OpenEditUserDetailsDialogCommand { get; }
     }
 }

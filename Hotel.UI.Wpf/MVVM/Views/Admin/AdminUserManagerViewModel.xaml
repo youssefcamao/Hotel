@@ -8,7 +8,7 @@
              xmlns:local="clr-namespace:Hotel.UI.Wpf.MVVM.Views.Admin"
              mc:Ignorable="d" 
              d:DesignHeight="850" d:DesignWidth="1200">
-    <materialDesign:DialogHost DialogTheme="Inherit" x:Name="UserMangerDialog" Identifier="UserManagerDialog">
+    <materialDesign:DialogHost DialogTheme="Inherit" x:Name="UserMangerDialog" Identifier="UserManagerDialog" OverlayBackground="Transparent">
         <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
@@ -98,7 +98,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource MaterialDesignToolButton}" Command="{Binding Path=DataContext.AcceptReservationCommand,
+                                        <Button Style="{StaticResource MaterialDesignToolButton}" Command="{Binding Path=DataContext.OpenEditUserDetailsDialogCommand,
                                             RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}">
                                         <materialDesign:PackIcon Kind="SquareEditOutline" Margin="0,-6,0,0" Width="25" Foreground="Gray"/>
                                     </Button>

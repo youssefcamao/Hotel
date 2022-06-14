@@ -14,13 +14,13 @@ namespace Hotel.Configuration.Models
         }
         public Guid Id { get; }
 
-        public string FirstName { get; }
+        public string FirstName { get; set; }
 
-        public string LastName { get; }
+        public string LastName { get; set; }
 
-        public string Email { get; }
+        public string Email { get; set; }
 
-        public bool IsUserAdmin { get; }
+        public bool IsUserAdmin { get; set; }
 
     }
 }

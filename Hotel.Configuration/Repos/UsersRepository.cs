@@ -31,7 +31,7 @@ namespace Hotel.Configuration.Repos
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                UserPassword = password,
+                Password = password,
                 IsUserAdmin = model.IsUserAdmin
             });
         }
@@ -62,9 +62,17 @@ namespace Hotel.Configuration.Repos
             return user.FirstOrDefault();
         }
 
-        public void UpdateModel(IUser model) 
+        public void UpdateModel(IUser model, string? password) 
         {
-            _dataAccess.SaveData("DeleteUser", model);
+            _dataAccess.SaveData("UpdateUsers", new 
+            {
+                Id = model.Id,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                IsUserAdmin = model.IsUserAdmin,
+                Password = password
+            });
         }
     }
 }

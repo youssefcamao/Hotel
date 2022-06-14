@@ -31,7 +31,6 @@ namespace Hotel.Configuration.Repos
             T parameters)
         {
             using IDbConnection connection = new SqlConnection(_connectionString);
-
              connection.Execute(storedProcedure, parameters,
                 commandType: CommandType.StoredProcedure);
         }

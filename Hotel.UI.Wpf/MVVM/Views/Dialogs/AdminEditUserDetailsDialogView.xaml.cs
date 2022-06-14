@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Hotel.UI.Wpf.MVVM.Views.Dialogs
 {
     /// <summary>
-    /// Interaction logic for AdminAddNewUser.xaml
+    /// Interaction logic for AdminEditUserDetailsDialogView.xaml
     /// </summary>
-    public partial class AdminAddNewUser : UserControl
+    public partial class AdminEditUserDetailsDialogView : UserControl
     {
-        public AdminAddNewUser()
+        public AdminEditUserDetailsDialogView()
         {
             InitializeComponent();
-        }
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            if (this.DataContext != null)
-            { ((dynamic)this.DataContext).Password = ((PasswordBox)sender).Password; }
         }
     }
 }

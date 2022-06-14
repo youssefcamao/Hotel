@@ -10,7 +10,7 @@ namespace Hotel.Core.Test
         public void CheckMailValid_Successful(string email, bool expectedReturn)
         {
             var emailChecker = new EmailCheckService();
-            var result = emailChecker.CheckIfEmailValid(email);
+            var result = emailChecker.CheckIfValid(email);
             Assert.Equal(expectedReturn, result);
         }
     }

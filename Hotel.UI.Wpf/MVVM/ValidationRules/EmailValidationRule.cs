@@ -11,7 +11,7 @@ namespace Hotel.UI.Wpf.MVVM.ValidationRules
         {
             if (value is string)
             {
-                var isEmail = _emailCheckSerice.CheckIfEmailValid((string)value);
+                var isEmail = _emailCheckSerice.CheckIfValid((string)value);
                 if (!isEmail)
                 {
                     return new ValidationResult(false, "Invalid Email!");

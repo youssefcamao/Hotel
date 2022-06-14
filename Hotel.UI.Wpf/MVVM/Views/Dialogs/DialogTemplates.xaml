@@ -29,5 +29,10 @@
             <local:AdminChangePasswordDialogView Background="{x:Null}"/>
         </materialDesign:Transitioner>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AdminEditUserDetailsViewModel}">
+        <materialDesign:Transitioner SelectedIndex="0">
+            <local:AdminEditUserDetailsDialogView Background="{x:Null}"/>
+        </materialDesign:Transitioner>
+    </DataTemplate>
 </ResourceDictionary>
     

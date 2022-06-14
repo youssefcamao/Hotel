@@ -25,8 +25,21 @@ namespace Hotel.Core
         public void CreateNewUser(string firstName, string lastName, string email, string password, bool isUserAdmin)
         {
             var userId = Guid.NewGuid();
-            var user = new User(userId, firstName, lastName, email, isUserAdmin);
+            var user = new User(userId, NamingHelper.FixNameFormat(firstName), NamingHelper.FixNameFormat(lastName), email, isUserAdmin);
             _userRepository.CreateNewModel(user, password);
+        }
+        public void UpdateUser(Guid userId, string firstName, string lastName, string email, bool isUserAdmin, string? password = null)
+        {
+            var user = UsersList.FirstOrDefault(x => x.Id == userId);
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Email = email;
+            user.IsUserAdmin = isUserAdmin;
+            _userRepository.UpdateModel(user,password);
         }
         public void DeleteUser(IUser user) =>
             _userRepository.DeleteModel(user);

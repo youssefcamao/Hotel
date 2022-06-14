@@ -2,6 +2,7 @@
 {
     public interface IRepository<TModel> : IBaseRepository<TModel>
     {
-        void CreateNewModel(TModel model);
+        void CreateNewModel(TModel model); 
+        void UpdateModel(TModel model);
     }
 }

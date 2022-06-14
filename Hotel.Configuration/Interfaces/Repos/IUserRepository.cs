@@ -4,7 +4,8 @@ namespace Hotel.Configuration.Interfaces.Repos
 {
     public interface IUserRepository : IBaseRepository<IUser>
     {
-        void CreateNewModel(IUser model, string password);
+        void CreateNewModel(IUser user, string password);
+        void UpdateModel(IUser user, string? password);
         IUser? GetUserWithAuth(string Email, string password);
     }
 }
