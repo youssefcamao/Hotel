@@ -60,38 +60,38 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
-                    <TextBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"
+                    <TextBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Width="250"
                     materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFilledTextBox}"
                     Text="{Binding Name}" IsEnabled="{Binding IsNameFilterOn}"/>
                     <ToggleButton Grid.Column="1" Grid.Row="1" 
                     VerticalAlignment="Center" IsChecked="{Binding IsNameFilterOn, Mode=TwoWay}"/>
                     <TextBox Grid.Column="2" Grid.Row="2" Style="{StaticResource MaterialDesignFilledTextBox}"
-                    materialDesign:HintAssist.Hint="MinPrice"
+                    materialDesign:HintAssist.Hint="MinPrice" Width="125"
                     Text="{Binding MinPrice, TargetNullValue=''}" IsEnabled="{Binding IsPriceFilterON}"/>
                     <TextBox Grid.Column="3" Grid.Row="2" Style="{StaticResource MaterialDesignFilledTextBox}"
-                    materialDesign:HintAssist.Hint="MaxPrice"
+                    materialDesign:HintAssist.Hint="MaxPrice" Width="125"
                     Text="{Binding MaxPrice, TargetNullValue=''}" IsEnabled="{Binding IsPriceFilterON}"/>
                     <ToggleButton Grid.Column="1" Grid.Row="2"
                     IsChecked="{Binding IsPriceFilterON, Mode=TwoWay}"
                     VerticalAlignment="Center"/>
-                    <ComboBox materialDesign:HintAssist.Hint="Status"
+                    <ComboBox materialDesign:HintAssist.Hint="Status" Width="250"
                               Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" ItemsSource="{Binding AllReservationStatus}" 
                               SelectedItem="{Binding ReservationChoosenStatusString}" Style="{StaticResource MaterialDesignFilledComboBox}"
                               IsEnabled="{Binding IsStatusFilterOn}"/>
                     <ToggleButton Grid.Column="1" Grid.Row="3" IsChecked="{Binding IsStatusFilterOn, Mode=TwoWay}"
                     VerticalAlignment="Center"/>
-                    <ComboBox materialDesign:HintAssist.Hint="Room Type"
-                              ItemsSource="{Binding AllCategories}" 
+                    <ComboBox materialDesign:HintAssist.Hint="Room Type" 
+                              ItemsSource="{Binding AllCategories}" Width="250"
                               SelectedItem="{Binding ReserverdRoomCategoryName}" 
                               IsEnabled="{Binding IsRoomTypeFilterOn}"
                               Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Style="{StaticResource MaterialDesignFilledComboBox}"/>
                     <ToggleButton Grid.Column="1" Grid.Row="4" IsChecked="{Binding IsRoomTypeFilterOn, Mode=TwoWay}"
                     VerticalAlignment="Center"/>
-                    <DatePicker x:Name="StartDatePicker" materialDesign:HintAssist.Hint="Start Date"
+                    <DatePicker x:Name="StartDatePicker" materialDesign:HintAssist.Hint="Start Date" Width="125"
                             Grid.Row="5" Grid.Column="2" SelectedDate="{Binding ChoosenStartDateString}"
                             Style="{StaticResource MaterialDesignFilledDatePicker}" IsEnabled="{Binding IsDateFilterOn}">
                     </DatePicker>
-                    <DatePicker x:Name="EndDatePicker" materialDesign:HintAssist.Hint="End Date"
+                    <DatePicker x:Name="EndDatePicker" materialDesign:HintAssist.Hint="End Date" Width="125"
                             Grid.Row="5" Grid.Column="3" SelectedDate="{Binding ChoosenEndDateString}"
                         IsEnabled="{Binding IsDateFilterOn}"
                                 Style="{StaticResource MaterialDesignFilledDatePicker}"

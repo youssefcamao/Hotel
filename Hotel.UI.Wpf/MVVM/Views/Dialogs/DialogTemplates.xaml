@@ -19,5 +19,15 @@
             <local:AdminReservationShowDetailsDialog/>
         </materialDesign:Transitioner>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AdminAddNewUserDialogViewModel}">
+        <materialDesign:Transitioner SelectedIndex="0">
+            <local:AdminAddNewUser/>
+        </materialDesign:Transitioner>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AdminChangeUserPassViewModel}">
+        <materialDesign:Transitioner SelectedIndex="0">
+            <local:AdminChangePasswordDialogView Background="{x:Null}"/>
+        </materialDesign:Transitioner>
+    </DataTemplate>
 </ResourceDictionary>
     

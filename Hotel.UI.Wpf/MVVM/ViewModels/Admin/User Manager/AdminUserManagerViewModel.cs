@@ -1,6 +1,9 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
+using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager;
+using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +17,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         private readonly UserManager _userManager;
         private readonly IUser _connectedUser;
         private IList<IUser> _usersViewedList;
+        private readonly string _dialogHostId = "UserManagerDialog";
 
         public AdminUserManagerViewModel(UserManager userManager, IUser connectedUser)
         {
@@ -23,6 +27,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             _usersViewedList = _userManager.UsersList;
             FillViewUsersFromList(_usersViewedList);
             Users.CollectionChanged += Users_CollectionChanged;
+            OpenAddNewUserDialogCommand = new DelegateCommand(OnShowAddUserDialog);
+            OpenChangeUserPasswordDialogCommand = new DelegateCommand(OnShowChangePasswordDialog);
         }
 
         private void Users_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -133,5 +139,15 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             || x.Email.Contains(_seachContent, StringComparison.OrdinalIgnoreCase)));
             FillViewUsersFromList(filterSearchList);
         }
+        private async void OnShowAddUserDialog(object _)
+        {
+            await DialogHost.Show(new AdminAddNewUserDialogViewModel(), _dialogHostId);
+        }
+        private async void OnShowChangePasswordDialog(object _)
+        {
+            await DialogHost.Show(new AdminChangeUserPassViewModel(), _dialogHostId);
+        }
+        public ICommand OpenAddNewUserDialogCommand { get; }
+        public ICommand OpenChangeUserPasswordDialogCommand { get; }
     }
 }
