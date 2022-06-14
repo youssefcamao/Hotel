@@ -107,7 +107,7 @@
                         <aviews:AdminReservationManagerView />
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type avms:AdminUserManagerViewModel}">
-                        <aviews:AdminUserManagerViewModel/>
+                        <aviews:AdminUserManagerView/>
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type avms:AdminHotelRoomsManagerViewModel}">
                         <aviews:AdminHotelRoomManagerView/>
