@@ -23,7 +23,7 @@ namespace Hotel.UI.Wpf.MVVM.ValidationRules
             }
             else
             {
-                return new ValidationResult(false, "Email Required!");
+                return new ValidationResult(false, "");
             }
         }
     }
