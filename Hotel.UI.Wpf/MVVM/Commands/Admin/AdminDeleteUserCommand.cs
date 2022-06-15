@@ -27,7 +27,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             if (_param is AdminUserItemViewModel itemViewModel)
             {
                 _userManager.DeleteUser(itemViewModel.User);
-                _parentViewModel.FillViewUsersFromList(_userManager.UsersList);
+                _parentViewModel.FilterOnSelection();
                 DialogHost.CloseDialogCommand.Execute(null, null);
             }
             else

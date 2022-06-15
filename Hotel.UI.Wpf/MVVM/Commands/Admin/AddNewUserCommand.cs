@@ -24,14 +24,12 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         }
         public override void Execute(object? parameter)
         {
-            
-            
             if (_parentViewModel.IsUserAdmin == null)
             {
                 throw new ArgumentNullException(nameof(_parentViewModel.IsUserAdmin));
             }
             _userManager.CreateNewUser(_parentViewModel.FirstName, _parentViewModel.LastName, _parentViewModel.Email, _parentViewModel.Password, _parentViewModel.IsUserAdmin.Value);
-            _adminUserManagerViewModel.FillViewUsersFromList(_userManager.UsersList);
+            _adminUserManagerViewModel.FilterOnSelection();
             DialogHost.CloseDialogCommand.Execute(null, null);
         }
         public override bool CanExecute(object? parameter)

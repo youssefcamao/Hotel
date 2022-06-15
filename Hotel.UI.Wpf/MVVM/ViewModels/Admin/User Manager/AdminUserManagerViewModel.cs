@@ -33,6 +33,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             OpenChangeUserPasswordDialogCommand = new DelegateCommand(OnShowChangePasswordDialog);
             OpenEditUserDetailsDialogCommand = new DelegateCommand(OnShowEditUseDetailsDialog);
             OpenDeleteUserConfirmationDialog = new DelegateCommand(OnOpenDeleteReservationConfiramtion);
+            DeleteSelectedUsers = new AdminDeleteSelectedUsersCommand(_userManager, this, _dialogHostId);
         }
 
         private void Users_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -112,7 +113,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             }
         }
 
-        private void FilterOnSelection()
+        internal void FilterOnSelection()
         {
             _usersViewedList = _userManager.UsersList;
             switch (_selectedFilter)
@@ -163,5 +164,6 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         public ICommand OpenChangeUserPasswordDialogCommand { get; }
         public ICommand OpenEditUserDetailsDialogCommand { get; }
         public ICommand OpenDeleteUserConfirmationDialog { get; }
+        public ICommand DeleteSelectedUsers { get; }
     }
 }
