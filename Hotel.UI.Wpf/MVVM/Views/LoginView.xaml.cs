@@ -108,10 +108,7 @@ namespace Hotel.UI.Wpf.MVVM.Views
         {
             if (e.Key == Key.Enter)
             {
-                if (LoginCommand.CanExecute(null))
-                {
-                    LoginCommand.Execute(null);
-                }
+                LoginButton_Click(sender, e);
             }
         }
     }
