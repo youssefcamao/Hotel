@@ -11,6 +11,7 @@
     <None Remove="Fonts\Signika-Bold.ttf" />
     <None Remove="Fonts\Signika-Medium.ttf" />
     <None Remove="Fonts\Signika-SemiBold.ttf" />
+    <None Remove="Theme\ComeBackLater.jpg" />
     <None Remove="Theme\hotel-logo.png" />
     <None Remove="Theme\SmallYRLogo.png" />
     <None Remove="Theme\workInProgress.png" />
@@ -28,6 +29,7 @@
     <Resource Include="Fonts\Signika-Bold.ttf" />
     <Resource Include="Fonts\Signika-Medium.ttf" />
     <Resource Include="Fonts\Signika-SemiBold.ttf" />
+    <Resource Include="Theme\ComeBackLater.jpg" />
     <Resource Include="Theme\hotel-logo.png" />
     <Resource Include="Theme\SmallYRLogo.png" />
     <Resource Include="Theme\workInProgress.png" />

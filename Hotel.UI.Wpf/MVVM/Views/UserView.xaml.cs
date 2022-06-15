@@ -11,5 +11,15 @@ namespace Hotel.UI.Wpf.MVVM.Views
         {
             InitializeComponent();
         }
+
+        private void YouCantTouchButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            YouCantTouchButton.Opacity = 0;
+        }
+
+        private void YouCantTouchButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            YouCantTouchButton.Opacity = 1;
+        }
     }
 }

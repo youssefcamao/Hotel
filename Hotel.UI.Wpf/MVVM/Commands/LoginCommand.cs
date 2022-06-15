@@ -38,7 +38,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
                 }
                 else
                 {
-                    _navigationStore.CurrentViewModel = new UserViewModel();
+                    _navigationStore.CurrentViewModel = new UserViewModel(_navigationStore, user);
                 }
             }
 
