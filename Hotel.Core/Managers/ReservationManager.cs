@@ -8,13 +8,11 @@ namespace Hotel.Core
 {
     public class ReservationManager
     {
-        private readonly UserManager _userManager;
         private readonly HotelRoomsManager _hotelRoomsManager;
         private readonly IRepository<IHotelReservation> _reservationsRepo;
 
-        public ReservationManager(UserManager userManager, HotelRoomsManager hotelRoomsManager, IRepository<IHotelReservation> reservationsRepo)
+        public ReservationManager(HotelRoomsManager hotelRoomsManager, IRepository<IHotelReservation> reservationsRepo)
         {
-            _userManager = userManager;
             _hotelRoomsManager = hotelRoomsManager;
             _reservationsRepo = reservationsRepo;
         }

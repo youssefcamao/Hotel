@@ -35,7 +35,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             _roomsCategoryRepo = new CategoriesRepository(_sqlDataAccess);
             _hotelRoomsManager = new HotelRoomsManager(_roomsRepo, _roomsCategoryRepo);
             _reservationsRepo = new ReservationsRepository(_sqlDataAccess);
-            _reservationManager = new ReservationManager(userManager, _hotelRoomsManager, _reservationsRepo);
+            _reservationManager = new ReservationManager(_hotelRoomsManager, _reservationsRepo);
             OpenReservationCommand = new OpenReservationCommand(this, connectedUser, userManager, _reservationManager, _hotelRoomsManager);
             OpenUserManagerCommand = new OpenUserManagerCommand(this, userManager,_connectedUser);
             OpenHotelRoomsManager = new OpenHotelRoomsManagerCommand(this);

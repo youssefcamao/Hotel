@@ -11,11 +11,11 @@ namespace Hotel.Core
         {
             _hotelRoomsManager = hotelRoomsManager;
         }
-        public List<IHotelReservation> GetReservationsFromName(List<IHotelReservation> hotelReservations, string name)
+        public List<IHotelReservation> GetReservationsFromName(IList<IHotelReservation> hotelReservations, string name)
         {
             return hotelReservations.Where(x => x.FirstName.ToLower().Contains(name.ToLower()) || x.LastName.ToLower().Contains(name.ToLower())).ToList();
         }
-        public List<IHotelReservation> GetReservationsFromDateRange(List<IHotelReservation> hotelReservations, DateOnly? startDate, DateOnly? endDate)
+        public List<IHotelReservation> GetReservationsFromDateRange(IList<IHotelReservation> hotelReservations, DateOnly? startDate, DateOnly? endDate)
         {
             Func<DateOnly, DateOnly?, bool> isEndDateApplying = (endDate, targetedEndDate) =>
             {
@@ -30,15 +30,15 @@ namespace Hotel.Core
             };
             return hotelReservations.Where(x => x.StartDate >= (startDate ?? new DateOnly()) && isEndDateApplying(x.EndDate, endDate)).ToList();
         }
-        public List<IHotelReservation> GetReservationFromRoomType(List<IHotelReservation> hotelReservations, IRoomCategory roomCategory)
+        public List<IHotelReservation> GetReservationFromRoomType(IList<IHotelReservation> hotelReservations, IRoomCategory roomCategory)
         {
             return hotelReservations.Where(x => GetIfReservationCategoryMatches(x, roomCategory)).ToList();
         }
-        public List<IHotelReservation> GetReservationsFromStatus(List<IHotelReservation> hotelReservations, ReservationStatus status)
+        public List<IHotelReservation> GetReservationsFromStatus(IList<IHotelReservation> hotelReservations, ReservationStatus status)
         {
             return hotelReservations.Where(x => x.ReservationStatus == status).ToList();
         }
-        public List<IHotelReservation> GetReservationsFromPriceRange(List<IHotelReservation> hotelReservations, double? minPrice, double? maxPrice)
+        public List<IHotelReservation> GetReservationsFromPriceRange(IList<IHotelReservation> hotelReservations, double? minPrice, double? maxPrice)
         {
             Func<double, double?, bool> isMaxPriceApplying = (maxPrice, targetedMaxPrice) =>
             {
