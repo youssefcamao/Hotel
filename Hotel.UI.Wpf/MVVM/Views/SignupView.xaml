@@ -43,7 +43,7 @@
                 <Button  Margin="0,50,0,0" x:Name="SingUpButton" 
                          Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" 
                          Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" 
-                         Content="Sign Up" Command="{Binding CreateNewNormalUserCommand}"/>
+                         Content="Sign Up" Command="{Binding CreateNewNormalUserCommand, ValidatesOnExceptions=True}"/>
             <Button Margin="0,20,0,0" x:Name="CanceSignUp" Style="{StaticResource MaterialDesignFlatButton}" 
                     materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" 
                     materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" 

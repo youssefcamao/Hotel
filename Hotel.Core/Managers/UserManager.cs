@@ -1,6 +1,7 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Models;
+using Hotel.Configuration.Exceptions;
 
 namespace Hotel.Core
 {
@@ -25,6 +26,11 @@ namespace Hotel.Core
         public void CreateNewUser(string firstName, string lastName, string email, string password, bool isUserAdmin)
         {
             var userId = Guid.NewGuid();
+            var isEmailAlreadyExists = UsersList.Any(x => x.Email == email);
+            if (isEmailAlreadyExists)
+            {
+                throw new EmailAlreadyUsedException(nameof(email));
+            }
             var user = new User(userId, NamingHelper.FixNameFormat(firstName), NamingHelper.FixNameFormat(lastName), email, isUserAdmin);
             _userRepository.CreateNewModel(user, password);
         }
