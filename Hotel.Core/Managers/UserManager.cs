@@ -13,6 +13,7 @@ namespace Hotel.Core
         {
             _userRepository = userRepository;
         }
+
         public IList<IUser> UsersList => _userRepository.GetAll();
         public IUser? GetUserFromEmailPass(string email, string password)
         {
@@ -23,17 +24,19 @@ namespace Hotel.Core
             var user = _userRepository.GetUserWithAuth(email, password);
             return user;
         }
+
         public void CreateNewUser(string firstName, string lastName, string email, string password, bool isUserAdmin)
         {
             var userId = Guid.NewGuid();
-            var isEmailAlreadyExists = UsersList.Any(x => x.Email == email);
-            if (isEmailAlreadyExists)
+            var doesEmailAlreadyExist = UsersList.Any(x => x.Email == email);
+            if (doesEmailAlreadyExist)
             {
                 throw new EmailAlreadyUsedException(nameof(email));
             }
             var user = new User(userId, NamingHelper.FixNameFormat(firstName), NamingHelper.FixNameFormat(lastName), email, isUserAdmin);
             _userRepository.CreateNewModel(user, password);
         }
+
         public void UpdateUser(Guid userId, string firstName, string lastName, string email, bool isUserAdmin, string? password = null)
         {
             var user = UsersList.FirstOrDefault(x => x.Id == userId);
@@ -47,8 +50,10 @@ namespace Hotel.Core
             user.IsUserAdmin = isUserAdmin;
             _userRepository.UpdateModel(user,password);
         }
+
         public void DeleteUser(IUser user) =>
             _userRepository.DeleteModel(user);
+
         public IUser? GetUserFromId(Guid UserId) 
         {
             return UsersList.FirstOrDefault(x => x.Id == UserId);
