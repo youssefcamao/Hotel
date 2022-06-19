@@ -76,8 +76,8 @@ namespace Hotel.Core.Test
         public void GetReservationsFromName_Successfull()
         {
             var name = "Ramon";
-            var resutl = _reservationSearchHelper.GetReservationsFromName(_reservationManager.HotelRerservations, name);
-            Assert.Equal(2, resutl.Count);
+            var result = _reservationSearchHelper.GetReservationsFromName(_reservationManager.HotelRerservations, name);
+            Assert.Equal(2, result.Count);
         }
         [Theory]
         [ClassData(typeof(TestDataGenerator))]
@@ -90,15 +90,15 @@ namespace Hotel.Core.Test
         public void GetReservationFromRoomType_Successfull()
         {
             var singleRoomCategory = _hotelRoomsManager.RoomCategories[0];
-            var resutl = _reservationSearchHelper.GetReservationFromRoomType(_reservationManager.HotelRerservations, singleRoomCategory);
-            Assert.Equal(2, resutl.Count);
+            var result = _reservationSearchHelper.GetReservationFromRoomType(_reservationManager.HotelRerservations, singleRoomCategory);
+            Assert.Equal(2, result.Count);
         }
 
         [Fact]
         public void GetReservationsFromStatus_Successfull()
         {
-            var resutl = _reservationSearchHelper.GetReservationsFromStatus(_reservationManager.HotelRerservations, ReservationStatus.Accepted);
-            Assert.Equal(3, resutl.Count);
+            var result = _reservationSearchHelper.GetReservationsFromStatus(_reservationManager.HotelRerservations, ReservationStatus.Accepted);
+            Assert.Equal(3, result.Count);
         }
         [Theory]
         [InlineData(10, null, 4)]
