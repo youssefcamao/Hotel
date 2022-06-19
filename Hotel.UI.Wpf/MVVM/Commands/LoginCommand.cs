@@ -21,7 +21,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
             _userManager = userManager;
             _sqlDataAccess = sqlDataAccess;
         }
-        public override void Execute(object? parameter)
+        public override async void Execute(object? parameter)
         {
             var email = _parentViewModel.Email;
             var password = _parentViewModel.UserPassword;
