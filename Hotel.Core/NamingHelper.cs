@@ -2,6 +2,7 @@
 {
     public static class NamingHelper
     {
+
         public static string FixNameFormat(string name)
         {
             if (name.Count() > 1)
