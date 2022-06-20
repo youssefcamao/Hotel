@@ -43,8 +43,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(EmailHasError));
             }
         }
-        private string _error;
-        public string Error
+        private string? _error;
+        public string? Error
         {
             get
             {
@@ -59,8 +59,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
         }
         public string ExceptionErrorVisibility => Error != null ? "Visible" : "Collapsed";
 
-        private string _firstName;
-        public string FirstName
+        private string? _firstName;
+        public string? FirstName
         {
             get
             {
@@ -72,8 +72,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(FirstName));
             }
         }
-        private string _lastName;
-        public string LastName
+        private string? _lastName;
+        public string? LastName
         {
             get
             {
@@ -157,8 +157,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(ChoosenEndDateString));
             }
         }
-        private string _email;
-        public string Email
+        private string? _email;
+        public string? Email
         {
             get
             {
@@ -171,9 +171,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
 
-        public IRoomCategory ReservedRoomCategory { get; private set; }
+        public IRoomCategory? ReservedRoomCategory { get; private set; }
 
-        public string ReserverdRoomCategoryName
+        public string? ReserverdRoomCategoryName
         {
             get
             {
@@ -188,6 +188,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
             set
             {
+                if (value == null)
+                {
+                    return;
+                }
                 try
                 {
                     ReservedRoomCategory = _roomsManager.GetCategoryFromCategoryName(value);
@@ -200,7 +204,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
         public ReservationStatus? ReservationStatusType { get; private set; }
-        public string ReservationChoosenStatusString
+        public string? ReservationChoosenStatusString
         {
             get
             {
@@ -215,7 +219,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
             set
             {
-                ReservationStatusType = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), value);
+                if (value != null)
+                {
+                    ReservationStatusType = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), value);
+                }
                 OnPropertyChanged(nameof(ReservationChoosenStatusString));
             }
         }

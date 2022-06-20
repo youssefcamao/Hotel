@@ -7,7 +7,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
     {
         private readonly NavigationStore _navigationStore;
 
-        public MainViewModel(NavigationStore navigationStore)
+        public MainViewModel(NavigationStore? navigationStore)
         {
             if (navigationStore == null)
             {
@@ -16,15 +16,11 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
-        private string _menuButtonStatus;
+        private string _menuButtonStatus = "Collapsed";
         public string MenuButtonStatus
         {
             get
             {
-                if (_menuButtonStatus == null)
-                {
-                    _menuButtonStatus = "Collapsed";
-                }
                 return _menuButtonStatus;
             }
             set

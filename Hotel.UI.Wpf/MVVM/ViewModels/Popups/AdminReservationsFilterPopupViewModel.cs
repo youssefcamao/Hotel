@@ -96,8 +96,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
                 OnPropertyChanged(nameof(IsDateFilterOn));
             }
         }
-        private string _name;
-        public string Name
+        private string? _name;
+        public string? Name
         {
             get
             {
@@ -137,7 +137,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
         }
         public IRoomCategory ReservedRoomCategory { get; private set; }
 
-        public string ReserverdRoomCategoryName
+        public string? ReserverdRoomCategoryName
         {
             get
             {
@@ -152,9 +152,13 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
             }
             set
             {
+                if (value == null)
+                {
+                    return;
+                }
                 try
                 {
-                    ReservedRoomCategory = _roomsManager.GetCategoryFromCategoryName(value);
+                    ReservedRoomCategory = _roomsManager.GetCategoryFromCategoryName(value) ?? throw new ArgumentNullException();
                 }
                 catch (ArgumentNullException)
                 {
@@ -164,7 +168,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
             }
         }
         public ReservationStatus? ReservationStatusType { get; private set; }
-        public string ReservationChoosenStatusString
+        public string? ReservationChoosenStatusString
         {
             get
             {

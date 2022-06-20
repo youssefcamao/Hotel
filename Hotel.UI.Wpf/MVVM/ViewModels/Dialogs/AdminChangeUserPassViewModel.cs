@@ -24,8 +24,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 throw new ArgumentNullException(nameof(param));
             }
         }
-        private string _newPassword;
-        public string NewPassword
+        private string? _newPassword;
+        public string? NewPassword
         {
             get
             {
@@ -39,8 +39,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(ConfirmedPasswordValidMarkVisibility));
             }
         }
-        private string _confirmedPassword;
-        public string ConfirmedPassword
+        private string? _confirmedPassword;
+        public string? ConfirmedPassword
         {
             get
             {
@@ -55,8 +55,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
         }
         public bool IsNewPasswordValid => NewPassword != null;
         public bool IsConfirmedPasswordValid => NewPassword == ConfirmedPassword && NewPassword != null;
-        public string IsNewPasswordValidMarkVisibility => IsNewPasswordValid ? "Visible" : "Collapsed";
-        public string ConfirmedPasswordValidMarkVisibility => IsConfirmedPasswordValid ? "Visible" : "Collapsed";
+        public string? IsNewPasswordValidMarkVisibility => IsNewPasswordValid ? "Visible" : "Collapsed";
+        public string? ConfirmedPasswordValidMarkVisibility => IsConfirmedPasswordValid ? "Visible" : "Collapsed";
         public ICommand AdminChangePasswordCommand { get; }
     }
 }

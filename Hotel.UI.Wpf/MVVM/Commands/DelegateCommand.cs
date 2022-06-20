@@ -7,13 +7,17 @@ namespace Hotel.UI.Wpf.MVVM.Commands
     {
         private readonly Action<object> _executeAction;
 
-        public DelegateCommand(Action<object> executeAction)
+        public DelegateCommand(Action<object>? executeAction)
         {
+            if (executeAction == null)
+            {
+                throw new ArgumentNullException(nameof(executeAction));
+            }
             _executeAction = executeAction;
         }
-        public void Execute(object? parameter) => _executeAction(parameter);
+        public void Execute(object parameter) => _executeAction(parameter);
 
-        public bool CanExecute(object parameter) => true;
+        public bool CanExecute(object? parameter) => true;
 
         public event EventHandler CanExecuteChanged;
     }

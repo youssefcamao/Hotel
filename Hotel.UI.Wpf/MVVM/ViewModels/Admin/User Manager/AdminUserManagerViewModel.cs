@@ -98,8 +98,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
                 OnPropertyChanged(nameof(SelectedFilter));
             }
         }
-        private string _seachContent;
-        public string SearchContent
+        private string? _seachContent;
+        public string? SearchContent
         {
             get
             {
@@ -139,6 +139,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         }
         private void FilterOnSearch()
         {
+            if (_seachContent == null)
+            {
+                return;
+            }
             var filterSearchList = new List<IUser>(_usersViewedList.Where(x => x.FirstName.Contains(_seachContent, StringComparison.OrdinalIgnoreCase)
             || x.LastName.Contains(_seachContent, StringComparison.OrdinalIgnoreCase) 
             || x.Email.Contains(_seachContent, StringComparison.OrdinalIgnoreCase)));

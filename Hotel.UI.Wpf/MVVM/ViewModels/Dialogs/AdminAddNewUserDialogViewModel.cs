@@ -20,8 +20,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             UserRole = new ObservableCollection<string> { "Admin", "User" };
             AddNewUserCommand = new AddNewUserCommand(_userManager, this, _adminUserManagerViewModel);
         }
-        private string _firstName;
-        public string FirstName
+        private string? _firstName;
+        public string? FirstName
         {
             get
             {
@@ -33,8 +33,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(FirstName));
             }
         }
-        private string _lastName;
-        public string LastName
+        private string? _lastName;
+        public string? LastName
         {
             get
             {
@@ -46,8 +46,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(LastName));
             }
         }
-        private string _email;
-        public string Email
+        private string? _email;
+        public string? Email
         {
             get
             {
@@ -59,11 +59,11 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(Email));
             }
         }
-        private string _password;
+        private string? _password;
         private readonly UserManager _userManager;
         private readonly AdminUserManagerViewModel _adminUserManagerViewModel;
 
-        public string Password
+        public string? Password
         {
             get
             {
@@ -77,7 +77,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
         }
         public ObservableCollection<string> UserRole { get; }
         public bool? IsUserAdmin { get; set; }
-        public string SelectedRole
+        public string? SelectedRole
         {
             get
             {
@@ -108,8 +108,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(SelectedRole));
             }
         }
-        private string _error;
-        public string Error
+        private string? _error;
+        public string? Error
         {
             get
             {

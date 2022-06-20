@@ -77,7 +77,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
         public bool? IsUserAdmin { get; set; }
-        public string UserRole
+        public string? UserRole
         {
             get
             {

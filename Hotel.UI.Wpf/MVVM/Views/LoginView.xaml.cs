@@ -13,7 +13,7 @@ namespace Hotel.UI.Wpf.MVVM.Views
     /// </summary>
     public partial class LoginView : UserControl
     {
-        private ValidationError _validationProp;
+        private ValidationError? _validationProp;
         private Brush _defaultForgroundBrush;
         private Brush _hintAssitsDefaultColor;
         public LoginView()
@@ -42,7 +42,6 @@ namespace Hotel.UI.Wpf.MVVM.Views
         // Using a DependencyProperty as the backing store for Password.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PasswordProperty =
             DependencyProperty.Register("Password", typeof(string), typeof(LoginView), new PropertyMetadata(string.Empty));
-        private readonly LoginView _login;
 
         private void PasswordContainer_PasswordChanged(object sender, RoutedEventArgs e)
         {

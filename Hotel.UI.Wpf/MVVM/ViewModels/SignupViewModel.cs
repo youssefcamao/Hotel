@@ -17,8 +17,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             CancelSignUpCommand = new CancelSignUpCommand(_navigationStore);
             CreateNewNormalUserCommand = new CreateNormalUserAccountCommand(_userManager, this, _navigationStore);
         }
-        private string _firstName;
-        public string FirstName
+        private string? _firstName;
+        public string? FirstName
         {
             get
             {
@@ -30,8 +30,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(FirstName));
             }
         }
-        private string _lastName;
-        public string LastName
+        private string? _lastName;
+        public string? LastName
         {
             get
             {
@@ -43,8 +43,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(LastName));
             }
         }
-        private string _email;
-        public string Email
+        private string? _email;
+        public string? Email
         {
             get
             {
@@ -56,8 +56,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(Email));
             }
         }
-        private string _password;
-        public string Password
+        private string? _password;
+        public string? Password
         {
             get
             {
@@ -69,8 +69,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(Password));
             }
         }
-        private string _error;
-        public string Error
+        private string? _error;
+        public string? Error
         {
             get
             {
@@ -83,7 +83,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(ExceptionErrorVisibility));
             }
         }
-        public string ExceptionErrorVisibility => Error != null ? "Visible" : "Collapsed";
+        public string? ExceptionErrorVisibility => Error != null ? "Visible" : "Collapsed";
         public ICommand CancelSignUpCommand { get; }
         public ICommand CreateNewNormalUserCommand { get; }
     }

@@ -24,8 +24,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             LoginCommand = new LoginCommand(this, _navigationStore, _userManager, _sqlDataAccess);
             SignupCommand = new SignupCommand(_navigationStore, _userManager);
         }
-        private string _email;
-        public string Email
+        private string? _email;
+        public string? Email
         {
             get
             {
@@ -37,9 +37,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(Email));
             }
         }
-        private string _userPassword;
+        private string? _userPassword;
 
-        public string UserPassword
+        public string? UserPassword
         {
             get
             {
