@@ -4,6 +4,7 @@ using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Stores;
 using MaterialDesignThemes.Wpf;
+using System.Configuration;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -12,7 +13,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
-        private readonly ISqlDataAccess _sqlDataAccess = new SqlDataAccess(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HotelDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"); 
+        private readonly ISqlDataAccess _sqlDataAccess = new SqlDataAccess(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString); 
         private readonly IUserRepository _userRepository;
         private readonly UserManager _userManager;
 
