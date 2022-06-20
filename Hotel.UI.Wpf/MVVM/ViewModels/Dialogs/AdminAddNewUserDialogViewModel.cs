@@ -18,7 +18,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             _userManager = userManager;
             _adminUserManagerViewModel = adminUserManagerViewModel;
             UserRole = new ObservableCollection<string> { "Admin", "User" };
-            AddNewUserCommand = new AddNewUserCommand(_userManager, this, _adminUserManagerViewModel);
+            AddNewUserCommand = new AdminAddNewUserCommand(_userManager, this, _adminUserManagerViewModel);
         }
         private string? _firstName;
         public string? FirstName

@@ -8,13 +8,13 @@ using System;
 using System.ComponentModel;
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
-    public class AddNewUserCommand : CommandBase
+    public class AdminAddNewUserCommand : CommandBase
     {
         private readonly UserManager _userManager;
         private readonly AdminAddNewUserDialogViewModel _parentViewModel;
         private readonly AdminUserManagerViewModel _adminUserManagerViewModel;
 
-        public AddNewUserCommand(UserManager userManager, 
+        public AdminAddNewUserCommand(UserManager userManager, 
             AdminAddNewUserDialogViewModel parentViewModel, AdminUserManagerViewModel adminUserManagerViewModel)
         {
             _userManager = userManager;

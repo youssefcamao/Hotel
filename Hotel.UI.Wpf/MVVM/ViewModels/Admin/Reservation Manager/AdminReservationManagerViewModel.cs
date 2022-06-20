@@ -88,7 +88,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         }
         private async void OnOpenDeleteReservationConfiramtion(object paramater)
         {
-            await DialogHost.Show(new ConfirmationDialogViewModel("Are You Sure You Want To Delete this Reservation ?", new DeleteReservationCommand(_reservationManager, paramater, this)), _dialogHostId);
+            await DialogHost.Show(new ConfirmationDialogViewModel("Are You Sure You Want To Delete this Reservation ?", new AdminDeleteReservationCommand(_reservationManager, paramater, this)), _dialogHostId);
         }
         private async void OnOpenShowDetailsDialog(object paramater)
         {

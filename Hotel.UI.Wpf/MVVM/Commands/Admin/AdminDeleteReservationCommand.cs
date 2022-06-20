@@ -5,13 +5,13 @@ using System;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
-    public class DeleteReservationCommand : CommandBase
+    public class AdminDeleteReservationCommand : CommandBase
     {
         private ReservationManager _reservationManager;
         private readonly object _param;
         private readonly AdminReservationManagerViewModel _parentViewModel;
 
-        public DeleteReservationCommand(ReservationManager reservationManager, Object param, AdminReservationManagerViewModel parentViewModel)
+        public AdminDeleteReservationCommand(ReservationManager reservationManager, Object param, AdminReservationManagerViewModel parentViewModel)
         {
             _reservationManager = reservationManager;
             _param = param;

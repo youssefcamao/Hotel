@@ -20,7 +20,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             _userManager = userManager;
             AllCategories = new ObservableCollection<string>(_roomsManager.RoomCategories.Select(x => x.CategoryName));
             AllReservationStatus = new ObservableCollection<string> { ReservationStatus.Accepted.ToString(), ReservationStatus.Pending.ToString() };
-            AddReservationCommand = new AddReservationCommand(_connectedUser, this, _reservationManager, _parentViewModel,
+            AddReservationCommand = new AdminAddReservationCommand(_connectedUser, this, _reservationManager, _parentViewModel,
                 _userManager, _roomsManager, isDialogOpen);
         }
         private readonly HotelRoomsManager _roomsManager;

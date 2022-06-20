@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
-    public class AddReservationCommand : CommandBase
+    public class AdminAddReservationCommand : CommandBase
     {
         private readonly IUser _connectedUser;
         private readonly AdminInsertReservationViewModel _adminInsertReservationViewModel;
@@ -19,7 +19,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         private readonly HotelRoomsManager _roomsManager;
         private bool _isDialogOpen;
 
-        public AddReservationCommand(IUser connectedUser, AdminInsertReservationViewModel adminInsertReservationViewModel,
+        public AdminAddReservationCommand(IUser connectedUser, AdminInsertReservationViewModel adminInsertReservationViewModel,
             ReservationManager reservationManager, AdminViewModel adminViewModel, UserManager userManager, HotelRoomsManager roomsManager, bool isDialogOpen)
         {
             _connectedUser = connectedUser;
