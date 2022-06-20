@@ -1,4 +1,5 @@
-﻿using Hotel.UI.Wpf.MVVM.ValidationRules;
+﻿using Hotel.UI.Wpf.MVVM.Commands;
+using Hotel.UI.Wpf.MVVM.ValidationRules;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Windows;
@@ -22,15 +23,15 @@ namespace Hotel.UI.Wpf.MVVM.Views
             _defaultForgroundBrush = PasswordContainer.Foreground;
             _hintAssitsDefaultColor = HintAssist.GetForeground(PasswordContainer);
         }
-        public ICommand LoginCommand
+        public AsyncCommandBase LoginCommand
         {
-            get { return (ICommand)GetValue(LoginCommandProperty); }
+            get { return (AsyncCommandBase)GetValue(LoginCommandProperty); }
             set { SetValue(LoginCommandProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for LoginCommand.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LoginCommandProperty =
-            DependencyProperty.Register("LoginCommand", typeof(ICommand), typeof(LoginView), new PropertyMetadata(null));
+            DependencyProperty.Register("LoginCommand", typeof(AsyncCommandBase), typeof(LoginView), new PropertyMetadata(null));
 
 
         public string Password
@@ -53,13 +54,13 @@ namespace Hotel.UI.Wpf.MVVM.Views
         }
 
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginCommand.CanExecute(null))
+            try
             {
-                LoginCommand.Execute(null);
+               await LoginCommand.ExecuteAsync(null);
             }
-            else
+            catch (ArgumentNullException)
             {
                 PasswordContainer.BorderBrush = (Brush)FindResource("MaterialDesignValidationErrorBrush");
                 EmailContainer.BorderBrush = (Brush)FindResource("MaterialDesignValidationErrorBrush");

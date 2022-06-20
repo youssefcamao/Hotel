@@ -3,10 +3,11 @@ using Hotel.Core;
 using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using System;
+using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands
 {
-    public class LoginCommand : CommandBase
+    public class LoginCommand : AsyncCommandBase
     {
         private readonly LoginViewModel _parentViewModel;
         private readonly NavigationStore _navigationStore;
@@ -21,7 +22,8 @@ namespace Hotel.UI.Wpf.MVVM.Commands
             _userManager = userManager;
             _sqlDataAccess = sqlDataAccess;
         }
-        public override async void Execute(object? parameter)
+
+        public override async Task ExecuteAsync(object? parameter)
         {
             var email = _parentViewModel.Email;
             var password = _parentViewModel.UserPassword;
@@ -37,11 +39,11 @@ namespace Hotel.UI.Wpf.MVVM.Commands
             var user = await _userManager.GetUserFromEmailPassAsync(email, password);
             if (user == null)
             {
+                _parentViewModel.IsLoginInProgress = false;
                 throw new ArgumentNullException(nameof(user));
             }
             else
             {
-                _parentViewModel.IsLoginInProgress = false;
                 if (user.IsUserAdmin)
                 {
                     _navigationStore.CurrentViewModel = new AdminViewModel(_navigationStore, user, _userManager, _sqlDataAccess);
@@ -51,7 +53,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands
                     _navigationStore.CurrentViewModel = new UserViewModel(_navigationStore, user);
                 }
             }
-
+            _parentViewModel.IsLoginInProgress = false;
         }
     }
 }
