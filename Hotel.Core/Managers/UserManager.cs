@@ -15,13 +15,13 @@ namespace Hotel.Core
         }
 
         public IList<IUser> UsersList => _userRepository.GetAll();
-        public IUser? GetUserFromEmailPass(string email, string password)
+        public async Task<IUser?> GetUserFromEmailPassAsync(string email, string password)
         {
             if (email == null || password == null)
             {
                 return null;
             }
-            var user = _userRepository.GetUserWithAuth(email, password);
+            var user = await _userRepository.GetUserWithAuthAsync(email, password);
             return user;
         }
 

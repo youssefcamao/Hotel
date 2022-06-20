@@ -34,7 +34,9 @@
                     </Style>
                 </PasswordBox.Style>
             </PasswordBox>
-            <Button  Margin="0,20,0,0" x:Name="LoginButton" Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+            <Button  Margin="0,20,0,0" x:Name="LoginButton" Style="{StaticResource MaterialDesignRaisedButton}"
+                     materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsLoginInProgress, UpdateSourceTrigger=PropertyChanged}"
+                     materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding IsLoginInProgress, UpdateSourceTrigger=PropertyChanged}" 
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="53" Width="300" 
                      materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="LOG IN"
                      Click="LoginButton_Click"/>

@@ -6,11 +6,11 @@ using System.Data.SqlClient;
 
 namespace Hotel.Configuration.Repos
 {
-    public class DapperSqlDataAccess : ISqlDataAccess
+    public class SqlDataAccess : ISqlDataAccess
     {
         private readonly string _connectionString;
 
-        public DapperSqlDataAccess(string connectionString)
+        public SqlDataAccess(string connectionString)
         {
             _connectionString = connectionString;
             SqlMapper.AddTypeHandler(new DapperSqlDateOnlyTypeHandler());
@@ -32,6 +32,15 @@ namespace Hotel.Configuration.Repos
             return connection.Query<T>(storedProcedure, parameters,
                 commandType: CommandType.StoredProcedure);
         }
+
+        public async Task<IEnumerable<T>> LoadDataAsync<T, U>(string storedProcedure, U parameters)
+        {
+            using IDbConnection connection = new SqlConnection(_connectionString);
+
+            return await connection.QueryAsync<T>(storedProcedure, parameters,
+                commandType: CommandType.StoredProcedure);
+        }
+
         /// <summary>
         /// This Method saves data in the database using a stored procedure and a parameter
         /// </summary>

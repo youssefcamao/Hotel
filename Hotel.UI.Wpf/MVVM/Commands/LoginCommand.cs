@@ -25,13 +25,23 @@ namespace Hotel.UI.Wpf.MVVM.Commands
         {
             var email = _parentViewModel.Email;
             var password = _parentViewModel.UserPassword;
-            var user = _userManager.GetUserFromEmailPass(email, password);
+            if (email == null)
+            {
+                return;
+            }
+            if (password == null)
+            {
+                return;
+            }
+            _parentViewModel.IsLoginInProgress = true;
+            var user = await _userManager.GetUserFromEmailPassAsync(email, password);
             if (user == null)
             {
                 throw new ArgumentNullException(nameof(user));
             }
             else
             {
+                _parentViewModel.IsLoginInProgress = false;
                 if (user.IsUserAdmin)
                 {
                     _navigationStore.CurrentViewModel = new AdminViewModel(_navigationStore, user, _userManager, _sqlDataAccess);
@@ -42,20 +52,6 @@ namespace Hotel.UI.Wpf.MVVM.Commands
                 }
             }
 
-        }
-        public override bool CanExecute(object? parameter)
-        {
-            if (!string.IsNullOrWhiteSpace(_parentViewModel.Email) && !string.IsNullOrWhiteSpace(_parentViewModel.UserPassword))
-            {
-                var email = _parentViewModel.Email;
-                var password = _parentViewModel.UserPassword;
-                var user = _userManager.GetUserFromEmailPass(email, password);
-                return user != null;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }

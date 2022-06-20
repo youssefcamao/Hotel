@@ -47,7 +47,7 @@ namespace Hotel.Configuration.Repos
             return users;
         }
 
-        public IUser? GetUserWithAuth(string email, string password)
+        public async Task<IUser?> GetUserWithAuthAsync(string email, string password)
         {
             if (string.IsNullOrEmpty(password))
             {
@@ -58,7 +58,7 @@ namespace Hotel.Configuration.Repos
                 throw new ArgumentNullException(nameof(email));
             }
 
-            var user = _dataAccess.LoadData<DapperUser, dynamic>("LoginAuth", new { Email = email, Password = password });
+            var user = await _dataAccess.LoadDataAsync<DapperUser, dynamic>("LoginAuth", new { Email = email, Password = password });
             return user.FirstOrDefault();
         }
 

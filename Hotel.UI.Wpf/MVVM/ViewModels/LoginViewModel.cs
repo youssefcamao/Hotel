@@ -12,7 +12,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
-        private readonly ISqlDataAccess _sqlDataAccess = new DapperSqlDataAccess(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HotelDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"); 
+        private readonly ISqlDataAccess _sqlDataAccess = new SqlDataAccess(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HotelDB;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"); 
         private readonly IUserRepository _userRepository;
         private readonly UserManager _userManager;
 
@@ -49,6 +49,19 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             {
                 _userPassword = value;
                 OnPropertyChanged(nameof(UserPassword));
+            }
+        }
+        private bool _isLoginInProgress;
+        public bool IsLoginInProgress
+        {
+            get
+            {
+                return _isLoginInProgress;
+            }
+            set
+            {
+                _isLoginInProgress = value;
+                OnPropertyChanged(nameof(IsLoginInProgress));
             }
         }
         public ICommand LoginCommand { get; }

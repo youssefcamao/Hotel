@@ -6,6 +6,6 @@ namespace Hotel.Configuration.Interfaces.Repos
     {
         void CreateNewModel(IUser user, string password);
         void UpdateModel(IUser user, string? password);
-        IUser? GetUserWithAuth(string Email, string password);
+        Task<IUser?> GetUserWithAuthAsync(string Email, string password);
     }
 }
