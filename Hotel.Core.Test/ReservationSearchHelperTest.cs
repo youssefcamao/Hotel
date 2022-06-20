@@ -79,6 +79,7 @@ namespace Hotel.Core.Test
             var resutl = _reservationSearchHelper.GetReservationsFromName(_reservationManager.HotelRerservations, name);
             Assert.Equal(2, resutl.Count);
         }
+
         [Theory]
         [ClassData(typeof(TestDataGenerator))]
         public void GetReservationsFromDateRange_Successfull(DateOnly? startDate, DateOnly? endDate, int expectedCount)
@@ -86,6 +87,7 @@ namespace Hotel.Core.Test
             var result = _reservationSearchHelper.GetReservationsFromDateRange(_reservationManager.HotelRerservations, startDate, endDate);
             Assert.Equal(expectedCount, result.Count);
         }
+
         [Fact]
         public void GetReservationFromRoomType_Successfull()
         {

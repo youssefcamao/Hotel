@@ -15,7 +15,14 @@ namespace Hotel.Configuration.Repos
             _connectionString = connectionString;
             SqlMapper.AddTypeHandler(new DapperSqlDateOnlyTypeHandler());
         }
-
+        /// <summary>
+        /// This Mehod loads data from the database using a stored procedure and a parameter
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="U"></typeparam>
+        /// <param name="storedProcedure"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public IEnumerable<T> LoadData<T, U>(
             string storedProcedure,
             U parameters)
@@ -25,7 +32,12 @@ namespace Hotel.Configuration.Repos
             return connection.Query<T>(storedProcedure, parameters,
                 commandType: CommandType.StoredProcedure);
         }
-
+        /// <summary>
+        /// This Method saves data in the database using a stored procedure and a parameter
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="storedProcedure"></param>
+        /// <param name="parameters"></param>
         public void SaveData<T>(
             string storedProcedure,
             T parameters)

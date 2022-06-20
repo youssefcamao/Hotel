@@ -94,7 +94,4 @@
   <ItemGroup>
     <PostDeploy Include="PostDeployment\FillDummyData.PostDeployment.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="HotelDb.publish.xml" />
-  </ItemGroup>
 </Project>
