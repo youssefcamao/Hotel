@@ -28,15 +28,22 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
             {
                 throw new ArgumentNullException(nameof(_parentViewModel.IsUserAdmin));
             }
-            _userManager.CreateNewUser(_parentViewModel.FirstName, _parentViewModel.LastName, _parentViewModel.Email, _parentViewModel.Password, _parentViewModel.IsUserAdmin.Value);
-            _adminUserManagerViewModel.FilterOnSelection();
-            DialogHost.CloseDialogCommand.Execute(null, null);
+            try
+            {
+                _userManager.CreateNewUser(_parentViewModel.FirstName, _parentViewModel.LastName, _parentViewModel.Email, _parentViewModel.Password, _parentViewModel.IsUserAdmin.Value);
+                _adminUserManagerViewModel.FilterOnSelection();
+                DialogHost.CloseDialogCommand.Execute(null, null);
+            }
+            catch (Exception ex)
+            {
+                _parentViewModel.Error = ex.Message;
+            }
         }
         public override bool CanExecute(object? parameter)
         {
-            var areAllInputsFilledAndCorrect = !string.IsNullOrEmpty(_parentViewModel.Password)
-                && !string.IsNullOrEmpty(_parentViewModel.Email) && !string.IsNullOrEmpty(_parentViewModel.FirstName)
-                && !string.IsNullOrEmpty(_parentViewModel.LastName) && _parentViewModel.IsUserAdmin != null;
+            var areAllInputsFilledAndCorrect = !string.IsNullOrWhiteSpace(_parentViewModel.Password)
+                && !string.IsNullOrWhiteSpace(_parentViewModel.Email) && !string.IsNullOrWhiteSpace(_parentViewModel.FirstName)
+                && !string.IsNullOrWhiteSpace(_parentViewModel.LastName) && _parentViewModel.IsUserAdmin != null;
             var canExecute = base.CanExecute(parameter) && areAllInputsFilledAndCorrect;
             return canExecute;
         }

@@ -42,14 +42,18 @@
         <ComboBox materialDesign:HintAssist.Hint="User Role" Width="300" BorderBrush="{DynamicResource MaterialDesignDivider}"
                           ItemsSource="{Binding UserRole}" Margin="0,25,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth0"
                   SelectedItem="{Binding SelectedRole}" Style="{StaticResource MaterialDesignOutlinedComboBox}"></ComboBox>
-        <StackPanel Margin="0,25,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="ADD USER" Style="{StaticResource MaterialDesignFlatButton}" 
+        <StackPanel Orientation="Vertical">
+            <StackPanel Margin="0,25,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="ADD USER" Style="{StaticResource MaterialDesignFlatButton}" 
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="50" Width="180" 
                       FontSize="15" Margin="0,0,10,0" Command="{Binding AddNewUserCommand}">
-            </Button>
-            <Button Content="CLOSE" Style="{StaticResource MaterialDesignFlatButton}" 
+                </Button>
+                <Button Content="CLOSE" Style="{StaticResource MaterialDesignFlatButton}" 
                      materialDesign:ShadowAssist.ShadowDepth="Depth0" Height="50" Width="150" 
                       FontSize="15" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"></Button>
+            </StackPanel>
+                <TextBlock x:Name="ErrorBlock" Foreground="{StaticResource MaterialDesignValidationErrorBrush}" Text="{Binding Error}" 
+                   Visibility="{Binding ExceptionErrorVisibility}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

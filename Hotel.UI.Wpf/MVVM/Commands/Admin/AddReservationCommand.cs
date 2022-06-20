@@ -42,9 +42,9 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
                     , _adminInsertReservationViewModel.LastName, _adminInsertReservationViewModel.Email, _adminInsertReservationViewModel.ReservationStatusType);
 
             }
-            catch (NoRoomFoundException)
+            catch (Exception e)
             {
-                _adminInsertReservationViewModel.NoAvailableRoomWasFound = true;
+                _adminInsertReservationViewModel.Error = e.Message;
                 return;
             }
             _adminViewModel.CurrentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser, _adminViewModel, _userManager,

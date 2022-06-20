@@ -108,6 +108,21 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(SelectedRole));
             }
         }
+        private string _error;
+        public string Error
+        {
+            get
+            {
+                return _error;
+            }
+            set
+            {
+                _error = value;
+                OnPropertyChanged(nameof(Error));
+                OnPropertyChanged(nameof(ExceptionErrorVisibility));
+            }
+        }
+        public string ExceptionErrorVisibility => Error != null ? "Visible" : "Collapsed";
         public ICommand AddNewUserCommand { get; }
     }
 }
