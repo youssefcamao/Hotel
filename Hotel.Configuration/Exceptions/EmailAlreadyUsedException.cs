@@ -8,6 +8,6 @@ namespace Hotel.Configuration.Exceptions
 {
     public class EmailAlreadyUsedException : Exception
     {
-        public EmailAlreadyUsedException(string email) : base($"{email} Already Used!"){}
+        public EmailAlreadyUsedException(string email) : base($"The Given Email is Taken!"){}
     }
 }
