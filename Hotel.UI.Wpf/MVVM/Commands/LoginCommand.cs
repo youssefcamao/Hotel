@@ -45,10 +45,17 @@ namespace Hotel.UI.Wpf.MVVM.Commands
         }
         public override bool CanExecute(object? parameter)
         {
-            var email = _parentViewModel.Email;
-            var password = _parentViewModel.UserPassword;
-            var user = _userManager.GetUserFromEmailPass(email, password);
-            return user != null;
+            if (!string.IsNullOrWhiteSpace(_parentViewModel.Email) && !string.IsNullOrWhiteSpace(_parentViewModel.UserPassword))
+            {
+                var email = _parentViewModel.Email;
+                var password = _parentViewModel.UserPassword;
+                var user = _userManager.GetUserFromEmailPass(email, password);
+                return user != null;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

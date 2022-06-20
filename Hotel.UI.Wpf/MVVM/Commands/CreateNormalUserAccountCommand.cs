@@ -38,9 +38,9 @@ namespace Hotel.UI.Wpf.MVVM.Commands
         }
         public override bool CanExecute(object? parameter)
         {
-            return base.CanExecute(parameter) && _parentViewModel.FirstName != null
-                && _parentViewModel.LastName != null && _parentViewModel.Email != null
-                && _parentViewModel.Password != null;
+            return base.CanExecute(parameter) && !string.IsNullOrWhiteSpace(_parentViewModel.FirstName)
+                && !string.IsNullOrWhiteSpace(_parentViewModel.LastName) && !string.IsNullOrWhiteSpace(_parentViewModel.Email)
+                && !string.IsNullOrWhiteSpace(_parentViewModel.Password);
         }
         private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {

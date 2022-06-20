@@ -54,8 +54,8 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         public override bool CanExecute(object? parameter)
         {
             var areAllInputsFilledAndCorrect = _adminInsertReservationViewModel.StartDate != null && _adminInsertReservationViewModel.EndDate != null
-                && !string.IsNullOrEmpty(_adminInsertReservationViewModel.Email) && !string.IsNullOrEmpty(_adminInsertReservationViewModel.FirstName)
-                && !string.IsNullOrEmpty(_adminInsertReservationViewModel.LastName) && _adminInsertReservationViewModel.ReservedRoomCategory != null
+                && !string.IsNullOrWhiteSpace(_adminInsertReservationViewModel.Email) && !string.IsNullOrWhiteSpace(_adminInsertReservationViewModel.FirstName)
+                && !string.IsNullOrWhiteSpace(_adminInsertReservationViewModel.LastName) && _adminInsertReservationViewModel.ReservedRoomCategory != null
                 && !_adminInsertReservationViewModel.EmailHasError;
             var canExecute = base.CanExecute(parameter) && areAllInputsFilledAndCorrect;
             return canExecute;
