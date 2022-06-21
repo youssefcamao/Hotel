@@ -1,4 +1,5 @@
-﻿using Hotel.Configuration.Interfaces.DataAccess;
+﻿using Hotel.Configuration.DataAccess;
+using Hotel.Configuration.Interfaces.DataAccess;
 using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Repos;
 using Hotel.Core.Managers;

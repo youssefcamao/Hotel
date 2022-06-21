@@ -1,4 +1,5 @@
 ﻿using Hotel.Core;
+using Hotel.Core.CheckServices;
 using System.Windows;
 using System.Windows.Controls;
 
