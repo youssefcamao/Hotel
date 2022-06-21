@@ -59,9 +59,8 @@
                      materialDesign:ButtonAssist.CornerRadius="20" FontSize="14" FontWeight="Medium" Content="- Delete Selection"
                       HorizontalAlignment="Left"  Command="{Binding DeleteSelectedUsers}"/>
         </Grid>
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
-            <DataGrid x:Name="ReservationDataGrid" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  AutoGenerateColumns="False"
+            <DataGrid x:Name="ReservationDataGrid"
+                  AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
                   materialDesign:DataGridAssist.CellPadding="17 25 25 25"
                   ItemsSource="{Binding Users,NotifyOnTargetUpdated=True}" >
             <DataGrid.CellStyle>
@@ -116,9 +115,8 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBlock Text="No User Was Found !" FontSize="20" FontWeight="SemiBold" 
-                       HorizontalAlignment="Center" Margin="0,20,0,0" Visibility="{Binding NoDataAvailableMessageVisibility}"/>
-        </StackPanel>
+            <TextBlock Text="No User Was Found !" FontSize="20" FontWeight="SemiBold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+                       HorizontalAlignment="Center" Margin="0,60,0,0" Visibility="{Binding NoDataAvailableMessageVisibility}"/>
     </Grid>
     </materialDesign:DialogHost>
 </UserControl>
