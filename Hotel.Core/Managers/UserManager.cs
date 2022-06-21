@@ -79,7 +79,7 @@ namespace Hotel.Core
             _userRepository.UpdateModel(user,password);
         }
         /// <summary>
-        /// This methdo deletes a user
+        /// This method deletes a user
         /// </summary>
         /// <remarks>if user is not found <see cref="ArgumentNullException"/> is thrown</remarks>
         /// <param name="user"></param>
