@@ -14,7 +14,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         {
             _navigationStore = navigationStore;
             _userManager = userManager;
-            CancelSignUpCommand = new SwitchViewCommand(_navigationStore, new LoginViewModel(_navigationStore));
+            CancelSignUpCommand = new CancelSignUpCommand(_navigationStore);
             CreateNewNormalUserCommand = new CreateNormalUserAccountCommand(_userManager, this, _navigationStore);
         }
         private string? _firstName;

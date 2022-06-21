@@ -23,7 +23,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             _userRepository = new UsersRepository(_sqlDataAccess);
             _userManager = new UserManager(_userRepository);
             LoginCommand = new LoginCommand(this, _navigationStore, _userManager, _sqlDataAccess);
-            SignupCommand = new SwitchViewCommand(_navigationStore, new SignupViewModel(_navigationStore, _userManager));
+            SignupCommand = new SignupCommand(_navigationStore, _userManager);
         }
         private string? _email;
         /// <summary>
