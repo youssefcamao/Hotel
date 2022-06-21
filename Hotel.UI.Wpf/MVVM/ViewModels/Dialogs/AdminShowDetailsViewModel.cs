@@ -1,8 +1,8 @@
 ﻿using Hotel.Configuration.Enums;
 using Hotel.Configuration.Interfaces.Models;
-using Hotel.Core;
+using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
-using Hotel.UI.Wpf.Ui_Helpers;
+using Hotel.UI.Wpf.Services;
 using System;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs

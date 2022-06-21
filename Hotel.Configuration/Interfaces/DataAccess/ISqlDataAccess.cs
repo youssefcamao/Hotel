@@ -1,4 +1,4 @@
-﻿namespace Hotel.Configuration.Interfaces.Repos
+﻿namespace Hotel.Configuration.Interfaces.DataAccess
 {
     public interface ISqlDataAccess
     {

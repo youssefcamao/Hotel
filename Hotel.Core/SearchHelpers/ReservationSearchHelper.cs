@@ -1,7 +1,8 @@
 ﻿using Hotel.Configuration.Enums;
 using Hotel.Configuration.Interfaces.Models;
+using Hotel.Core.Managers;
 
-namespace Hotel.Core
+namespace Hotel.Core.SearchHelpers
 {
     public class ReservationSearchHelper
     {

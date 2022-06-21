@@ -1,5 +1,6 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
-using Hotel.Core;
+using Hotel.Core.Managers;
+using Hotel.Core.SearchHelpers;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager;
@@ -165,12 +166,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             {
                 return;
             }
-            var filterSearchList = new List<IUser>(_usersViewedList.Where(x =>
-            {
-                var name = x.FirstName + " " + x.LastName;
-                return name.Contains(_seachContent, StringComparison.OrdinalIgnoreCase)
-                || x.Email.Contains(_seachContent, StringComparison.OrdinalIgnoreCase);
-            }));
+            var filterSearchList = UserSearchHelper.GetUsersFromNameOrEmail(_seachContent, _usersViewedList);
             FillViewUsersFromList(filterSearchList);
         }
         private void SelectAll(bool select)

@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Hotel.Core
+namespace Hotel.Core.CheckServices
 {
     public class PasswordCheckService : ICheckService<string>
     {

@@ -1,5 +1,6 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
-using Hotel.Core;
+using Hotel.Core.Managers;
+using Hotel.Core.SearchHelpers;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Popups;
 using System.Collections.Generic;

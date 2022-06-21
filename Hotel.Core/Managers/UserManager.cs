@@ -3,7 +3,7 @@ using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Models;
 using Hotel.Configuration.Exceptions;
 
-namespace Hotel.Core
+namespace Hotel.Core.Managers
 {
     public class UserManager
     {
@@ -76,7 +76,7 @@ namespace Hotel.Core
             user.LastName = NamingHelper.FixNameFormat(lastName);
             user.Email = email;
             user.IsUserAdmin = isUserAdmin;
-            _userRepository.UpdateModel(user,password);
+            _userRepository.UpdateModel(user, password);
         }
         /// <summary>
         /// This method deletes a user
@@ -96,10 +96,10 @@ namespace Hotel.Core
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns><see cref="IUser"/> if found and null if not</returns>
-        public IUser? GetUserFromId(Guid UserId) 
+        public IUser? GetUserFromId(Guid UserId)
         {
             return UsersList.FirstOrDefault(x => x.Id == UserId);
         }
-                
+
     }
 }

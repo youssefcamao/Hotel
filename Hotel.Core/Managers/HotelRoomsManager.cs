@@ -1,7 +1,7 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
 
-namespace Hotel.Core
+namespace Hotel.Core.Managers
 {
     public class HotelRoomsManager
     {

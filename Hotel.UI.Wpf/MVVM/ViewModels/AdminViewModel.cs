@@ -1,13 +1,14 @@
-﻿using Hotel.Configuration.Interfaces.Models;
+﻿using Hotel.Configuration.Interfaces.DataAccess;
+using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Repos;
-using Hotel.Core;
+using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
-using Hotel.UI.Wpf.Ui_Helpers;
+using Hotel.UI.Wpf.Services;
 using MaterialDesignThemes.Wpf;
 using System.Windows.Input;
 

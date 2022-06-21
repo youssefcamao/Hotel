@@ -1,5 +1,5 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
-using Hotel.Core;
+using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 

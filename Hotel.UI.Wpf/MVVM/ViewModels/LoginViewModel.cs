@@ -1,6 +1,7 @@
-﻿using Hotel.Configuration.Interfaces.Repos;
+﻿using Hotel.Configuration.Interfaces.DataAccess;
+using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Repos;
-using Hotel.Core;
+using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Stores;
 using MaterialDesignThemes.Wpf;

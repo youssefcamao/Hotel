@@ -1,7 +1,7 @@
 ﻿using Hotel.Configuration.Interfaces;
 using System.Text.RegularExpressions;
 
-namespace Hotel.Core
+namespace Hotel.Core.CheckServices
 {
     public class EmailCheckService : ICheckService<string>
     {

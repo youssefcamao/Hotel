@@ -1,5 +1,5 @@
-﻿using Hotel.Configuration.Interfaces.Repos;
-using Hotel.Core;
+﻿using Hotel.Configuration.Interfaces.DataAccess;
+using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 using System;

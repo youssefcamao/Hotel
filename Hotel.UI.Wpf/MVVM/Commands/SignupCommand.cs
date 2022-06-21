@@ -1,4 +1,4 @@
-﻿using Hotel.Core;
+﻿using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 

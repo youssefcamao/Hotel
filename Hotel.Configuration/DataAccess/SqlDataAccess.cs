@@ -1,10 +1,10 @@
 ﻿using Dapper;
 using Hotel.Configuration.Dapper;
-using Hotel.Configuration.Interfaces.Repos;
+using Hotel.Configuration.Interfaces.DataAccess;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Hotel.Configuration.Repos
+namespace Hotel.Configuration.DataAccess
 {
     public class SqlDataAccess : ISqlDataAccess
     {
@@ -13,7 +13,7 @@ namespace Hotel.Configuration.Repos
         public SqlDataAccess(string connectionString)
         {
             _connectionString = connectionString;
-            
+
             //adding custom type handler for dateonly type
             SqlMapper.AddTypeHandler(new DapperSqlDateOnlyTypeHandler());
         }
@@ -61,8 +61,8 @@ namespace Hotel.Configuration.Repos
             T parameters)
         {
             using IDbConnection connection = new SqlConnection(_connectionString);
-             connection.Execute(storedProcedure, parameters,
-                commandType: CommandType.StoredProcedure);
+            connection.Execute(storedProcedure, parameters,
+               commandType: CommandType.StoredProcedure);
         }
     }
 }

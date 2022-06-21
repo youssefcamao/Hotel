@@ -4,7 +4,7 @@ using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Models;
 
-namespace Hotel.Core
+namespace Hotel.Core.Managers
 {
     public class ReservationManager
     {
@@ -103,7 +103,7 @@ namespace Hotel.Core
         }
         private bool CheckIfReservationPeriodOverlap(DateOnly startDate, DateOnly endDate, IRoom room)
         {
-            var overlapReservationsCount = HotelRerservations.Count(x => (x.StartDate < endDate && startDate < x.EndDate)
+            var overlapReservationsCount = HotelRerservations.Count(x => x.StartDate < endDate && startDate < x.EndDate
             && x.RoomNumber == room.RoomNumber && x.ReservationStatus != ReservationStatus.Declined);
             if (overlapReservationsCount == 0)
             {

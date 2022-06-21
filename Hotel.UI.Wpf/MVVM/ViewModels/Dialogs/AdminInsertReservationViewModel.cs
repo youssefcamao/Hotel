@@ -1,6 +1,6 @@
 ﻿using Hotel.Configuration.Enums;
 using Hotel.Configuration.Interfaces.Models;
-using Hotel.Core;
+using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using System;
 using System.Collections.ObjectModel;

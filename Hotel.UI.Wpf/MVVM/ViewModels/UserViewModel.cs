@@ -1,7 +1,7 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.Stores;
-using Hotel.UI.Wpf.Ui_Helpers;
+using Hotel.UI.Wpf.Services;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels

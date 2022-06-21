@@ -1,4 +1,4 @@
-﻿using Hotel.Core;
+﻿using Hotel.Core.CheckServices;
 using System.Globalization;
 using System.Windows.Controls;
 

@@ -1,7 +1,7 @@
 ﻿using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.MVVM.ViewModels;
 
-namespace Hotel.UI.Wpf.MVVM.Commands.Admin
+namespace Hotel.UI.Wpf.MVVM.Commands
 {
     /// <summary>
     /// This command will navigate back to the login view

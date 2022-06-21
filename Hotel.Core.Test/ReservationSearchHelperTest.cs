@@ -11,6 +11,8 @@ using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
 using Moq;
 using Hotel.Configuration.Models;
+using Hotel.Core.Managers;
+using Hotel.Core.SearchHelpers;
 
 namespace Hotel.Core.Test
 {

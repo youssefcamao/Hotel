@@ -1,4 +1,4 @@
-﻿using Hotel.Core;
+﻿using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using System;

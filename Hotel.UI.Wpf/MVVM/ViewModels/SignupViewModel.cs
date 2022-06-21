@@ -1,4 +1,4 @@
-﻿using Hotel.Core;
+﻿using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Stores;
 using System.Windows.Input;

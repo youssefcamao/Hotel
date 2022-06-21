@@ -1,4 +1,5 @@
-﻿using Hotel.Configuration.Interfaces.Models;
+﻿using Hotel.Configuration.Interfaces.DataAccess;
+using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Models.DapperModels;
 using System.Reflection;

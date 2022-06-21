@@ -1,7 +1,7 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
 using Hotel.Core;
 
-namespace Hotel.UI.Wpf.Ui_Helpers
+namespace Hotel.UI.Wpf.Services
 {
     public static class UserHelperService
     {

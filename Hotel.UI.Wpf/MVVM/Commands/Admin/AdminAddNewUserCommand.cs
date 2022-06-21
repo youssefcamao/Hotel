@@ -1,5 +1,5 @@
 ﻿using Hotel.Configuration.Exceptions;
-using Hotel.Core;
+using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
