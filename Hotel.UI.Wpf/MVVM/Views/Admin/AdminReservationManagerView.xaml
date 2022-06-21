@@ -88,11 +88,11 @@
                     <ToggleButton Grid.Column="1" Grid.Row="4" IsChecked="{Binding IsRoomTypeFilterOn, Mode=TwoWay}"
                     VerticalAlignment="Center"/>
                     <DatePicker x:Name="StartDatePicker" materialDesign:HintAssist.Hint="Start Date" Width="125"
-                            Grid.Row="5" Grid.Column="2" SelectedDate="{Binding ChoosenStartDateString}"
+                            Grid.Row="5" Grid.Column="2" SelectedDate="{Binding ChoosenStartDateInDateTime}"
                             Style="{StaticResource MaterialDesignFilledDatePicker}" IsEnabled="{Binding IsDateFilterOn}">
                     </DatePicker>
                     <DatePicker x:Name="EndDatePicker" materialDesign:HintAssist.Hint="End Date" Width="125"
-                            Grid.Row="5" Grid.Column="3" SelectedDate="{Binding ChoosenEndDateString}"
+                            Grid.Row="5" Grid.Column="3" SelectedDate="{Binding ChoosenEndDateInDateTime}"
                         IsEnabled="{Binding IsDateFilterOn}"
                                 Style="{StaticResource MaterialDesignFilledDatePicker}"
                                 CalendarOpened="EndData_CalendarOpened"></DatePicker>

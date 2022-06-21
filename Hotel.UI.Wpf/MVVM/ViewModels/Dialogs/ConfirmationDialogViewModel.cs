@@ -18,6 +18,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             Message = message;
             ConfirmationCommand = confirmationCommand;
         }
+        /// <summary>
+        /// gets the message that will be show on the warning
+        /// </summary>
         public string Message { get; }
         public ICommand ConfirmationCommand { get; }
     }

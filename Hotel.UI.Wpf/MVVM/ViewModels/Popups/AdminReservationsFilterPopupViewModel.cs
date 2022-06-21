@@ -27,10 +27,18 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
         private readonly HotelRoomsManager _roomsManager;
         private readonly ReservationManager _reservationManager;
         private readonly UserManager _userManager;
-
+        /// <summary>
+        /// gets all the categories from the core
+        /// </summary>
         public ObservableCollection<string> AllCategories { get; }
+        /// <summary>
+        /// gets all the reservation status types
+        /// </summary>
         public ObservableCollection<string> AllReservationStatus { get; }
         private bool _isNameFilterOn;
+        /// <summary>
+        /// gets and sets the filter checkbox for the name with OnPropretyChanged
+        /// </summary>
         public bool IsNameFilterOn
         {
             get
@@ -44,6 +52,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
             }
         }
         private bool _isPriceFilterON;
+        /// <summary>
+        /// gets and sets the filter checkbox for the price with OnPropretyChanged
+        /// </summary>
         public bool IsPriceFilterON
         {
             get
@@ -56,7 +67,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
                 OnPropertyChanged(nameof(IsPriceFilterON));
             }
         }
-
+        /// <summary>
+        /// gets and sets the filter checkbox for the status with OnPropretyChanged
+        /// </summary>
         private bool _isStatusFilterOn;
         public bool IsStatusFilterOn
         {
@@ -71,6 +84,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
             }
         }
         private bool _isRoomFilterOn;
+        /// <summary>
+        /// gets and sets the filter checkbox for the room with OnPropretyChanged
+        /// </summary>
         public bool IsRoomTypeFilterOn
         {
             get
@@ -84,6 +100,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
             }
         }
         private bool _isDateFilterOn;
+        /// <summary>
+        /// gets and sets the filter checkbox for the date with OnPropretyChanged
+        /// </summary>
         public bool IsDateFilterOn
         {
             get
@@ -97,6 +116,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
             }
         }
         private string? _name;
+        /// <summary>
+        /// gets and sets the name field with OnPropretychanged
+        /// </summary>
         public string? Name
         {
             get
@@ -110,6 +132,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
             }
         }
         private double? _minPrice;
+        /// <summary>
+        /// gets and sets the MinPrice field with OnPropretychanged
+        /// </summary>
         public double? MinPrice
         {
             get
@@ -123,6 +148,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
             }
         }
         private double? _maxPrice;
+        /// <summary>
+        /// gets and sets the MaxPrice field with OnPropretychanged
+        /// </summary>
         public double? MaxPrice
         {
             get
@@ -135,8 +163,13 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
                 OnPropertyChanged(nameof(MaxPrice));
             }
         }
+        /// <summary>
+        /// gets the selected room category
+        /// </summary>
         public IRoomCategory ReservedRoomCategory { get; private set; }
-
+        /// <summary>
+        /// gets and sets string that represents the name of the selected room category
+        /// </summary>
         public string? ReserverdRoomCategoryName
         {
             get
@@ -167,7 +200,13 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
                 OnPropertyChanged(nameof(ReserverdRoomCategoryName));
             }
         }
+        /// <summary>
+        /// gets and sets string that represents the selected ReservationStatusType
+        /// </summary>
         public ReservationStatus? ReservationStatusType { get; private set; }
+        /// <summary>
+        /// gets and sets string that represents the selected ReservationStatusType
+        /// </summary>
         public string? ReservationChoosenStatusString
         {
             get
@@ -187,8 +226,14 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
                 OnPropertyChanged(nameof(ReservationChoosenStatusString));
             }
         }
+        /// <summary>
+        /// gets and Start Date filed with OnPropretychanged
+        /// </summary>
         public DateOnly? StartDate { get; private set; }
-        public DateTime? ChoosenStartDateString
+        /// <summary>
+        /// gets the start date in <see cref="DateTime"/> format
+        /// </summary>
+        public DateTime? ChoosenStartDateInDateTime
         {
             get
             {
@@ -207,11 +252,17 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
                 {
                     StartDate = DateOnly.FromDateTime(value.Value);
                 }
-                OnPropertyChanged(nameof(ChoosenStartDateString));
+                OnPropertyChanged(nameof(ChoosenStartDateInDateTime));
             }
         }
+        /// <summary>
+        /// gets and End Date filed with OnPropretychanged
+        /// </summary>
         public DateOnly? EndDate { get; private set; }
-        public DateTime? ChoosenEndDateString
+        /// <summary>
+        /// gets the end date in <see cref="DateTime"/> format
+        /// </summary>
+        public DateTime? ChoosenEndDateInDateTime
         {
             get
             {
@@ -234,7 +285,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Popups
                 {
                     EndDate = DateOnly.FromDateTime(value.Value);
                 }
-                OnPropertyChanged(nameof(ChoosenEndDateString));
+                OnPropertyChanged(nameof(ChoosenEndDateInDateTime));
             }
         }
 

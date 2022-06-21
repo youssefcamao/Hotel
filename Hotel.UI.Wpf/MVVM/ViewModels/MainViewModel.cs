@@ -17,6 +17,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
         private string _menuButtonStatus = "Collapsed";
+        /// <summary>
+        /// this proprety represents the visibilty of the expand menu button
+        /// </summary>
         public string MenuButtonStatus
         {
             get
@@ -29,6 +32,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(MenuButtonStatus));
             }
         }
+        /// <summary>
+        /// gets and sets the current view model on the ui
+        /// </summary>
         public ViewModelBase? CurrentViewModel { get => _navigationStore.CurrentViewModel; }
         private void OnCurrentViewModelChanged()
         {

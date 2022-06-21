@@ -42,6 +42,12 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         }
 
         public ObservableCollection<AdminUserItemViewModel> Users { get; }
+        
+        /// <summary>
+        /// This method fills the User grid view with the given <see cref="IEnumerable<<see cref="IUser"/>>"/>
+        /// </summary>
+        /// <remarks>it clears all the old users before adding the new ones</remarks>
+        /// <param name="usersList"></param>
         internal void FillViewUsersFromList(IEnumerable<IUser> usersList)
         {
             if (Users.Count != 0)
@@ -57,6 +63,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
                 }
             }
         }
+        /// <summary>
+        /// gets a bool that represnts if all the userse selected from the grid view
+        /// </summary>
+        /// <remarks>this boolean can be also null if the selected users are equal to 1</remarks>
         public bool? IsAllUsersSelected
         {
             get
@@ -72,16 +82,21 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
                 }
             }
         }
-        private void SelectAll(bool select)
-        {
-            foreach (var user in Users)
-            {
-                user.IsSelected = select;
-            }
-        }
+        /// <summary>
+        /// This collection represents the elements in the combo box of the users's filter
+        /// </summary>
         public ObservableCollection<string> AllFilters => new ObservableCollection<string> { "All", "Admin", "User" };
+        /// <summary>
+        /// This proprety represents the visibility of the no data availble on the user grid
+        /// </summary>
+        /// <remarks> it swithces visibility to visbile if the users count are more than 0</remarks>
+        /// <remarks>the string must be either Visible or Collapsed</remarks>
         public string NoDataAvailableMessageVisibility => Users.Count == 0 ? "Visible" : "Collapsed";
         private string _selectedFilter = "All";
+        /// <summary>
+        /// This proprety represents the selected combobox element from the users filter
+        /// </summary>
+        /// <remarks> it set to All as default</remarks>
         public string SelectedFilter
         {
             get
@@ -99,6 +114,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             }
         }
         private string? _seachContent;
+        /// <summary>
+        /// gets and sets the search content on the user grid view
+        /// </summary>
+        /// <remarks>This Property filters evreytime it gets set</remarks>
         public string? SearchContent
         {
             get
@@ -112,7 +131,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
                 FilterOnSearch();
             }
         }
-
+        /// <summary>
+        /// This method Filter on the seleced Users
+        /// </summary>
+        /// <remarks>it only filters on the viewed users on the grid</remarks>
         internal void FilterOnSelection()
         {
             _usersViewedList = _userManager.UsersList;
@@ -147,6 +169,13 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             || x.LastName.Contains(_seachContent, StringComparison.OrdinalIgnoreCase) 
             || x.Email.Contains(_seachContent, StringComparison.OrdinalIgnoreCase)));
             FillViewUsersFromList(filterSearchList);
+        }
+        private void SelectAll(bool select)
+        {
+            foreach (var user in Users)
+            {
+                user.IsSelected = select;
+            }
         }
         private async void OnShowAddUserDialog(object _)
         {

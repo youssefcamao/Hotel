@@ -37,6 +37,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             SaveChangesCommand = new AdminSaveNewUsersEditedChangesCommand(userManager, this, adminUserManagerViewModel, adminUserItemViewModel);
     }
         private string _firstName;
+        /// <summary>
+        /// gets and sets the first name field with OnPropretychanged
+        /// </summary>
         public string FirstName
         {
             get
@@ -50,6 +53,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
         private string _lastName;
+        /// <summary>
+        /// gets and sets the last name field with OnPropretychanged
+        /// </summary>
         public string LastName
         {
             get
@@ -63,7 +69,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
         private string _email;
-
+        /// <summary>
+        /// gets and sets the Email field with OnPropretychanged
+        /// </summary>
         public string Email
         {
             get
@@ -76,7 +84,17 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(Email));
             }
         }
+        /// <summary>
+        /// gets and sets the boolean that represents the user role
+        /// </summary>
+        /// <remarks>This boolean can be also setted to null if no selection occured</remarks>
         public bool? IsUserAdmin { get; set; }
+        /// <summary>
+        /// get and sets the selected role from the user role combobox with OnPropretychanged
+        /// </summary>
+        /// <remarks>
+        /// <para>This proprety converts the string to the IsUserAdmin boolean</para>
+        /// </remarks>
         public string? UserRole
         {
             get

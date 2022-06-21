@@ -43,8 +43,14 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             CurrentUserString = UserHelperService.GetUserNameFromUser(_connectedUser);
             _currentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser, this, userManager, _reservationManager, _hotelRoomsManager);
         }
+        /// <summary>
+        /// gets and sets the string that represents the user on closing bar
+        /// </summary>
         public string CurrentUserString { get; }
         private bool _isNavigationMenuExpanded = false;
+        /// <summary>
+        /// gets and sets expansion of the navaigation Menu
+        /// </summary>
         public bool IsNavigationMenuExpanded
         {
             get
@@ -57,6 +63,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(IsNavigationMenuExpanded));
             }
         }
+        /// <summary>
+        /// gets and sets the current child view model
+        /// </summary>
         public ViewModelBase CurrentChildAdminViewModel
         {
             get

@@ -27,10 +27,18 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
         private readonly ReservationManager _reservationManager;
         private readonly IUser _connectedUser;
         private readonly UserManager _userManager;
-
+        /// <summary>
+        /// gets all the categoris from the backend
+        /// </summary>
         public ObservableCollection<string> AllCategories { get; }
+        /// <summary>
+        /// gets all the reservation status from the backend
+        /// </summary>
         public ObservableCollection<string> AllReservationStatus { get; }
         private bool _emailHasError;
+        /// <summary>
+        /// This Porprety represnt if the email has any error
+        /// </summary>
         public bool EmailHasError
         {
             get
@@ -44,6 +52,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
         private string? _error;
+        /// <summary>
+        /// This Property represents the error that was thrown on the add new user command
+        /// </summary>
+        /// <remarks>null if no exception was thrown during the command</remarks>
         public string? Error
         {
             get
@@ -57,9 +69,16 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(ExceptionErrorVisibility));
             }
         }
+        /// <summary>
+        /// This Proprety represents the visibility string of the erro
+        /// </summary>
+        /// <remarks>it gets setted auto depending on the state of the error message</remarks>
         public string ExceptionErrorVisibility => Error != null ? "Visible" : "Collapsed";
 
         private string? _firstName;
+        /// <summary>
+        /// gets and sets the first name field with OnPropretychanged
+        /// </summary>
         public string? FirstName
         {
             get
@@ -73,6 +92,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
         private string? _lastName;
+        /// <summary>
+        /// gets and sets the last name field with OnPropretychanged
+        /// </summary>
         public string? LastName
         {
             get
@@ -85,8 +107,14 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(LastName));
             }
         }
+        /// <summary>
+        /// gets and Start Date filed with OnPropretychanged
+        /// </summary>
         public DateOnly? StartDate { get; private set; }
-        public DateTime? ChoosenStartDateString
+        /// <summary>
+        /// gets the start date in <see cref="DateTime"/> format
+        /// </summary>
+        public DateTime? ChoosenStartDateInDateTime
         {
             get
             {
@@ -110,14 +138,17 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 {
                     if (EndDate != null)
                     {
-                        ChoosenEndDateString = null;
+                        ChoosenEndDateInDateTime = null;
                     }
                     IsEndDateEnabled = false;
                 }
-                OnPropertyChanged(nameof(ChoosenStartDateString));
+                OnPropertyChanged(nameof(ChoosenStartDateInDateTime));
             }
         }
         private bool _isEndDateEnabled = false;
+        /// <summary>
+        /// gets a boolean that represents if the end date input is enabled
+        /// </summary>
         public bool IsEndDateEnabled
         {
             get
@@ -130,8 +161,14 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(IsEndDateEnabled));
             }
         }
+        /// <summary>
+        /// gets and End Date filed with OnPropretychanged
+        /// </summary>
         public DateOnly? EndDate { get; private set; }
-        public DateTime? ChoosenEndDateString
+        /// <summary>
+        /// gets the end date in <see cref="DateTime"/> format
+        /// </summary>
+        public DateTime? ChoosenEndDateInDateTime
         {
             get
             {
@@ -154,10 +191,13 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 {
                     EndDate = DateOnly.FromDateTime(value.Value);
                 }
-                OnPropertyChanged(nameof(ChoosenEndDateString));
+                OnPropertyChanged(nameof(ChoosenEndDateInDateTime));
             }
         }
         private string? _email;
+        /// <summary>
+        /// gets and sets the Email field with OnPropretychanged
+        /// </summary>
         public string? Email
         {
             get
@@ -170,9 +210,14 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(Email));
             }
         }
-
+        /// <summary>
+        /// getss the choosen category from the category comboBox
+        /// </summary>
+        /// <remarks>This proprety can be null if no romm category is selected</remarks>
         public IRoomCategory? ReservedRoomCategory { get; private set; }
-
+        /// <summary>
+        /// gets the name of the selected room category
+        /// </summary>
         public string? ReserverdRoomCategoryName
         {
             get
@@ -203,7 +248,14 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(ReserverdRoomCategoryName));
             }
         }
+        /// <summary>
+        /// getss the choosen status type from the resevation status comboBox
+        /// </summary>
+        /// <remarks>This proprety can be null if no status is selected</remarks>
         public ReservationStatus? ReservationStatusType { get; private set; }
+        /// <summary>
+        /// gets the string format of the ReservationStatusType
+        /// </summary>
         public string? ReservationChoosenStatusString
         {
             get

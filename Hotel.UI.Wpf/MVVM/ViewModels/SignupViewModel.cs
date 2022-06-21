@@ -18,6 +18,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             CreateNewNormalUserCommand = new CreateNormalUserAccountCommand(_userManager, this, _navigationStore);
         }
         private string? _firstName;
+        /// <summary>
+        /// gets and sets the first name field with OnPropretychanged
+        /// </summary>
         public string? FirstName
         {
             get
@@ -31,6 +34,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             }
         }
         private string? _lastName;
+        /// <summary>
+        /// gets and sets the last name field with OnPropretychanged
+        /// </summary>
         public string? LastName
         {
             get
@@ -44,6 +50,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             }
         }
         private string? _email;
+        /// <summary>
+        /// gets and sets the Email field with OnPropretychanged
+        /// </summary>
         public string? Email
         {
             get
@@ -57,6 +66,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             }
         }
         private string? _password;
+        /// <summary>
+        /// gets and sets the password field with OnPropretychanged
+        /// </summary>
         public string? Password
         {
             get
@@ -70,6 +82,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             }
         }
         private string? _error;
+        /// <summary>
+        /// This Property represents the error that was thrown on the add new user command
+        /// </summary>
+        /// <remarks>null if no exception was thrown during the command</remarks>
         public string? Error
         {
             get
@@ -83,6 +99,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
                 OnPropertyChanged(nameof(ExceptionErrorVisibility));
             }
         }
+        /// <summary>
+        /// This Proprety represents the visibility string of the erro
+        /// </summary>
+        /// <remarks>it gets setted auto depending on the state of the error message</remarks>
         public string? ExceptionErrorVisibility => Error != null ? "Visible" : "Collapsed";
         public ICommand CancelSignUpCommand { get; }
         public ICommand CreateNewNormalUserCommand { get; }

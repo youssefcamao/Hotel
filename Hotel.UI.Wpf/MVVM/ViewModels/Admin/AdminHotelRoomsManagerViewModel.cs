@@ -2,5 +2,6 @@
 {
     public class AdminHotelRoomsManagerViewModel : ViewModelBase
     {
+        //This ViewModel is empty because it didn't reach the deadline
     }
 }

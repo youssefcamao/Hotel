@@ -13,13 +13,38 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         private readonly ReservationManager _reservationManager;
         private IUser _creationUser;
         private IRoom _reservationRoom;
+        /// <summary>
+        /// gets the reservation of the viewModel
+        /// </summary>
         public IHotelReservation Reservation { get; }
+        /// <summary>
+        /// gets the roomNumber from the reservation of the viewModel
+        /// </summary>
         public int RoomNumber => Reservation.RoomNumber;
+        /// <summary>
+        /// gets the room type from the reservation of the viewModel
+        /// </summary>
         public string RoomType => _roomCategory.CategoryName;
+        /// <summary>
+        /// gets the name the full name of the registred person in the reservation
+        /// </summary>
         public string Name { get; private set; }
+        /// <summary>
+        /// gets the start date of the reservation
+        /// </summary>
         public DateOnly StartDate => Reservation.StartDate;
+        /// <summary>
+        /// gets the end date of the reservation
+        /// </summary>
+        /// <remarks> end date must be after the start date</remarks>
         public DateOnly EndDate => Reservation.EndDate;
+        /// <summary>
+        /// gets the totalPrice from the reservation of the viewModel
+        /// </summary>
         public double TotalPrice => Reservation.TotalPriceForNights;
+        /// <summary>
+        /// gets the status from the reservation of the viewModel
+        /// </summary>
         public ReservationStatus Status
         {
             get
@@ -36,6 +61,10 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
                 OnPropertyChanged(nameof(IsRespondToReservationVisible));
             }
         }
+        /// <summary>
+        /// gets the string that represents the visibility of the the repond to reservation menu item
+        /// </summary>
+        /// <remarks> the string must be either Visible or Collapsed</remarks>
         public string IsRespondToReservationVisible => Reservation.ReservationStatus == Configuration.Enums.ReservationStatus.Pending ? "Visible" : "Collapsed";
 
         public AdminReservationItemViewModel(IHotelReservation reservation, UserManager userManager, 

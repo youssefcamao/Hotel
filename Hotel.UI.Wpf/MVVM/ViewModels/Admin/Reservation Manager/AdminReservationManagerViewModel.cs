@@ -49,10 +49,38 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         {
             OnPropertyChanged(nameof(NoDataAvailableMessageVisibility));
         }
-
+        /// <summary>
+        /// gets the collection of <see cref="AdminReservationItemViewModel"/> that represented in the ui
+        /// </summary>
         public ObservableCollection<AdminReservationItemViewModel> Reservations { get; }
+        /// <summary>
+        /// gets the viewModel of the filter popup
+        /// </summary>
         public AdminReservationsFilterPopupViewModel AdminReservationsFilterPopupViewModel { get; }
+        /// <summary>
+        /// represents the string of the visibility of the no data is available
+        /// </summary>
+        /// <remarks> the string can be either Visible or Collapsed</remarks>
         public string NoDataAvailableMessageVisibility => Reservations.Count == 0 ? "Visible" : "Collapsed";
+        /// <summary>
+        /// gets and sets the boolean that represents the state of the dialog (if open or closed)
+        /// </summary>
+        public bool IsDialogOpen
+        {
+            get
+            {
+                return _isDialogOpen;
+            }
+            set
+            {
+                _isDialogOpen = value;
+                OnPropertyChanged(nameof(IsDialogOpen));
+            }
+        }
+        /// <summary>
+        /// This Method loads reservations from the back end 
+        /// </summary>
+        /// <remarks> this method clears all reservations before loading the new ones from the backend</remarks>
         internal void GetReservationsFromCore()
         {
             if (Reservations.Count != 0)
@@ -95,18 +123,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             await DialogHost.Show(new AdminShowDetailsViewModel(paramater, _reservationManager, _hotelRoomsManager, _userManager), _dialogHostId);
         }
         private bool _isDialogOpen;
-        public bool IsDialogOpen
-        {
-            get
-            {
-                return _isDialogOpen;
-            }
-            set
-            {
-                _isDialogOpen = value;
-                OnPropertyChanged(nameof(IsDialogOpen));
-            }
-        }
+        
         public ICommand OpenInsertReservationDialog { get; }
         public ICommand OpenDeleteReservationConfirmationCommand { get; }
         public ICommand AcceptReservationCommand { get; }

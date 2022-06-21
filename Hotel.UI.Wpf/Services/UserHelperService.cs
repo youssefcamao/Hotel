@@ -5,6 +5,11 @@ namespace Hotel.UI.Wpf.Ui_Helpers
 {
     public static class UserHelperService
     {
+        /// <summary>
+        /// This static method returns a string with the first and last name combinded and formatted
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static string GetUserNameFromUser(IUser user)
         {
             var firstName = NamingHelper.FixNameFormat(user.FirstName);

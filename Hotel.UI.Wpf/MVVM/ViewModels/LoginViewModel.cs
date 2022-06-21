@@ -26,6 +26,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             SignupCommand = new SwitchViewCommand(_navigationStore, new SignupViewModel(_navigationStore, _userManager));
         }
         private string? _email;
+        /// <summary>
+        /// gets and sets the email field
+        /// </summary>
         public string? Email
         {
             get
@@ -39,7 +42,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             }
         }
         private string? _userPassword;
-
+        /// <summary>
+        /// gets and sets the User Password field on the login
+        /// </summary>
         public string? UserPassword
         {
             get
@@ -53,6 +58,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             }
         }
         private bool _isLoginInProgress;
+        /// <summary>
+        /// gets and sets if Login in progress to activate animation
+        /// </summary>
         public bool IsLoginInProgress
         {
             get
@@ -68,7 +76,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         public ICommand LoginCommand { get; }
         public ICommand SignupCommand { get; }
         public ISnackbarMessageQueue BoundMessageQueue { get; } = new SnackbarMessageQueue();
-
+        /// <summary>
+        /// This method will send a snakbar to ui that show that the registration was successful
+        /// </summary>
         public void SendSuccessfulRegistrationMessage()
         {
             BoundMessageQueue.Enqueue("Thank you for registring with us", "Close", () =>

@@ -25,6 +25,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
         private string? _newPassword;
+        /// <summary>
+        /// gets and sets the New Password field with OnPropretychanged
+        /// </summary>
         public string? NewPassword
         {
             get
@@ -40,6 +43,9 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             }
         }
         private string? _confirmedPassword;
+        /// <summary>
+        /// gets and sets the Confirm Password field with OnPropretychanged
+        /// </summary>
         public string? ConfirmedPassword
         {
             get
@@ -53,9 +59,21 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                 OnPropertyChanged(nameof(ConfirmedPasswordValidMarkVisibility));
             }
         }
+        /// <summary>
+        /// gets if then new password is valid and not equal null
+        /// </summary>
         public bool IsNewPasswordValid => NewPassword != null;
+        /// <summary>
+        /// gets if the new password matches the confirmed password
+        /// </summary>
         public bool IsConfirmedPasswordValid => NewPassword == ConfirmedPassword && NewPassword != null;
+        /// <summary>
+        /// gets the visibility string depending on the IsNewPasswordValid boolean
+        /// </summary>
         public string? IsNewPasswordValidMarkVisibility => IsNewPasswordValid ? "Visible" : "Collapsed";
+        /// <summary>
+        /// gets the visibility string depending on the IsConfirmedPasswordValid boolean
+        /// </summary>
         public string? ConfirmedPasswordValidMarkVisibility => IsConfirmedPasswordValid ? "Visible" : "Collapsed";
         public ICommand AdminChangePasswordCommand { get; }
     }
