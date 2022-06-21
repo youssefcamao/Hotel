@@ -14,5 +14,10 @@ namespace Hotel.Configuration.Models.DapperModels
         /// <para>this proprety was also made set to allow access from dapper</para>
         /// </summary>
         public int RoomNumber { get; set; }
+        /// <summary>
+        /// <inheritdoc/>
+        /// <para>this proprety was also made set to allow access from dapper</para>
+        /// </summary>
+        public bool IsRoomAvailable { get; set; }
     }
 }

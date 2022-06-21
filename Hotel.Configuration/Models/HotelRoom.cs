@@ -15,7 +15,7 @@ namespace Hotel.Configuration.Models
         /// </summary>
         public int RoomNumber { get; set; }
         /// <summary>
-        /// get and set the boolean tha represents if a room is available
+        /// <inheritdoc/>
         /// </summary>
         public bool IsRoomAvailable { get; set; }
         /// <summary>
