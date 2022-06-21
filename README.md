@@ -1,8 +1,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/youssefcamao/Hotel/blob/master/Hotel.UI.Wpf/Assets/Images/hotel-logo.png">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/youssefcamao/Hotel/blob/master/Hotel.UI.Wpf/">
+    <img src="Assets/Images/hotel-logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Hotel Management App</h3>
