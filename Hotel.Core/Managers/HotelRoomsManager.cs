@@ -25,6 +25,13 @@ namespace Hotel.Core
         {
             return RoomCategories.FirstOrDefault(x => x.Id == roomCategoryId);
         }
+        /// <summary>
+        /// This Method return category by its name
+        /// <para><remarks>if no categery is found <see cref="ArgumentException"/> is thrown.</remarks></para>
+        /// <para><remarks>if more than one category is found <see cref="InvalidOperationException"/> is thrown.</remarks></para>
+        /// </summary>
+        /// <returns> the room category if found and null if not</returns>
+        /// <param name="categoryName"></param>
         public IRoomCategory? GetCategoryFromCategoryName(string categoryName)
         {
             var selectedCategories = RoomCategories.Where(x => x.CategoryName == categoryName);
@@ -46,11 +53,16 @@ namespace Hotel.Core
         /// This Method returns a room from its roomNumber and returns Null if Category Not Found
         /// </summary>
         /// <param name="roomCategoryId"></param>
-        /// <returns> IRoom or Null If not found</returns>
+        /// <returns> <see cref="IRoom"/> or null If not found</returns>
         public IRoom? GetRoomFromNumber(int roomNumber)
         {
             return HotelRoomsList.FirstOrDefault(x => x.RoomNumber == roomNumber);
         }
+        /// <summary>
+        /// This Method returns category from its Id
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns> <see cref="IRoomCategory"/> if found and null if not</returns>
         public IRoomCategory? GetRoomCategoryFromId(Guid categoryId)
         {
             return RoomCategories.FirstOrDefault(x => x.Id == categoryId);

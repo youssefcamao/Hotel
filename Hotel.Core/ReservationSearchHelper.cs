@@ -17,19 +17,19 @@ namespace Hotel.Core
         /// </summary>
         /// <param name="hotelReservations"></param>
         /// <param name="name"></param>
-        /// <returns>A filtered list of IHotelReservation that is filtered by the name.</returns>
+        /// <returns>A filtered list of <see cref="IHotelReservation"/> that is filtered by the name.</returns>
         public List<IHotelReservation> GetReservationsFromName(IList<IHotelReservation> hotelReservations, string name)
         {
             return hotelReservations.Where(x => x.FirstName.ToLower().Contains(name.ToLower()) || x.LastName.ToLower().Contains(name.ToLower())).ToList();
         }
 
         /// <summary>
-        /// This method filters a list of IHotelReserveration by the date with using LINQ's Where() to extract all dates that are in the range of the start date to end date.
+        /// This method filters a list of <see cref="IHotelReservation"/> by the date with using LINQ's Where() to extract all dates that are in the range of the start date to end date.
         /// </summary>
         /// <param name="hotelReservations"></param>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
-        /// <returns>A filtered list of IHotelReservation where the reserverations are in the range of the start and end date.</returns>
+        /// <returns>A filtered list of <see cref="IHotelReservation"/> where the reserverations are in the range of the start and end date.</returns>
         public List<IHotelReservation> GetReservationsFromDateRange(IList<IHotelReservation> hotelReservations, DateOnly? startDate, DateOnly? endDate)
         {
             Func<DateOnly, DateOnly?, bool> isEndDateApplying = (endDate, targetedEndDate) =>
@@ -47,34 +47,38 @@ namespace Hotel.Core
         }
 
         /// <summary>
-        /// This method filters a list of IHotelReservation by the IRoomCategory with using LINQ's Where() to extract all reservations that contain the chosen IRoomCategory.
+        /// This method filters a list of <see cref="IHotelReservation"/> by the <see cref="IRoomCategory"/> with using LINQ's 
+        /// Where() to extract all reservations that contain the chosen <see cref="IRoomCategory"/>.
         /// </summary>
         /// <param name="hotelReservations"></param>
         /// <param name="roomCategory"></param>
-        /// <returns>A filtered list of IHotelReservation from a list IHotelReservation with IRoomCategory as filter.</returns>
+        /// <returns>A filtered list of <see cref="IHotelReservation"/> from a list <see cref="IHotelReservation"/> 
+        /// with <see cref="IRoomCategory"/> as filter.</returns>
         public List<IHotelReservation> GetReservationFromRoomType(IList<IHotelReservation> hotelReservations, IRoomCategory roomCategory)
         {
             return hotelReservations.Where(x => GetIfReservationCategoryMatches(x, roomCategory)).ToList();
         }
 
         /// <summary>
-        /// This method filters a list of IHotelReservation by the status with using LINQ's Where() to extract all reservations that contain the chosen status.
+        /// This method filters a list of <see cref="IHotelReservation"/> by the status with using LINQ's 
+        /// Where() to extract all reservations that contain the chosen status.
         /// </summary>
         /// <param name="hotelReservations"></param>
         /// <param name="status"></param>
-        /// <returns>A filtered list of IHotelReservation that is filtered by ReservationStatus.</returns>
+        /// <returns>A filtered list of <see cref="IHotelReservation"/> that is filtered by ReservationStatus.</returns>
         public List<IHotelReservation> GetReservationsFromStatus(IList<IHotelReservation> hotelReservations, ReservationStatus status)
         {
             return hotelReservations.Where(x => x.ReservationStatus == status).ToList();
         }
 
         /// <summary>
-        /// This method filters a list of IHotelReserveration by the price with using LINQ's Where() to extract all prices that are in the range of the min and max price.
+        /// This method filters a list of <see cref="IHotelReservation"/> by the price with using LINQ's Where() 
+        /// to extract all prices that are in the range of the min and max price.
         /// </summary>
         /// <param name="hotelReservations"></param>
         /// <param name="minPrice"></param>
         /// <param name="maxPrice"></param>
-        /// <returns>A filtered list of IHotelReservation where the reserverations are in the range of the min and max price.</returns>
+        /// <returns>A filtered list of <see cref="IHotelReservation"/> where the reserverations are in the range of the min and max price.</returns>
         public List<IHotelReservation> GetReservationsFromPriceRange(IList<IHotelReservation> hotelReservations, double? minPrice, double? maxPrice)
         {
             Func<double, double?, bool> isMaxPriceApplying = (maxPrice, targetedMaxPrice) =>
