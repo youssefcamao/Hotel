@@ -1,3 +1,4 @@
+using Hotel.Core.CheckServices;
 using Xunit;
 
 namespace Hotel.Core.Test
