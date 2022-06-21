@@ -5,6 +5,9 @@ using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// This command switches the view to <see cref="AdminReservationManagerViewModel"/>
+    /// </summary>
     public class OpenReservationCommand : CommandBase
     {
         private AdminViewModel _adminViewModel;

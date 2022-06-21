@@ -3,6 +3,9 @@ using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.Commands
 {
+    /// <summary>
+    /// This command is the base command for all the commands that implements OnPropertyChanged
+    /// </summary>
     public abstract class CommandBase : ICommand
     {
         public event EventHandler? CanExecuteChanged;

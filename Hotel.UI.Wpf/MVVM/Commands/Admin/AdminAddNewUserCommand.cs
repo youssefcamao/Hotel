@@ -8,6 +8,9 @@ using System;
 using System.ComponentModel;
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// This command adds a new user to the back end and updates the grid view of the users
+    /// </summary>
     public class AdminAddNewUserCommand : CommandBase
     {
         private readonly UserManager _userManager;

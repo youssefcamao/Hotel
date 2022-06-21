@@ -5,6 +5,9 @@ using System;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// This command deletes a reservation from the backend and updates the resrevation grid view
+    /// </summary>
     public class AdminDeleteReservationCommand : CommandBase
     {
         private ReservationManager _reservationManager;

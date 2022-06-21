@@ -71,7 +71,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         }
         private async void OnLogoutConfirmation(object _)
         {
-            await DialogHost.Show(new ConfirmationDialogViewModel("Are You Sure You Want To Logout ?", new LogoutCommand(_navigationStore)), _dialogHostIdentifier);
+            await DialogHost.Show(new ConfirmationDialogViewModel("Are You Sure You Want To Logout ?", new SwitchViewCommand(_navigationStore, new LoginViewModel(_navigationStore))), _dialogHostIdentifier);
         }
         public ICommand OpenReservationCommand { get; }
         public ICommand OpenUserManagerCommand { get; }

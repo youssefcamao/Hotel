@@ -7,6 +7,9 @@ using System.Collections.ObjectModel;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Popups
 {
+    /// <summary>
+    /// This command checks the input fields of <see cref="AdminReservationsFilterPopupViewModel"/> and uses <see cref="ReservationSearchHelper"/> to filter the selected and filled inputs
+    /// </summary>
     public class SaveFilterSettingsCommand : CommandBase
     {
         private readonly AdminReservationsFilterPopupViewModel _parentviewModel;

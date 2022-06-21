@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// This command Checks the input fields in the details and save any changes and refreshes the UI after saving
+    /// </summary>
     public class AdminSaveNewUsersEditedChangesCommand : CommandBase
     {
         private readonly UserManager _userManager;
@@ -49,6 +52,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
                 && !string.IsNullOrEmpty(_parentViewModel.FirstName)
                 && !string.IsNullOrEmpty(_parentViewModel.LastName) 
                 && _parentViewModel.IsUserAdmin != null;
+            //boolean represents if there is any new edits on the details
             var IfDetailsChanged = _parentViewModel.FirstName != _selectedUserItem.User.FirstName
                 || _parentViewModel.LastName != _selectedUserItem.User.LastName
                 || _parentViewModel.Email != _selectedUserItem.User.Email

@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// This command changes the password of a user in the back end from <see cref="AdminUserItemViewModel"/>
+    /// </summary>
     public class AdminChangePasswordCommand : CommandBase
     {
         private readonly UserManager _userManager;

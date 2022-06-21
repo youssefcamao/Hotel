@@ -10,6 +10,9 @@ using System.Linq;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// this commands deletes a selection of <see cref="AdminUserItemViewModel"/> and refreshes the UI
+    /// </summary>
     public class AdminDeleteSelectedUsersCommand : CommandBase
     {
         private readonly UserManager _userManager;
@@ -34,6 +37,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 
         private void SubscribeToAllViewUsers()
         {
+            //subscribing to all the AdminUserItemViewModel Props
             foreach (var user in _parentViewModel.Users)
             {
                 user.PropertyChanged += User_PropertyChanged;

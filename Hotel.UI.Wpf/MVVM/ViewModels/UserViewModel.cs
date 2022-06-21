@@ -1,4 +1,5 @@
 ﻿using Hotel.Configuration.Interfaces.Models;
+using Hotel.UI.Wpf.MVVM.Commands;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.Stores;
 using Hotel.UI.Wpf.Ui_Helpers;
@@ -11,7 +12,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
         public UserViewModel(NavigationStore navigationStore, IUser connectedUser)
         {
             CurrentUserString = UiStringHelpers.GetUserNameFromUser(connectedUser);
-            LogoutCommand = new LogoutCommand(navigationStore);
+            LogoutCommand = new SwitchViewCommand(navigationStore, new LoginViewModel(navigationStore));
         }
         public string CurrentUserString { get; }
         public ICommand LogoutCommand { get; } 

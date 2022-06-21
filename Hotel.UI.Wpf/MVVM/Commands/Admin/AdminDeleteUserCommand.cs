@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// This Command Delete a user after converting the Param <see cref="Object"/> to <see cref="AdminUserItemViewModel"/>
+    /// </summary>
     public class AdminDeleteUserCommand : CommandBase
     {
         private readonly UserManager _userManager;

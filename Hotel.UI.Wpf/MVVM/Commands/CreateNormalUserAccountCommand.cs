@@ -7,6 +7,10 @@ using System.ComponentModel;
 
 namespace Hotel.UI.Wpf.MVVM.Commands
 {
+    /// <summary>
+    /// This command Creates a new user as a normal user and swithces back to the login view
+    /// </summary>
+    /// <remarks>It Sends a snackbar if the registraction was successful</remarks>
     public class CreateNormalUserAccountCommand : CommandBase
     {
         private readonly UserManager _loginManager;

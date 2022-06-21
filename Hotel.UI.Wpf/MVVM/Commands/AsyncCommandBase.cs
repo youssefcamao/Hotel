@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.Commands
 {
+    /// <summary>
+    /// Base command for all the async commmands and improves the logic of a normal <see cref="ICommand"/> to make working with async easier 
+    /// </summary>
     public abstract class AsyncCommandBase : ICommand
     {
         public event EventHandler? CanExecuteChanged;

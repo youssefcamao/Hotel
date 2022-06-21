@@ -5,6 +5,9 @@ using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// This command changes the view to <see cref="AdminUserManagerViewModel"/>
+    /// </summary>
     public class OpenUserManagerCommand : CommandBase
     {
         private AdminViewModel _parentViewModel;

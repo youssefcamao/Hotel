@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands
 {
+    /// <summary>
+    /// This command is async and takes the email and passowrd from the parent view model and sends it to the back end for auth
+    /// </summary>
+    /// <remarks>If login is successful it swithces to new view depending on the users role </remarks>
     public class LoginCommand : AsyncCommandBase
     {
         private readonly LoginViewModel _parentViewModel;

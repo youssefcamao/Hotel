@@ -9,6 +9,9 @@ using System.ComponentModel;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// This command adds a new reservation to the back end and updates the grid view of the reservations
+    /// </summary>
     public class AdminAddReservationCommand : CommandBase
     {
         private readonly IUser _connectedUser;

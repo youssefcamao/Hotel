@@ -3,6 +3,9 @@ using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.Commands
 {
+    /// <summary>
+    /// This Method can be used to Initiate a command from <see cref="Action"/>
+    /// </summary>
     public class DelegateCommand : ICommand
     {
         private readonly Action<object> _executeAction;
