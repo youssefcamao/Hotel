@@ -4,6 +4,9 @@ using Hotel.UI.Wpf.MVVM.ViewModels;
 
 namespace Hotel.UI.Wpf.MVVM.Commands
 {
+    /// <summary>
+    /// This command will navigate to the signUp view
+    /// </summary>
     public class SignupCommand : CommandBase
     {
         private readonly NavigationStore _navigationStore;

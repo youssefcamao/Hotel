@@ -10,8 +10,8 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
     {
         public UserViewModel(NavigationStore navigationStore, IUser connectedUser)
         {
-            CurrentUserString = UiStringHelpers.GetUserNameFromUser(connectedUser);
-            LogoutCommand = new SwitchViewCommand(navigationStore, new LoginViewModel(navigationStore));
+            CurrentUserString = UserHelperService.GetUserNameFromUser(connectedUser);
+            LogoutCommand = new LogoutCommand(navigationStore);
         }
         /// <summary>
         /// gets and sets the string that represents the user on closing bar

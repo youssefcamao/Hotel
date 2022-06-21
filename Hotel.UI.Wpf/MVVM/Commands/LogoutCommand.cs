@@ -3,6 +3,9 @@ using Hotel.UI.Wpf.MVVM.ViewModels;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
+    /// <summary>
+    /// This command will navigate back to the login view
+    /// </summary>
     public class LogoutCommand : CommandBase
     {
         private readonly NavigationStore _navigationStore;
