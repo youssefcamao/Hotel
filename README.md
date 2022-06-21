@@ -10,7 +10,7 @@
   <p align="center">
     Next Level school Project!
     <br />
-    <a href="https://github.com/youssefcamao/Hotel"><strong>Explore the docs »</strong></a>
+    <a href="Docus/Doku.pdf"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/youssefcamao/Hotel">View Demo</a>
