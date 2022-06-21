@@ -13,10 +13,12 @@ namespace Hotel.Configuration.Repos
         public SqlDataAccess(string connectionString)
         {
             _connectionString = connectionString;
+            
+            //adding custom type handler for dateonly type
             SqlMapper.AddTypeHandler(new DapperSqlDateOnlyTypeHandler());
         }
         /// <summary>
-        /// This Mehod loads data from the database using a stored procedure and a parameter
+        /// This Method loads data from the database using a stored procedure and dapper parameter
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="U"></typeparam>
@@ -32,7 +34,14 @@ namespace Hotel.Configuration.Repos
             return connection.Query<T>(storedProcedure, parameters,
                 commandType: CommandType.StoredProcedure);
         }
-
+        /// <summary>
+        /// Loads Data Async to database using a stored procedure and dapper parameter
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="U"></typeparam>
+        /// <param name="storedProcedure"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<T>> LoadDataAsync<T, U>(string storedProcedure, U parameters)
         {
             using IDbConnection connection = new SqlConnection(_connectionString);

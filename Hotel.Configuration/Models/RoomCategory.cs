@@ -11,13 +11,21 @@ namespace Hotel.Configuration.Models
             RoomPriceForNight = roomPrice;
             Id = Guid.NewGuid();
         }
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public Guid Id { get; }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public string CategoryName { get; }
-
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public string Description { get; }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public double RoomPriceForNight { get; }
 
     }

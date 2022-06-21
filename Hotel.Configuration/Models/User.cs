@@ -12,14 +12,25 @@ namespace Hotel.Configuration.Models
             Email = email;
             IsUserAdmin = isAdmin;
         }
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public Guid Id { get; }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public string FirstName { get; set; }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public string LastName { get; set; }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public string Email { get; set; }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public bool IsUserAdmin { get; set; }
 
     }

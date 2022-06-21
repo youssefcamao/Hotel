@@ -16,16 +16,31 @@ namespace Hotel.Configuration.Repos
             }
             _dataAccess = dataAccess;
         }
+        /// <summary>
+        /// <inheritdoc/>
+        /// <para>the param must be of type <see cref="IRoomCategory"/></para>
+        /// </summary>
+        /// <param name="model"></param>
         public void CreateNewModel(IRoomCategory model)
         {
             _dataAccess.SaveData("InsertCategory", model);
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// <para>the param must be of type <see cref="IRoomCategory"/></para>
+        /// </summary>
+        /// <param name="model"></param>
         public void DeleteModel(IRoomCategory model)
         {
             _dataAccess.SaveData("DeleteCategory", model);
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// <para>the param must be of type <see cref="IRoomCategory"/></para>
+        /// <remarks>if <see cref="IRoomCategory"/> is not implemented from the dapper model <see cref="ArgumentException"/> is thrown.</remarks>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        /// <param name="model"></param>
         public IList<IRoomCategory> GetAll()
         {
             var dapperCategories =  _dataAccess.LoadData<DapperCategory, dynamic>("GetAllCategories", new { });
@@ -33,7 +48,11 @@ namespace Hotel.Configuration.Repos
             category : throw new ArgumentException($"categories doesn't implement the interface IRoomCategory")).ToList();
             return categories;
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// <para>the param must be of type <see cref="IRoomCategory"/></para>
+        /// </summary>
+        /// <param name="model"></param>
         public void UpdateModel(IRoomCategory model)
         {
             _dataAccess.SaveData("UpdateCategory", model);

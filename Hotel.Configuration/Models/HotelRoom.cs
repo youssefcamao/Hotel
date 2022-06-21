@@ -10,8 +10,17 @@ namespace Hotel.Configuration.Models
             IsRoomAvailable = isRoomAvailable;
             CategoryId = categoryId;
         }
+        /// <summary>
+        /// <inheritdoc/><br/>
+        /// </summary>
         public int RoomNumber { get; set; }
+        /// <summary>
+        /// get and set the boolean tha represents if a room is available
+        /// </summary>
         public bool IsRoomAvailable { get; set; }
+        /// <summary>
+        /// <inheritdoc/><br/>
+        /// </summary>
         public Guid CategoryId { get; }
 
     }

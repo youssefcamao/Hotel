@@ -17,16 +17,31 @@ namespace Hotel.Configuration.Repos
             }
             _dataAccess = dataAccess;
         }
+        /// <summary>
+        /// <inheritdoc/>
+        /// <para>the param must be of type <see cref="IRoom"/></para>
+        /// </summary>
+        /// <param name="model"></param>
         public void CreateNewModel(IRoom model)
         {
             _dataAccess.SaveData("InsertRoom", model);
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// <para>the param must be of type <see cref="IRoom"/></para>
+        /// </summary>
+        /// <param name="model"></param>
         public void DeleteModel(IRoom model)
         {
             _dataAccess.SaveData("DeleteRoom", model);
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// <para>the param must be of type <see cref="IRoom"/></para>
+        /// <remarks>if <see cref="IHotelReservation"/> is not implemented from the dapper model <see cref="ArgumentException"/> is thrown.</remarks>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        /// <param name="model"></param>
         public IList<IRoom> GetAll()
 {
             var dapperRooms = _dataAccess.LoadData<DapperRoom,dynamic>("GetAllRooms", new { });
@@ -34,7 +49,11 @@ namespace Hotel.Configuration.Repos
             user : throw new ArgumentException("Reservation doesn't implement the interface IReservation")).ToList();
             return reservations;
         }
-
+        /// <summary>
+        /// <inheritdoc/>
+        /// <para>the param must be of type <see cref="IRoom"/></para>
+        /// </summary>
+        /// <param name="model"></param>
         public void UpdateModel(IRoom model)
         {
             _dataAccess.SaveData("UpdateRoom", model);
