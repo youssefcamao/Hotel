@@ -18,7 +18,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         private readonly UserManager _userManager;
         private readonly IUser _connectedUser;
         private IList<IUser> _usersViewedList;
-        private readonly ObservableCollection<string> _userRoles = new ObservableCollection<string> { "Admin", "User"};
+        private readonly ObservableCollection<string> _userRoles = new ObservableCollection<string> { "Admin", "User" };
         private readonly string _dialogHostId = "UserManagerDialog";
 
         public AdminUserManagerViewModel(UserManager userManager, IUser connectedUser)
@@ -42,7 +42,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         }
 
         public ObservableCollection<AdminUserItemViewModel> Users { get; }
-        
+
         /// <summary>
         /// This method fills the User grid view with the given <see cref="IEnumerable<<see cref="IUser"/>>"/>
         /// </summary>
@@ -59,7 +59,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             {
                 if (user.Id != _connectedUser.Id)
                 {
-                Users.Add(new AdminUserItemViewModel(user));
+                    Users.Add(new AdminUserItemViewModel(user));
                 }
             }
         }
@@ -165,9 +165,12 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             {
                 return;
             }
-            var filterSearchList = new List<IUser>(_usersViewedList.Where(x => x.FirstName.Contains(_seachContent, StringComparison.OrdinalIgnoreCase)
-            || x.LastName.Contains(_seachContent, StringComparison.OrdinalIgnoreCase) 
-            || x.Email.Contains(_seachContent, StringComparison.OrdinalIgnoreCase)));
+            var filterSearchList = new List<IUser>(_usersViewedList.Where(x =>
+            {
+                var name = x.FirstName + " " + x.LastName;
+                return name.Contains(_seachContent, StringComparison.OrdinalIgnoreCase)
+                || x.Email.Contains(_seachContent, StringComparison.OrdinalIgnoreCase);
+            }));
             FillViewUsersFromList(filterSearchList);
         }
         private void SelectAll(bool select)
