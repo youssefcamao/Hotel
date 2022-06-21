@@ -1,7 +1,5 @@
-﻿using Hotel.Configuration.Exceptions;
-using Hotel.Core.Managers;
+﻿using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
-using Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -17,7 +15,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         private readonly AdminAddNewUserDialogViewModel _parentViewModel;
         private readonly AdminUserManagerViewModel _adminUserManagerViewModel;
 
-        public AdminAddNewUserCommand(UserManager userManager, 
+        public AdminAddNewUserCommand(UserManager userManager,
             AdminAddNewUserDialogViewModel parentViewModel, AdminUserManagerViewModel adminUserManagerViewModel)
         {
             _userManager = userManager;

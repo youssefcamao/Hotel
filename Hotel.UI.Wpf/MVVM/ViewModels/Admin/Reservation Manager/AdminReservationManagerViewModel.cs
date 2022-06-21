@@ -123,7 +123,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
             await DialogHost.Show(new AdminShowDetailsViewModel(paramater, _reservationManager, _hotelRoomsManager, _userManager), _dialogHostId);
         }
         private bool _isDialogOpen;
-        
+
         public ICommand OpenInsertReservationDialog { get; }
         public ICommand OpenDeleteReservationConfirmationCommand { get; }
         public ICommand AcceptReservationCommand { get; }

@@ -3,11 +3,7 @@ using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
@@ -25,7 +21,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             {
                 throw new ArgumentNullException(nameof(param));
             }
-           if (AdminUserItemViewModel.User == null)
+            if (AdminUserItemViewModel.User == null)
             {
                 throw new ArgumentNullException(nameof(AdminUserItemViewModel.User));
             }
@@ -35,7 +31,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             UserRoleCollection = userRoles;
             IsUserAdmin = AdminUserItemViewModel.User.IsUserAdmin;
             SaveChangesCommand = new AdminSaveNewUsersEditedChangesCommand(userManager, this, adminUserManagerViewModel, adminUserItemViewModel);
-    }
+        }
         private string _firstName;
         /// <summary>
         /// gets and sets the first name field with OnPropretychanged

@@ -4,11 +4,7 @@ using Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
 using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {

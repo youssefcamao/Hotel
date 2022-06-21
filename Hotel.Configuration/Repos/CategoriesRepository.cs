@@ -44,7 +44,7 @@ namespace Hotel.Configuration.Repos
         /// <param name="model"></param>
         public IList<IRoomCategory> GetAll()
         {
-            var dapperCategories =  _dataAccess.LoadData<DapperCategory, dynamic>("GetAllCategories", new { });
+            var dapperCategories = _dataAccess.LoadData<DapperCategory, dynamic>("GetAllCategories", new { });
             var categories = dapperCategories.Select(x => x is IRoomCategory category ?
             category : throw new ArgumentException($"categories doesn't implement the interface IRoomCategory")).ToList();
             return categories;

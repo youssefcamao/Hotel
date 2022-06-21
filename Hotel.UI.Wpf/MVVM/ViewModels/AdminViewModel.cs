@@ -38,7 +38,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             _reservationsRepo = new ReservationsRepository(_sqlDataAccess);
             _reservationManager = new ReservationManager(_hotelRoomsManager, _reservationsRepo);
             OpenReservationCommand = new OpenReservationCommand(this, connectedUser, userManager, _reservationManager, _hotelRoomsManager);
-            OpenUserManagerCommand = new OpenUserManagerCommand(this, userManager,_connectedUser);
+            OpenUserManagerCommand = new OpenUserManagerCommand(this, userManager, _connectedUser);
             OpenHotelRoomsManager = new OpenHotelRoomsManagerCommand(this);
             LogoutCommandWithConfirmation = new DelegateCommand(OnLogoutConfirmation);
             CurrentUserString = UserHelperService.GetUserNameFromUser(_connectedUser);

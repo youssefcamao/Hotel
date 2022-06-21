@@ -1,7 +1,7 @@
-﻿using Hotel.Configuration.Interfaces.Models;
+﻿using Hotel.Configuration.Exceptions;
+using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Models;
-using Hotel.Configuration.Exceptions;
 
 namespace Hotel.Core.Managers
 {

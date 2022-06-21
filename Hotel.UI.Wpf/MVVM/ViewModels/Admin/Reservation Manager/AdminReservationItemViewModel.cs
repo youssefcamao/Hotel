@@ -67,7 +67,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Admin
         /// <remarks> the string must be either Visible or Collapsed</remarks>
         public string IsRespondToReservationVisible => Reservation.ReservationStatus == Configuration.Enums.ReservationStatus.Pending ? "Visible" : "Collapsed";
 
-        public AdminReservationItemViewModel(IHotelReservation reservation, UserManager userManager, 
+        public AdminReservationItemViewModel(IHotelReservation reservation, UserManager userManager,
             HotelRoomsManager hotelRoomsManager, ReservationManager reservationManager)
         {
             Reservation = reservation;

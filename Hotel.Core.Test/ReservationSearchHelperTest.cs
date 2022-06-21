@@ -1,18 +1,14 @@
-﻿using System;
-using Xunit;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
-using Hotel.Configuration.Enums;
-using Hotel.Configuration;
+﻿using Hotel.Configuration.Enums;
 using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
-using Moq;
 using Hotel.Configuration.Models;
 using Hotel.Core.Managers;
 using Hotel.Core.SearchHelpers;
+using Moq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Xunit;
 
 namespace Hotel.Core.Test
 {
@@ -56,13 +52,13 @@ namespace Hotel.Core.Test
             _reservationManager.AddNewReservation(new DateOnly(2022, 6, 26), new DateOnly(2022, 7, 2), singleRoomCategory.Id, _userId, "paul", "camao", "paul@email.com", ReservationStatus.Declined);
             _reservationSearchHelper = new ReservationSearchHelper(_hotelRoomsManager);
         }
-        private IRepository<T> GetMockedModelRepo<T>(List<T> repoModelList, Func<T,T,bool> matchingFunc) where T : class
+        private IRepository<T> GetMockedModelRepo<T>(List<T> repoModelList, Func<T, T, bool> matchingFunc) where T : class
         {
             var mockedHotelRoomRepo = new Mock<IRepository<T>>();
             mockedHotelRoomRepo.Setup(x => x.GetAll()).Returns(repoModelList);
             mockedHotelRoomRepo.Setup(x => x.CreateNewModel(It.IsAny<T>())).Callback<T>(x => repoModelList.Add(x));
-            mockedHotelRoomRepo.Setup(x => x.DeleteModel(It.IsAny<T>())).Callback<T>(x => repoModelList.RemoveAll(m => matchingFunc(m,x)));
-            mockedHotelRoomRepo.Setup(x => x.UpdateModel(It.IsAny<T>())).Callback<T>(x => 
+            mockedHotelRoomRepo.Setup(x => x.DeleteModel(It.IsAny<T>())).Callback<T>(x => repoModelList.RemoveAll(m => matchingFunc(m, x)));
+            mockedHotelRoomRepo.Setup(x => x.UpdateModel(It.IsAny<T>())).Callback<T>(x =>
             {
                 var modelIndex = repoModelList.FindIndex(m => matchingFunc(m, x));
                 if (modelIndex == -1)

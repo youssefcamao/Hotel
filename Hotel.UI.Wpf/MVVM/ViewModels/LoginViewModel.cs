@@ -15,7 +15,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
-        private readonly ISqlDataAccess _sqlDataAccess = new SqlDataAccess(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString); 
+        private readonly ISqlDataAccess _sqlDataAccess = new SqlDataAccess(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString);
         private readonly IUserRepository _userRepository;
         private readonly UserManager _userManager;
 

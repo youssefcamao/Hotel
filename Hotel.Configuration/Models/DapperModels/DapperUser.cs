@@ -19,7 +19,7 @@ namespace Hotel.Configuration.Models.DapperModels
         /// <inheritdoc/>
         /// <para>this proprety was also made set to allow access from dapper</para>
         /// </summary>
-        public string LastName { get; set; } = String.Empty ;
+        public string LastName { get; set; } = String.Empty;
         /// <summary>
         /// <inheritdoc/>
         /// <para>this proprety was also made set to allow access from dapper</para>

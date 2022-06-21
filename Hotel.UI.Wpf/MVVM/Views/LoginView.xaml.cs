@@ -58,7 +58,7 @@ namespace Hotel.UI.Wpf.MVVM.Views
         {
             try
             {
-               await LoginCommand.ExecuteAsync(null);
+                await LoginCommand.ExecuteAsync(null);
             }
             catch (ArgumentNullException)
             {

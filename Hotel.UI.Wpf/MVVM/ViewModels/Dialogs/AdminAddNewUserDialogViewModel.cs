@@ -1,12 +1,7 @@
 ﻿using Hotel.Core.Managers;
 using Hotel.UI.Wpf.MVVM.Commands.Admin;
 using Hotel.UI.Wpf.MVVM.ViewModels.Admin;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
@@ -108,7 +103,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                         return "Admin";
                     case false:
                         return "User";
-                    default: 
+                    default:
                         return null;
                 }
             }
@@ -120,7 +115,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
                         IsUserAdmin = true;
                         break;
                     case "User":
-                        IsUserAdmin= false;
+                        IsUserAdmin = false;
                         break;
                     default:
                         IsUserAdmin = null;

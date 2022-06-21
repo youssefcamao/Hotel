@@ -4,11 +4,7 @@ using Hotel.UI.Wpf.MVVM.ViewModels.Admin.User_Manager;
 using Hotel.UI.Wpf.MVVM.ViewModels.Dialogs;
 using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hotel.UI.Wpf.MVVM.Commands.Admin
 {
@@ -23,7 +19,7 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         private readonly AdminUserItemViewModel _selectedUserItem;
 
         public AdminSaveNewUsersEditedChangesCommand(UserManager userManager,
-            AdminEditUserDetailsViewModel parentViewModel, 
+            AdminEditUserDetailsViewModel parentViewModel,
             AdminUserManagerViewModel adminUserManagerViewModel, AdminUserItemViewModel selectedUserItem)
         {
             _userManager = userManager;
@@ -48,9 +44,9 @@ namespace Hotel.UI.Wpf.MVVM.Commands.Admin
         }
         public override bool CanExecute(object? parameter)
         {
-            var areAllInputsFilled = !string.IsNullOrEmpty(_parentViewModel.Email) 
+            var areAllInputsFilled = !string.IsNullOrEmpty(_parentViewModel.Email)
                 && !string.IsNullOrEmpty(_parentViewModel.FirstName)
-                && !string.IsNullOrEmpty(_parentViewModel.LastName) 
+                && !string.IsNullOrEmpty(_parentViewModel.LastName)
                 && _parentViewModel.IsUserAdmin != null;
             //boolean represents if there is any new edits on the details
             var IfDetailsChanged = _parentViewModel.FirstName != _selectedUserItem.User.FirstName

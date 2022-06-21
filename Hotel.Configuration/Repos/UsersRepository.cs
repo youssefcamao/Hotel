@@ -1,10 +1,8 @@
-﻿using Dapper;
-using Hotel.Configuration.Interfaces.DataAccess;
+﻿using Hotel.Configuration.Interfaces.DataAccess;
 using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Models.DapperModels;
 using System.Data;
-using System.Reflection;
 
 namespace Hotel.Configuration.Repos
 {
@@ -47,7 +45,7 @@ namespace Hotel.Configuration.Repos
         /// </summary>
         /// <param name="model"></param>
         public void DeleteModel(IUser model) =>
-            _dataAccess.SaveData("DeleteUser", new { UserId = model.Id});
+            _dataAccess.SaveData("DeleteUser", new { UserId = model.Id });
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
@@ -86,9 +84,9 @@ namespace Hotel.Configuration.Repos
         /// </summary>
         /// <param name="model"></param>
         /// <param name="password"></param>
-        public void UpdateModel(IUser model, string? password) 
+        public void UpdateModel(IUser model, string? password)
         {
-            _dataAccess.SaveData("UpdateUsers", new 
+            _dataAccess.SaveData("UpdateUsers", new
             {
                 Id = model.Id,
                 FirstName = model.FirstName,

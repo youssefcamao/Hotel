@@ -33,7 +33,7 @@ namespace Hotel.Configuration.Repos
         /// <param name="model"></param>
         public void DeleteModel(IHotelReservation model)
         {
-            _dataAccess.SaveData("DeleteReservation", new {Id = model.Id});
+            _dataAccess.SaveData("DeleteReservation", new { Id = model.Id });
         }
         /// <summary>
         /// <inheritdoc/>

@@ -2,7 +2,6 @@
 using Hotel.Configuration.Interfaces.Models;
 using Hotel.Configuration.Interfaces.Repos;
 using Hotel.Configuration.Models.DapperModels;
-using System.Reflection;
 
 namespace Hotel.Configuration.Repos
 {
@@ -44,9 +43,9 @@ namespace Hotel.Configuration.Repos
         /// <returns><inheritdoc/></returns>
         /// <param name="model"></param>
         public IList<IRoom> GetAll()
-{
-            var dapperRooms = _dataAccess.LoadData<DapperRoom,dynamic>("GetAllRooms", new { });
-            var reservations = dapperRooms.Select(x => x is IRoom user ? 
+        {
+            var dapperRooms = _dataAccess.LoadData<DapperRoom, dynamic>("GetAllRooms", new { });
+            var reservations = dapperRooms.Select(x => x is IRoom user ?
             user : throw new ArgumentException("Reservation doesn't implement the interface IReservation")).ToList();
             return reservations;
         }
