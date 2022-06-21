@@ -4,6 +4,10 @@ using System.Windows.Controls;
 
 namespace Hotel.UI.Wpf.MVVM.ValidationRules
 {
+    /// <summary>
+    /// This Validation validates on the field by using the logic of <see cref="EmailCheckService"/>
+    /// </summary>
+    /// <remarks>This ValidationRule is used in the Xml</remarks>
     public class EmailValidationRule : ValidationRule
     {
         private readonly EmailCheckService _emailCheckSerice = new EmailCheckService();

@@ -75,7 +75,7 @@ namespace Hotel.UI.Wpf.MVVM.Views
         private void CreateValidationError()
         {
             String errorMessage = "Wrong Email or Password";
-            _validationProp = new ValidationError(new EmptyValidationRule(),
+            _validationProp = new ValidationError(new EmptyValidationRule("the email or password are invalid"),
             PasswordContainer.GetBindingExpression(PasswordBox.TagProperty));
             Validation.MarkInvalid(PasswordContainer.GetBindingExpression(PasswordBox.TagProperty), _validationProp);
             _validationProp.ErrorContent = errorMessage;

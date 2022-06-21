@@ -3,6 +3,9 @@ using System;
 
 namespace Hotel.UI.Wpf.MVVM.Stores
 {
+    /// <summary>
+    /// This store is responsible for the main navigation in the app
+    /// </summary>
     public class NavigationStore
     {
         private ViewModelBase? _currentViewModel;
@@ -19,7 +22,9 @@ namespace Hotel.UI.Wpf.MVVM.Stores
         {
             CurrentViewModelChanged?.Invoke();
         }
-
+        /// <summary>
+        /// gets and sets the current view model
+        /// </summary>
         public event Action? CurrentViewModelChanged;
     }
 }

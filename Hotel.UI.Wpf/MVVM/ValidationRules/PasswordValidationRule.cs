@@ -9,6 +9,10 @@ using System.Windows.Controls;
 
 namespace Hotel.UI.Wpf.MVVM.ValidationRules
 {
+    /// <summary>
+    /// This validationRule is validation on the password by using the logic of <see cref="PasswordCheckService"/>
+    /// </summary>
+    /// <remarks>This ValidationRule is used in the Xml</remarks>
     public class PasswordValidationRule : ValidationRule
     {
         private readonly PasswordCheckService _emailCheckSerice = new PasswordCheckService();
