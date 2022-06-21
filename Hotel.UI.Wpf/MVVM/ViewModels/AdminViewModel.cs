@@ -40,7 +40,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
             OpenUserManagerCommand = new OpenUserManagerCommand(this, userManager,_connectedUser);
             OpenHotelRoomsManager = new OpenHotelRoomsManagerCommand(this);
             LogoutCommandWithConfirmation = new DelegateCommand(OnLogoutConfirmation);
-            CurrentUserString = UiStringHelpers.GetUserNameFromUser(_connectedUser);
+            CurrentUserString = UserHelperService.GetUserNameFromUser(_connectedUser);
             _currentChildAdminViewModel = new AdminReservationManagerViewModel(_connectedUser, this, userManager, _reservationManager, _hotelRoomsManager);
         }
         public string CurrentUserString { get; }

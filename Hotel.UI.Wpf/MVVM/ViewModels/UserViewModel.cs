@@ -11,7 +11,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels
     {
         public UserViewModel(NavigationStore navigationStore, IUser connectedUser)
         {
-            CurrentUserString = UiStringHelpers.GetUserNameFromUser(connectedUser);
+            CurrentUserString = UserHelperService.GetUserNameFromUser(connectedUser);
             LogoutCommand = new SwitchViewCommand(navigationStore, new LoginViewModel(navigationStore));
         }
         public string CurrentUserString { get; }

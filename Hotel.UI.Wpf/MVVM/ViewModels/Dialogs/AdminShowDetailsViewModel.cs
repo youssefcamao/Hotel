@@ -62,7 +62,7 @@ namespace Hotel.UI.Wpf.MVVM.ViewModels.Dialogs
             {
                 throw new ArgumentNullException(nameof(user));
             }
-            return UiStringHelpers.GetUserNameFromUser(user);
+            return UserHelperService.GetUserNameFromUser(user);
         }
     }
 }

@@ -3,7 +3,7 @@ using Hotel.Core;
 
 namespace Hotel.UI.Wpf.Ui_Helpers
 {
-    public static class UiStringHelpers
+    public static class UserHelperService
     {
         public static string GetUserNameFromUser(IUser user)
         {
