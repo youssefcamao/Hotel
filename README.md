@@ -35,3 +35,4 @@
 4. Klicken Sie dann auf Publish oder Generate Script, um das Template zu speichern.
 5. Die Datenbank sollte nun nutzbar sein. Sollte es nicht nach dem ersten Durchgang gehen. Führen Sie die Schritte von 1 nochmal durch und wählen Sie erst Generate Script aus und danach Publish.
 6. Im Post Deployment Script finden sich voreingestellte User, die zum Login genutzt werden können. Hier können Sie auch selbst Ihren User eintragen oder nutzen Sie einen vorgefertigten. Für den vollumfänglichen Zugang zur App nutzen Sie einen der Accounts mit @admin in der Emailadresse.
+<img src="Screenshots/screenshot3.png" alt="screenshot3">
