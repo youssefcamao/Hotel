@@ -8,7 +8,13 @@ namespace Hotel.Core.Managers
         private readonly IRepository<IRoom> _roomRepository;
         private readonly IRepository<IRoomCategory> _categoryRepository;
 
+        /// <summary>
+        /// gets all the room categories from the database
+        /// </summary>
         public IList<IRoomCategory> RoomCategories => _categoryRepository.GetAll();
+        /// <summary>
+        /// gets all the rooms from the database
+        /// </summary>
         public IList<IRoom> HotelRoomsList => _roomRepository.GetAll();
 
         public HotelRoomsManager(IRepository<IRoom> roomRepository, IRepository<IRoomCategory> categoryRepository)
